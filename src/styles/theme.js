@@ -10,8 +10,8 @@ export const mainTextColor = theme('theme', {
 });
 
 export const subTextColor = theme('theme', {
-  light: palette.gray[4],
-  dark: palette.gray[9],
+  light: palette.gray[6],
+  dark: palette.gray[6],
 });
 
 export const backgroundColor = theme('theme', {
@@ -19,11 +19,20 @@ export const backgroundColor = theme('theme', {
   dark: palette.gray[9],
 });
 
+export const cardColor = theme('theme', {
+  light: palette.gray[1],
+  dark: palette.gray[8],
+});
+
+export const cardBadgeColor = theme('theme', {
+  light: palette.gray[3],
+  dark: palette.gray[7],
+});
+
 export const buttonColor = theme('theme', {
   light: css`
     color: ${palette.gray[1]};
     background-color: ${palette.gray[7]};
-    border: 0px solid ${palette.gray[9]};
 
     &:hover {
       background-color: ${palette.gray[6]};
@@ -32,16 +41,15 @@ export const buttonColor = theme('theme', {
     ${(props) =>
       props.accent &&
       css`
-        background-color: ${palette.teal[6]};
+        background-color: ${palette.orange[6]};
         &:hover {
-          background-color: ${palette.teal[5]};
+          background-color: ${palette.orange[5]};
         }
       `}
   `,
   dark: css`
     color: white;
-    background-color: ${palette.gray[9]};
-    border: 2px solid ${palette.gray[7]};
+    background-color: ${palette.gray[8]};
 
     &:hover {
       background-color: ${palette.gray[7]};
@@ -50,9 +58,9 @@ export const buttonColor = theme('theme', {
     ${(props) =>
       props.accent &&
       css`
-        background-color: ${palette.teal[7]};
+        background-color: ${palette.orange[7]};
         &:hover {
-          background-color: ${palette.teal[5]};
+          background-color: ${palette.orange[5]};
         }
       `}
   `,
@@ -91,7 +99,17 @@ export const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     transition: background-color 0.5s ease-in-out;
     background-color: ${(props) =>
-      props.dark ? palette.gray[9] : palette.gray[1]}
+      props.dark ? palette.gray[9] : palette.gray[1]};
+    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
+  }
+
+  button {
+    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
+    transition: background-color 0.25s ease-in-out;
+  }
+
+  div {
+    transition: background-color 0.25s ease-in-out;
   }
 
   html {

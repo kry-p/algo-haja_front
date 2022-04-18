@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/palette';
+import { cardColor, cardBadgeColor } from '../../styles/theme';
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -12,7 +13,8 @@ const Card = styled.div`
   justify-content: center;
   align-items: center;
 
-  transition: all 0.25s ease-in-out;
+  background-color: ${cardColor};
+
   .text {
     white-space: nowrap;
     overflow: hidden;
@@ -31,6 +33,14 @@ const Card = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+`;
+
+const CardBadge = styled.div`
+  margin: 0.25rem;
+  background: ${cardBadgeColor};
+  border-radius: 1rem;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.75rem;
 `;
 
 export const ProblemCard = styled(Card)`
@@ -52,7 +62,7 @@ export const ProblemCard = styled(Card)`
   .category {
     flex-wrap: wrap;
     justify-content: flex-start;
-    overflow: scroll;
+    overflow: hidden;
 
     height: 2.25rem;
     @media (min-width: 320px) {
@@ -98,7 +108,7 @@ export const StyledProblemCard = ({
           <div>{title}</div>
           <div
             style={{
-              backgroundColor: palette.teal[5],
+              backgroundColor: palette.orange[6],
               padding: '0.325rem 0.5rem',
               borderRadius: '0.5rem',
               color: 'white',
@@ -146,21 +156,7 @@ export const StyledProblemCard = ({
           className="category"
         >
           {!!categories
-            ? categories.map((item) => (
-                <div
-                  style={{
-                    margin: '0.25rem',
-                    background: `${palette.gray[2]}`,
-                    borderRadius: '1rem',
-                    padding: '0.5rem 0.5rem',
-                    color: `${palette.gray[7]}`,
-                    fontSize: '0.75rem',
-                  }}
-                  key={item}
-                >
-                  {item}
-                </div>
-              ))
+            ? categories.map((item) => <CardBadge key={item}>{item}</CardBadge>)
             : null}
         </div>
       </div>

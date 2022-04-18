@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
-import palette from '../../../lib/palette';
-
-import { backgroundColor } from '../../../styles/theme';
+import {
+  backgroundColor,
+  cardColor,
+  mainTextColor,
+  subTextColor,
+} from '../../../styles/theme';
 
 export const DRAWER_WIDTH = 300;
 
@@ -27,7 +30,9 @@ export const AppBar = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  // transition 적용 예외
   background: ${backgroundColor};
+  transition: all 0.5s ease-in-out;
 
   ${(props) =>
     props.shadowEnabled &&
@@ -83,31 +88,63 @@ export const Drawer = styled.div`
   box-shadow: 0rem 0rem 0.25rem 0.125rem rgba(0, 0, 0, 0.1);
 
   z-index: 2;
+
+  @media (min-width: 512px) {
+    display: none;
+  }
 `;
 
-export const Menu = styled.div`
+export const MenuDesktop = styled.div`
   display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-  padding-top: 6.5rem;
+  .item {
+    margin-right: 0.5rem;
+  }
+  @media (max-width: 511px) {
+    display: none;
+  }
 `;
 
-export const MenuItem = styled.button`
-  border: 0px solid black;
-  font-family: D2Coding;
-  color: ${palette.gray[5]};
-  letter-spacing: 0.1rem;
+export const MenuItemDesktop = styled.button`
   background: rgba(0, 0, 0, 0);
-
-  font-size: large;
-
-  transition: color 0.25s;
-  user-select: none;
-
-  padding-bottom: 3rem;
+  border: 0px;
+  font-size: medium;
+  font-family: MinSans-Medium;
+  transition: all 0.25s ease-in-out;
 
   &:hover {
-    color: white;
+    transform: scale(1.2);
+  }
+`;
+
+export const MenuMobile = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+
+  justify-items: center;
+  align-items: center;
+`;
+
+export const MenuItemMobile = styled.div`
+  width: 100%;
+  height: 4rem;
+  padding-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  border: 0px;
+  font-size: large;
+
+  color: ${mainTextColor};
+
+  .description {
+    padding-top: 0.25rem;
+    font-size: 0.9rem;
+
+    color: ${subTextColor};
+  }
+
+  &:hover {
+    background: ${cardColor};
   }
 `;

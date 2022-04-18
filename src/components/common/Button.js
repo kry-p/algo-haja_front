@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/palette';
 
-import { buttonColor, mainTextColor } from '../../styles/theme';
+import { buttonColor, cardColor, mainTextColor } from '../../styles/theme';
 
 const Logo = styled.button`
   background-color: rgba(0, 0, 0, 0);
@@ -18,49 +18,21 @@ const Logo = styled.button`
 export const Button = styled.button`
   ${buttonColor}
   border-radius: 12px;
+  border: 0px;
   font-family: 'MinSans-Medium';
   font-size: 0.875rem;
-  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
-
-  transition: background-color 0.25s;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   user-select: none;
 `;
 
 export const IconButton = styled.button`
   background-color: rgba(0, 0, 0, 0);
-  border: rgba(0, 0, 0, 0);
-  padding: 0.5rem 0.5rem;
-`;
-
-export const FooterButton = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 2px solid white;
-  background-color: black;
-  border-radius: 1.25rem;
-  padding-top: 0.25rem;
-
-  transition: background-color 0.25s ease-in-out;
-  &:hover {
-    background-color: ${palette.gray[8]};
-  }
-`;
-
-export const BorderlessInput = styled.input`
-  background-color: ${palette.gray[9]};
-  color: white;
-  color: white;
-  border-radius: 24px;
-  border: rgba(0, 0, 0, 0);
-  font-family: 'MinSans-Medium';
-  font-size: 0.875rem;
-  padding: 0.7rem 1.2rem 0.7rem 1.2rem;
-
-  transition: background-color 0.25s;
-  user-select: none;
+  border: 1px solid ${mainTextColor};
+  border-radius: 12px;
+  padding: 0.25rem 0.547rem;
 
   &:hover {
-    background-color: ${palette.gray[8]};
+    background-color: ${cardColor};
   }
 `;
 
@@ -89,11 +61,15 @@ const StyledBurger = styled.button`
     right: calc((100vw - 1024px) / 3 + 2rem);
   }
 
+  @media (min-width: 512px) {
+    display: none;
+  }
+
   div {
     width: 1.5rem;
     height: 0.075rem;
     background: ${mainTextColor};
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; // div 적용 예외 (메뉴 버튼 애니메이션)
     position: relative;
     transform-origin: 1px;
 

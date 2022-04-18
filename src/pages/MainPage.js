@@ -5,7 +5,7 @@ import StyledArticle from '../components/common/Article';
 import { ContentArea, SafeArea } from '../components/common/Area';
 import { StyledProblemCard } from '../components/common/Card';
 
-const Main = () => {
+const MainPage = () => {
   return (
     <>
       <Appbar title="알고하자" />
@@ -83,4 +83,4 @@ const Main = () => {
     </>
   );
 };
-export default Main;
+export default MainPage;

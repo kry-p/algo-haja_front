@@ -17,7 +17,7 @@ import {
   PageStyleNotFound,
 } from '../components/styles/page/NotFound';
 
-const NotFound = () => {
+const NotFoundPage = () => {
   const windowInfo = useWindow(); // window info hook
   const navigate = useNavigate(); // router hook
   return (
@@ -45,4 +45,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;

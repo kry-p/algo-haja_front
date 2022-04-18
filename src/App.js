@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import NotFound from './pages/NotFound';
-import Main from './pages/Main';
+import NotFoundPage from './pages/NotFoundPage';
+import MainPage from './pages/MainPage';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -25,8 +25,8 @@ const App = () => {
       <ThemeProvider theme={{ theme: currentGlobalTheme }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" exact element={<Main />} />
-            <Route path="*" exact element={<NotFound />} />
+            <Route path="/" exact element={<MainPage />} />
+            <Route path="*" exact element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

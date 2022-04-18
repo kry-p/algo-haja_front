@@ -19,14 +19,6 @@ const Article = styled.div`
 `;
 
 const Cards = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  @media (min-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  } */
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
