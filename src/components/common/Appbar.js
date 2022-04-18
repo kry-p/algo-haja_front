@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 
 import { LogoButton, Burger } from './Button';
+import useScroll from '../../lib/hooks/useScroll';
 
 import {
   DRAWER_WIDTH,
@@ -20,6 +21,7 @@ const mainRouteData = [];
 
 const Appbar = ({ title, type, fullPage }) => {
   const [xPosition, setXPosition] = useState(0);
+  const scroll = useScroll();
   const toggleMenuOpen = () => {
     if (open) setXPosition(0);
     else setXPosition(-DRAWER_WIDTH);
@@ -34,13 +36,9 @@ const Appbar = ({ title, type, fullPage }) => {
   return (
     <>
       <HeaderBlock>
-        <AppBar>
+        <AppBar shadowEnabled={scroll > 0}>
           <div className="left">
-            {type === 'management' ? (
-              <LogoButton title={title} cali={false} />
-            ) : (
-              <LogoButton title={title} cali={true} />
-            )}
+            <LogoButton title={title} />
           </div>
           <div className="right">
             <Burger open={open} setOpen={toggleOpen} />
@@ -50,13 +48,9 @@ const Appbar = ({ title, type, fullPage }) => {
               }}
             >
               <Menu>
-                {type === 'management'
-                  ? managementRouteData.map((item) => {
-                      return <MenuItem key={item} item></MenuItem>;
-                    })
-                  : mainRouteData.map((item) => {
-                      return <MenuItem key={item} item></MenuItem>;
-                    })}
+                {mainRouteData.map((item) => {
+                  return <MenuItem key={item} item></MenuItem>;
+                })}
               </Menu>
             </Drawer>
           </div>

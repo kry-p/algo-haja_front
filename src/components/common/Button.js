@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import palette from '../../lib/palette';
 
 import { buttonColor, mainTextColor } from '../../styles/theme';
@@ -9,11 +9,7 @@ const Logo = styled.button`
   border: rgba(0, 0, 0, 0);
   padding: 0.5rem 0.5rem;
 
-  ${(props) =>
-    props.cali &&
-    css`
-      font-family: 'Yeongdo-Regular';
-    `}
+  font-family: 'Yeongdo-Regular';
   font-size: 1.5rem;
   transition: color 0.5s ease-in-out;
   color: ${mainTextColor};
@@ -131,12 +127,4 @@ export const Burger = ({ open, setOpen }) => {
   );
 };
 
-export const LogoButton = ({ title, cali }) => {
-  return cali ? (
-    <Logo onClick={() => {}} cali>
-      {title}
-    </Logo>
-  ) : (
-    <Logo>{title}</Logo>
-  );
-};
+export const LogoButton = ({ title }) => <Logo>{title}</Logo>;

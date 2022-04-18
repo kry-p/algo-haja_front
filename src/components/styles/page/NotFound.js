@@ -12,13 +12,13 @@ export const PageNotFound = styled.div`
 
 export const PageTypoNotFound = styled.span`
   font-family: 'MinSans-Thin';
-  font-size: 8rem;
+  font-size: 6rem;
   padding-bottom: 1.5rem;
   user-select: none;
   color: ${mainTextColor};
 
   @media (min-width: 512px) {
-    font-size: 12rem;
+    font-size: 10rem;
   }
 `;
 

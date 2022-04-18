@@ -1,16 +1,85 @@
 import React from 'react';
 import Appbar from '../components/common/Appbar';
+import StyledArticle from '../components/common/Article';
 
-import { useDispatch } from 'react-redux';
-import { toggleDarkmode } from '../modules/option';
+import { ContentArea, SafeArea } from '../components/common/Area';
+import { StyledProblemCard } from '../components/common/Card';
 
 const Main = () => {
-  const dispatch = useDispatch();
-  const onClickToggleDarkmode = () => dispatch(toggleDarkmode());
   return (
     <>
-      <Appbar cali title="알고하자" />
-      <button onClick={onClickToggleDarkmode}>다크모드 테스트 버튼</button>
+      <Appbar title="알고하자" />
+      <ContentArea>
+        <SafeArea>
+          <StyledArticle
+            title="이번 주의 문제예요."
+            contents={[
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={1}
+              />,
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={2}
+              />,
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={3}
+              />,
+            ]}
+          />
+          <StyledArticle
+            title="다른 팀원들은 이런 문제를 해결했어요."
+            contents={[
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={1}
+              />,
+
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={2}
+              />,
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={3}
+              />,
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={4}
+              />,
+              <StyledProblemCard
+                title="문제 제목"
+                solved
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper ante vitae rhoncus porttitor. Vivamus vitae auctor metus. Cras a lorem at libero posuere placerat sit amet quis lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas gravida magna turpis, a elementum nunc tempor non. Aenean imperdiet nibh sed ultrices tincidunt. Sed iaculis mi mi, et vulputate odio ultrices sit amet. Pellentesque tristique nisl nec blandit molestie."
+                categories={['문제 유형 1', '문제 유형 2', '문제 유형 3']}
+                stars={5}
+              />,
+            ]}
+          />
+        </SafeArea>
+      </ContentArea>
     </>
   );
 };

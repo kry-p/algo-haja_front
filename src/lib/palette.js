@@ -24,6 +24,18 @@ const palette = {
     '#099268',
     '#087f5b',
   ],
+  yellow: [
+    '#fff9db',
+    '#fff3bf',
+    '#ffec99',
+    '#ffe066',
+    '#ffd43b',
+    '#fcc419',
+    '#fab005',
+    '#f59f00',
+    '#f08c00',
+    '#e67700',
+  ],
 };
 
 export default palette;

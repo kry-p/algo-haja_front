@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import palette from '../../../lib/palette';
 
-export const DRAWER_WIDTH = 270;
+import { backgroundColor } from '../../../styles/theme';
+
+export const DRAWER_WIDTH = 300;
 
 export const HeaderBlock = styled.div`
   position: fixed;
@@ -24,6 +26,14 @@ export const AppBar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  background: ${backgroundColor};
+
+  ${(props) =>
+    props.shadowEnabled &&
+    css`
+      box-shadow: 0rem 0rem 0.25rem 0.125rem rgba(0, 0, 0, 0.1);
+    `}
 
   .left {
     padding-left: 2rem;
@@ -62,18 +72,17 @@ export const Drawer = styled.div`
   position: fixed;
   overflow: hidden;
   top: 0rem;
-  right: -270px;
+  right: -300px;
 
   width: 270px;
   height: 100vh;
 
   transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
+  background-color: ${backgroundColor};
 
-  background-color: rgb(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0rem 0rem 0.25rem 0.125rem rgba(0, 0, 0, 0.1);
 
-  z-index: 4;
+  z-index: 2;
 `;
 
 export const Menu = styled.div`
