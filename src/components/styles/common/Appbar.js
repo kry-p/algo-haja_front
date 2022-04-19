@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import {
   backgroundColor,
-  cardColor,
   mainTextColor,
+  objectLevelTwoColor,
   subTextColor,
 } from '../../../styles/theme';
 
@@ -145,6 +145,6 @@ export const MenuItemMobile = styled.div`
   }
 
   &:hover {
-    background: ${cardColor};
+    background: ${objectLevelTwoColor};
   }
 `;

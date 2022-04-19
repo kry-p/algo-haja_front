@@ -1,19 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/palette';
-import { cardColor, cardBadgeColor } from '../../styles/theme';
+import {
+  objectLevelOneColor,
+  objectLevelTwoColor,
+  buttonColor,
+} from '../../styles/theme';
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const Card = styled.div`
   border-radius: 12px;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: ${cardColor};
+  background-color: ${objectLevelOneColor};
 
   .text {
     white-space: nowrap;
@@ -31,16 +35,24 @@ const Card = styled.div`
   }
 
   &:hover {
-    transform: scale(1.1);
+    background-color: ${objectLevelTwoColor};
   }
 `;
 
 const CardBadge = styled.div`
   margin: 0.25rem;
-  background: ${cardBadgeColor};
+  background: ${objectLevelTwoColor};
   border-radius: 1rem;
   padding: 0.5rem 0.5rem;
   font-size: 0.75rem;
+`;
+
+const SolvedBadge = styled.div`
+  background-color: ${buttonColor};
+  padding: 0.325rem 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: small;
 `;
 
 export const ProblemCard = styled(Card)`
@@ -106,18 +118,14 @@ export const StyledProblemCard = ({
           }}
         >
           <div>{title}</div>
-          <div
+          <SolvedBadge
+            accent
             style={{
-              backgroundColor: palette.orange[6],
-              padding: '0.325rem 0.5rem',
-              borderRadius: '0.5rem',
-              color: 'white',
-              fontSize: 'small',
               visibility: solved ? 'visible' : 'hidden',
             }}
           >
             Solved
-          </div>
+          </SolvedBadge>
         </div>
         <div
           style={{

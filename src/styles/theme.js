@@ -15,24 +15,29 @@ export const subTextColor = theme('theme', {
 });
 
 export const backgroundColor = theme('theme', {
-  light: palette.gray[1],
+  light: palette.gray[0],
   dark: palette.gray[9],
 });
 
-export const cardColor = theme('theme', {
-  light: palette.gray[1],
+export const objectLevelOneColor = theme('theme', {
+  light: palette.gray[0],
   dark: palette.gray[8],
 });
 
-export const cardBadgeColor = theme('theme', {
-  light: palette.gray[3],
+export const objectLevelTwoColor = theme('theme', {
+  light: palette.gray[1],
   dark: palette.gray[7],
+});
+
+export const objectLevelThreeColor = theme('theme', {
+  light: palette.gray[2],
+  dark: palette.gray[6],
 });
 
 export const buttonColor = theme('theme', {
   light: css`
     color: ${palette.gray[1]};
-    background-color: ${palette.gray[7]};
+    background-color: ${palette.gray[9]};
 
     &:hover {
       background-color: ${palette.gray[6]};
@@ -41,14 +46,14 @@ export const buttonColor = theme('theme', {
     ${(props) =>
       props.accent &&
       css`
-        background-color: ${palette.orange[6]};
+        background-color: ${palette.cyan[5]};
         &:hover {
-          background-color: ${palette.orange[5]};
+          background-color: ${palette.cyan[4]};
         }
       `}
   `,
   dark: css`
-    color: white;
+    color: ${palette.gray[1]};
     background-color: ${palette.gray[8]};
 
     &:hover {
@@ -58,9 +63,9 @@ export const buttonColor = theme('theme', {
     ${(props) =>
       props.accent &&
       css`
-        background-color: ${palette.orange[7]};
+        background-color: ${palette.cyan[8]};
         &:hover {
-          background-color: ${palette.orange[5]};
+          background-color: ${palette.cyan[7]};
         }
       `}
   `,
@@ -99,7 +104,7 @@ export const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     transition: background-color 0.5s ease-in-out;
     background-color: ${(props) =>
-      props.dark ? palette.gray[9] : palette.gray[1]};
+      props.dark ? palette.gray[9] : palette.gray[0]};
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
   }
 

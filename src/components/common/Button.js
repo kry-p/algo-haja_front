@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../../lib/palette';
 
-import { buttonColor, cardColor, mainTextColor } from '../../styles/theme';
+import {
+  buttonColor,
+  mainTextColor,
+  objectLevelThreeColor,
+} from '../../styles/theme';
 
 const Logo = styled.button`
   background-color: rgba(0, 0, 0, 0);
@@ -32,7 +35,7 @@ export const IconButton = styled.button`
   padding: 0.25rem 0.547rem;
 
   &:hover {
-    background-color: ${cardColor};
+    background-color: ${objectLevelThreeColor};
   }
 `;
 
