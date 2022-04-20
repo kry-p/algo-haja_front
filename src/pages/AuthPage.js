@@ -2,9 +2,9 @@ import React from 'react';
 import AuthTemplate from '../components/auth/AuthTemplate';
 import AuthForm from '../components/auth/AuthForm';
 
-const LoginPage = () => (
+const LoginPage = ({ type }) => (
   <AuthTemplate>
-    <AuthForm type="login" />
+    <AuthForm type={type} />
   </AuthTemplate>
 );
 

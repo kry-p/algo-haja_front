@@ -87,6 +87,12 @@ export const ProblemCardBlock = styled(Card)`
 export const AuthCardBlock = styled(Card)`
   padding: 1.5rem 2rem;
   transition: all 0.5s ease-in-out;
+
+  width: 12.5rem;
+
+  @media (min-width: 320px) {
+    width: 15rem;
+  }
 `;
 
 export const ProblemCard = ({

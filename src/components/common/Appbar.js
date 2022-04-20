@@ -9,7 +9,7 @@ import useScroll from '../../lib/hooks/useScroll';
 
 import { MdOutlineDarkMode } from 'react-icons/md';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleDarkmode } from '../../modules/option';
 
 import {
@@ -24,6 +24,9 @@ import {
   MenuItemMobile,
 } from '../styles/common/Appbar';
 
+import AuthPage from '../../pages/AuthPage';
+import Modal from './Modal';
+
 const mainRouteData = [
   ['문제', '#'],
   ['그룹', '#'],
@@ -31,16 +34,23 @@ const mainRouteData = [
 ];
 
 const Appbar = ({ title, fullPage }) => {
+  // hooks
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [xPosition, setXPosition] = useState(0);
   const scroll = useScroll();
+
+  // state
+  const [modal, setModal] = useState(false);
+  const [xPosition, setXPosition] = useState(0);
+  const [open, setOpen] = useState(false);
+  // state (Redux)
+  const currentAuth = useSelector((state) => state.option.currentAuth);
+
+  // state actions
   const toggleMenuOpen = () => {
     if (open) setXPosition(0);
     else setXPosition(-DRAWER_WIDTH);
   };
-  const [open, setOpen] = useState(false);
-
   const toggleOpen = () => {
     setOpen(!open);
     toggleMenuOpen();
@@ -64,11 +74,7 @@ const Appbar = ({ title, fullPage }) => {
                   {item[0]}
                 </MenuItemDesktop>
               ))}
-              <Button
-                accent
-                className="item"
-                onClick={() => navigate('/login')}
-              >
+              <Button accent className="item" onClick={() => setModal(!modal)}>
                 로그인
               </Button>
               <IconButton onClick={() => dispatch(toggleDarkmode())}>
@@ -107,7 +113,7 @@ const Appbar = ({ title, fullPage }) => {
                   }}
                 >
                   <div>로그인하세요</div>
-                  <Button accent onClick={() => navigate('/login')}>
+                  <Button accent onClick={() => setModal(!modal)}>
                     로그인
                   </Button>
                 </div>
@@ -126,7 +132,12 @@ const Appbar = ({ title, fullPage }) => {
           </div>
         </AppbarBlock>
       </HeaderBlock>
-      {fullPage ? null : <Spacer />}
+      {modal && (
+        <Modal onClose={() => setModal(false)}>
+          <AuthPage type={currentAuth} />
+        </Modal>
+      )}
+      {!fullPage && <Spacer />}
     </>
   );
 };
