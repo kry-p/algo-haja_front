@@ -25,7 +25,7 @@ export const PageTypoNotFound = styled.span`
 export const MenuNotFound = styled.div`
   display: grid;
   padding-top: 1rem;
-  grid-gap: 0.5rem;
+  gap: 0.5rem;
   grid-template-rows: 1fr;
   @media (min-width: 512px) {
     grid-template-columns: 2fr 1fr;
@@ -40,7 +40,6 @@ export const PageStyleNotFound = styled.div`
   align-items: center;
 
   background: ${backgroundColor};
-  transition: all 0.5s ease-in-out;
 
   width: 100%;
   height: 100%;

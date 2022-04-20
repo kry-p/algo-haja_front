@@ -18,21 +18,17 @@ export const Spacer = styled.div`
   height: 6rem;
 `;
 
-export const AppBar = styled.div`
+export const AppbarBlock = styled.div`
   width: 100%;
   height: 4.5rem;
   position: absolute;
-
   z-index: 1;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  // transition 적용 예외
-  background: ${backgroundColor};
-  transition: all 0.5s ease-in-out;
+  backdrop-filter: blur(10px);
 
   ${(props) =>
     props.shadowEnabled &&
@@ -109,7 +105,7 @@ export const MenuItemDesktop = styled.button`
   border: 0px;
   font-size: medium;
   font-family: MinSans-Medium;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s ease-in;
 
   &:hover {
     transform: scale(1.2);

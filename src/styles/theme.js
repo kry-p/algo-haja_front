@@ -76,24 +76,18 @@ export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "Yeongdo-Regular";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/Yeongdo-Rg.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
   }
 
   @font-face {
     font-family: "MinSans-Thin";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
   }
 
   @font-face {
     font-family: "MinSans-Medium";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
   }
 
@@ -102,23 +96,27 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: MinSans-Medium, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
-    transition: background-color 0.5s ease-in-out;
     background-color: ${(props) =>
       props.dark ? palette.gray[9] : palette.gray[0]};
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
   }
 
   button {
+    font-family: MinSans-Medium;
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
-    transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
   }
 
   div {
-    transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  input {
+    font-family: MinSans-Medium;
   }
 
   img {

@@ -11,7 +11,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const Card = styled.div`
   border-radius: 12px;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
 
   display: flex;
   justify-content: center;
@@ -31,11 +31,7 @@ const Card = styled.div`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 
-    height: 2rem;
-  }
-
-  &:hover {
-    background-color: ${objectLevelTwoColor};
+    height: 2.25rem;
   }
 `;
 
@@ -55,9 +51,10 @@ const SolvedBadge = styled.div`
   font-size: small;
 `;
 
-export const ProblemCard = styled(Card)`
+export const ProblemCardBlock = styled(Card)`
   width: 15rem;
   height: 10.5rem;
+  transition: all 0.25s ease-in-out;
 
   @media (min-width: 320px) {
     width: 18rem;
@@ -72,17 +69,27 @@ export const ProblemCard = styled(Card)`
   }
 
   .category {
+    width: 100%;
+    display: flex;
+
     flex-wrap: wrap;
     justify-content: flex-start;
     overflow: hidden;
 
     height: 2.25rem;
-    @media (min-width: 320px) {
-    }
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
-export const StyledProblemCard = ({
+export const AuthCardBlock = styled(Card)`
+  padding: 1.5rem 2rem;
+  transition: all 0.5s ease-in-out;
+`;
+
+export const ProblemCard = ({
   title,
   solved,
   description,
@@ -97,7 +104,7 @@ export const StyledProblemCard = ({
   };
 
   return (
-    <ProblemCard>
+    <ProblemCardBlock>
       <div
         style={{
           display: 'flex',
@@ -156,18 +163,12 @@ export const StyledProblemCard = ({
           </div>
           <div />
         </div>
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-          }}
-          className="category"
-        >
+        <div className="category">
           {!!categories
             ? categories.map((item) => <CardBadge key={item}>{item}</CardBadge>)
             : null}
         </div>
       </div>
-    </ProblemCard>
+    </ProblemCardBlock>
   );
 };

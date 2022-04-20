@@ -2,6 +2,7 @@
  * Appbar
  */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, LogoButton, Burger, IconButton } from './Button';
 import useScroll from '../../lib/hooks/useScroll';
@@ -14,7 +15,7 @@ import { toggleDarkmode } from '../../modules/option';
 import {
   DRAWER_WIDTH,
   HeaderBlock,
-  AppBar,
+  AppbarBlock,
   Drawer,
   Spacer,
   MenuDesktop,
@@ -31,6 +32,7 @@ const mainRouteData = [
 
 const Appbar = ({ title, fullPage }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [xPosition, setXPosition] = useState(0);
   const scroll = useScroll();
   const toggleMenuOpen = () => {
@@ -47,7 +49,7 @@ const Appbar = ({ title, fullPage }) => {
   return (
     <>
       <HeaderBlock>
-        <AppBar shadowEnabled={scroll > 0}>
+        <AppbarBlock shadowEnabled={scroll > 0}>
           <div className="left">
             <LogoButton title={title} />
           </div>
@@ -62,7 +64,11 @@ const Appbar = ({ title, fullPage }) => {
                   {item[0]}
                 </MenuItemDesktop>
               ))}
-              <Button accent className="item">
+              <Button
+                accent
+                className="item"
+                onClick={() => navigate('/login')}
+              >
                 로그인
               </Button>
               <IconButton onClick={() => dispatch(toggleDarkmode())}>
@@ -101,7 +107,9 @@ const Appbar = ({ title, fullPage }) => {
                   }}
                 >
                   <div>로그인하세요</div>
-                  <Button accent>로그인</Button>
+                  <Button accent onClick={() => navigate('/login')}>
+                    로그인
+                  </Button>
                 </div>
                 {mainRouteData.map((item) => (
                   <MenuItemMobile
@@ -116,7 +124,7 @@ const Appbar = ({ title, fullPage }) => {
               </MenuMobile>
             </Drawer>
           </div>
-        </AppBar>
+        </AppbarBlock>
       </HeaderBlock>
       {fullPage ? null : <Spacer />}
     </>

@@ -14,7 +14,6 @@ const Logo = styled.button`
 
   font-family: 'Yeongdo-Regular';
   font-size: 1.5rem;
-  transition: color 0.5s ease-in-out;
   color: ${mainTextColor};
 `;
 
@@ -37,6 +36,14 @@ export const IconButton = styled.button`
   &:hover {
     background-color: ${objectLevelThreeColor};
   }
+`;
+
+export const UnderlinedButton = styled.button`
+  font-size: 0.9rem;
+  font-family: MinSans-Medium;
+  border: none;
+  text-decoration: underline;
+  background: rgba(0, 0, 0, 0);
 `;
 
 const StyledBurger = styled.button`

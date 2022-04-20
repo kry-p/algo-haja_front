@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { UnderlinedButton } from './Button';
 
 const Article = styled.div`
   display: flex;
@@ -61,16 +62,9 @@ const StyledArticle = ({ title, contents, more }) => {
             justifyContent: 'flex-end',
           }}
         >
-          <button
-            style={{
-              border: 'none',
-              textDecoration: 'underline',
-              background: 'rgba(0, 0, 0, 0)',
-            }}
-            onClick={() => navigate(more)}
-          >
+          <UnderlinedButton onClick={() => navigate(more)}>
             더 보기
-          </button>
+          </UnderlinedButton>
         </div>
       </Article>
     </div>

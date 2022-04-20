@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,25 +10,17 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/theme';
 
 const App = () => {
-  const option = useSelector((state) => state.option);
-  const [currentGlobalTheme, setCurrentGlobalTheme] = useState('light');
-
-  useEffect(() => {
-    if (option.darkmode) {
-      setCurrentGlobalTheme('dark');
-    } else {
-      setCurrentGlobalTheme('light');
-    }
-  }, [option]);
-
+  const darkmode = useSelector((state) => state.option.darkmode);
   return (
     <>
-      <GlobalStyle dark={currentGlobalTheme === 'dark'} />
-      <ThemeProvider theme={{ theme: currentGlobalTheme }}>
+      <GlobalStyle dark={darkmode} />
+      <ThemeProvider theme={{ theme: darkmode ? 'dark' : 'light' }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" exact element={<MainPage />} />
-            <Route path="*" exact element={<NotFoundPage />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
