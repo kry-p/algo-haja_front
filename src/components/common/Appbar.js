@@ -44,7 +44,7 @@ const Appbar = ({ title, fullPage }) => {
   const [xPosition, setXPosition] = useState(0);
   const [open, setOpen] = useState(false);
   // state (Redux)
-  const currentAuth = useSelector((state) => state.option.currentAuth);
+  const option = useSelector((state) => state.option);
 
   // state actions
   const toggleMenuOpen = () => {
@@ -134,7 +134,7 @@ const Appbar = ({ title, fullPage }) => {
       </HeaderBlock>
       {modal && (
         <Modal onClose={() => setModal(false)}>
-          <AuthPage type={currentAuth} />
+          <AuthPage type={option.currentAuth} />
         </Modal>
       )}
       {!fullPage && <Spacer />}

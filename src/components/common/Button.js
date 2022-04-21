@@ -38,12 +38,18 @@ export const IconButton = styled.button`
   }
 `;
 
-export const UnderlinedButton = styled.button`
+export const RawButton = styled.button`
   font-size: 0.9rem;
   font-family: MinSans-Medium;
   border: none;
-  text-decoration: underline;
   background: rgba(0, 0, 0, 0);
+
+  display: flex;
+  align-items: center;
+`;
+
+export const UnderlinedButton = styled(RawButton)`
+  text-decoration: underline;
 `;
 
 const StyledBurger = styled.button`

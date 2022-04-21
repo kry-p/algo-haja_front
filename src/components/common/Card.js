@@ -43,12 +43,14 @@ const CardBadge = styled.div`
   font-size: 0.75rem;
 `;
 
-const SolvedBadge = styled.div`
+export const SolvedBadge = styled.div`
   background-color: ${buttonColor};
   padding: 0.325rem 0.5rem;
   border-radius: 0.5rem;
   color: white;
   font-size: small;
+  display: flex;
+  align-items: center;
 `;
 
 export const ProblemCardBlock = styled(Card)`
@@ -61,7 +63,7 @@ export const ProblemCardBlock = styled(Card)`
   }
 
   @media (min-width: 512px) {
-    width: 15rem;
+    width: 14.5rem;
   }
 
   @media (min-width: 800px) {

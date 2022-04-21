@@ -1,6 +1,6 @@
 import React from 'react';
 import Appbar from '../components/common/Appbar';
-import StyledArticle from '../components/common/Article';
+import { DashboardArticle } from '../components/common/Article';
 
 import { ContentArea, SafeArea } from '../components/common/Area';
 import { ProblemCard } from '../components/common/Card';
@@ -11,7 +11,7 @@ const MainPage = () => {
       <Appbar title="알고하자" />
       <ContentArea>
         <SafeArea>
-          <StyledArticle
+          <DashboardArticle
             title="이번 주의 문제예요."
             contents={[
               <ProblemCard
@@ -37,7 +37,7 @@ const MainPage = () => {
               />,
             ]}
           />
-          <StyledArticle
+          <DashboardArticle
             title="다른 팀원들은 이런 문제를 해결했어요."
             contents={[
               <ProblemCard
