@@ -1,7 +1,7 @@
 import React from 'react';
 import Appbar from '../components/common/Appbar';
 
-import { ContentArea, SafeArea } from '../components/common/Area';
+import { ContentArea, SafeArea } from '../styles/common/Area';
 import { ProblemArticle } from '../components/common/Article';
 
 const solutionList = [

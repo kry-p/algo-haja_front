@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import {
-  codeHighlightColor,
-  objectLevelFourColor,
-} from '../../../styles/theme';
+import { codeHighlightColor, objectLevelFourColor } from '../theme';
 
-export const Article = styled.div`
+export const ArticleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const ArticleBlock = styled.div`
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -22,7 +24,6 @@ export const Article = styled.div`
 
 export const Cards = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   align-items: center;
   gap: 0.5rem;
 
@@ -36,15 +37,9 @@ export const Cards = styled.div`
   }
 `;
 
-export const ArticleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const ProblemArticleBlock = styled(Article)`
+export const ProblemArticleBlock = styled(ArticleBlock)`
   width: 80%;
   display: grid;
-  grid-template-columns: 1fr;
   gap: 1.2rem;
 `;
 
@@ -54,12 +49,30 @@ export const ProblemArticleParagraphTitle = styled.div`
   border-bottom: 1.5px solid ${objectLevelFourColor};
 `;
 
-export const Solution = styled.div`
-  ${codeHighlightColor};
-  padding: 1rem;
-  font-family: D2Coding;
-  border-radius: 8px;
-  transition: 0s;
+export const ProblemArticleParagraphDescription = styled.div`
+  display: grid;
+  gap: 1rem;
 
-  overflow: scroll;
+  line-height: normal;
+
+  .disclaimer .sub-title {
+    font-family: MinSans-Medium;
+    font-size: 1rem;
+  }
+
+  .content {
+    font-family: MinSans-Thin;
+  }
+
+  .solution-code {
+    ${codeHighlightColor};
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+
+    font-family: D2Coding;
+
+    transition: 0s;
+    overflow: scroll;
+  }
 `;

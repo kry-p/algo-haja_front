@@ -1,7 +1,9 @@
+/*
+ * 회원가입 및 로그인 폼 템플릿
+ */
 import React from 'react';
-import { AuthTemplateBlock } from '../styles/common/Auth';
-
 import { AuthCardBlock } from '../common/Card';
+import { AuthTemplateBlock } from '../../styles/common/Auth';
 
 const AuthTemplate = ({ children }) => {
   return (

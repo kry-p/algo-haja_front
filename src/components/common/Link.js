@@ -1,3 +1,6 @@
+/*
+ * 초록 모자 쓴 애
+ */
 import styled from 'styled-components';
 import { subTextColor } from '../../styles/theme';
 

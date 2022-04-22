@@ -1,23 +1,26 @@
+/*
+ * 문서 구성요소
+ */
 import React, { Fragment } from 'react';
 import SVG from 'react-inlinesvg';
 import Highlight from 'react-highlight';
-
 import { useNavigate } from 'react-router-dom';
-import { BsArrowLeft } from 'react-icons/bs';
-
+// components
 import StyledLink from './Link';
-import tierGenerator from '../../lib/solvedacTier';
 import { RawButton, UnderlinedButton } from './Button';
-import { SolvedBadge } from './Card';
-
+import SolvedBadge from './Misc';
 import {
-  Article,
+  ArticleBlock,
+  ProblemArticleBlock,
   Cards,
   ArticleWrapper,
-  ProblemArticleBlock,
   ProblemArticleParagraphTitle,
-  Solution,
-} from '../styles/common/Article';
+  ProblemArticleParagraphDescription,
+} from '../../styles/common/Article';
+// icons
+import { BsArrowLeft } from 'react-icons/bs';
+// modules
+import tierGenerator from '../../lib/solvedacTier';
 
 export const ProblemArticle = ({
   title,
@@ -57,8 +60,8 @@ export const ProblemArticle = ({
           </div>
         </div>
         <ProblemArticleParagraphTitle>문제</ProblemArticleParagraphTitle>
-        <div style={{ lineHeight: 'normal', fontFamily: 'MinSans-Thin' }}>
-          <div style={{ paddingBottom: '1rem', fontFamily: 'MinSans-Medium' }}>
+        <ProblemArticleParagraphDescription>
+          <div className="disclaimer">
             주의 : 이 내용은 BOJ 웹사이트의 텍스트만을 가져온 것이므로 정확하지
             않을 수 있습니다.
             <br />
@@ -69,27 +72,19 @@ export const ProblemArticle = ({
             을 참고해 주시기를 부탁드리며, 내용이 달라진 경우{' '}
             <StyledLink href="#">수동 갱신</StyledLink>을 해 주세요.
           </div>
-          {description}
-        </div>
+          <div className="content">{description}</div>
+        </ProblemArticleParagraphDescription>
         <ProblemArticleParagraphTitle>내 풀이</ProblemArticleParagraphTitle>
         <div>
           {!!mySolutionList
             ? mySolutionList.map((item, index) => {
                 return (
-                  <div
-                    key={index}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr',
-                      gap: '1rem',
-                      paddingBottom: '1rem',
-                    }}
-                  >
+                  <ProblemArticleParagraphDescription key={index}>
                     <div>{'풀이 ' + (index + 1)}</div>
-                    <Solution>
+                    <div className="solution-code">
                       <Highlight>{item}</Highlight>
-                    </Solution>
-                  </div>
+                    </div>
+                  </ProblemArticleParagraphDescription>
                 );
               })
             : '풀이가 없습니다.'}
@@ -101,20 +96,12 @@ export const ProblemArticle = ({
           {!!groupSolutionList
             ? groupSolutionList.map((item, index) => {
                 return (
-                  <div
-                    key={index}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr',
-                      gap: '1rem',
-                      paddingBottom: '1rem',
-                    }}
-                  >
+                  <ProblemArticleParagraphDescription key={index}>
                     <div>{'풀이 ' + (index + 1)}</div>
-                    <Solution>
+                    <div className="solution-code">
                       <Highlight>{item}</Highlight>
-                    </Solution>
-                  </div>
+                    </div>
+                  </ProblemArticleParagraphDescription>
                 );
               })
             : '풀이가 없습니다.'}
@@ -128,7 +115,7 @@ export const DashboardArticle = ({ title, contents, more }) => {
   const navigate = useNavigate();
   return (
     <ArticleWrapper>
-      <Article>
+      <ArticleBlock>
         <div
           style={{
             padding: '0.75rem',
@@ -146,16 +133,16 @@ export const DashboardArticle = ({ title, contents, more }) => {
         </div>
         <div
           style={{
-            padding: '1rem',
             display: 'flex',
             justifyContent: 'flex-end',
+            padding: '1rem',
           }}
         >
           <UnderlinedButton onClick={() => navigate(more)}>
             더 보기
           </UnderlinedButton>
         </div>
-      </Article>
+      </ArticleBlock>
     </ArticleWrapper>
   );
 };

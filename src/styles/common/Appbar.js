@@ -4,7 +4,7 @@ import {
   mainTextColor,
   objectLevelTwoColor,
   subTextColor,
-} from '../../../styles/theme';
+} from '../theme';
 
 export const DRAWER_WIDTH = 300;
 
@@ -101,7 +101,7 @@ export const MenuDesktop = styled.div`
 `;
 
 export const MenuItemDesktop = styled.button`
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border: 0px;
   font-size: medium;
   font-family: MinSans-Medium;
@@ -127,7 +127,7 @@ export const MenuItemMobile = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border: 0px;
   font-size: large;
 

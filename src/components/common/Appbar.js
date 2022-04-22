@@ -1,17 +1,13 @@
 /*
- * Appbar
+ * 상단 앱 바
  */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { Button, LogoButton, Burger, IconButton } from './Button';
-import useScroll from '../../lib/hooks/useScroll';
-
-import { MdOutlineDarkMode } from 'react-icons/md';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDarkmode } from '../../modules/option';
-
+// hooks
+import useScroll from '../../lib/hooks/useScroll';
+// components
+import { Button, LogoButton, Burger, IconButton } from './Button';
 import {
   DRAWER_WIDTH,
   HeaderBlock,
@@ -22,13 +18,17 @@ import {
   MenuItemDesktop,
   MenuMobile,
   MenuItemMobile,
-} from '../styles/common/Appbar';
-
-import AuthPage from '../../pages/AuthPage';
+} from '../../styles/common/Appbar';
+import AuthTemplate from '../auth/AuthTemplate';
+import AuthForm from '../auth/AuthForm';
 import Modal from './Modal';
+// icons
+import { MdOutlineDarkMode } from 'react-icons/md';
+// redux actions
+import { toggleDarkmode } from '../../modules/option';
 
 const mainRouteData = [
-  ['문제', '#'],
+  ['문제', '#', ''],
   ['그룹', '#'],
   ['MY', '#'],
 ];
@@ -40,16 +40,16 @@ const Appbar = ({ title, fullPage }) => {
   const scroll = useScroll();
 
   // state
-  const [modal, setModal] = useState(false);
-  const [xPosition, setXPosition] = useState(0);
+  const [modalEnabled, setModalEnabled] = useState(false);
+  const [drawerXPosition, setDrawerXPosition] = useState(0);
   const [open, setOpen] = useState(false);
   // state (Redux)
   const option = useSelector((state) => state.option);
 
   // state actions
   const toggleMenuOpen = () => {
-    if (open) setXPosition(0);
-    else setXPosition(-DRAWER_WIDTH);
+    if (open) setDrawerXPosition(0);
+    else setDrawerXPosition(-DRAWER_WIDTH);
   };
   const toggleOpen = () => {
     setOpen(!open);
@@ -74,46 +74,47 @@ const Appbar = ({ title, fullPage }) => {
                   {item[0]}
                 </MenuItemDesktop>
               ))}
-              <Button accent className="item" onClick={() => setModal(!modal)}>
+              <Button
+                accent
+                className="item"
+                onClick={() => setModalEnabled(!modalEnabled)}
+              >
                 로그인
               </Button>
               <IconButton onClick={() => dispatch(toggleDarkmode())}>
-                <MdOutlineDarkMode size={18} style={{ paddingTop: '0.2rem' }} />
+                <MdOutlineDarkMode size={18} />
               </IconButton>
             </MenuDesktop>
             <Burger className="menu-mobile" open={open} setOpen={toggleOpen} />
             <Drawer
               style={{
-                transform: `translatex(${xPosition}px)`,
+                transform: `translatex(${drawerXPosition}px)`,
               }}
             >
               <MenuMobile>
                 <div
                   style={{
-                    height: '4.5rem',
                     display: 'flex',
-                    width: '80%',
                     alignItems: 'center',
+                    width: '80%',
+                    height: '4.5rem',
                   }}
                 >
                   <IconButton onClick={() => dispatch(toggleDarkmode())}>
-                    <MdOutlineDarkMode
-                      size={18}
-                      style={{ paddingTop: '0.2rem' }}
-                    />
+                    <MdOutlineDarkMode size={18} />
                   </IconButton>
                 </div>
                 <div
                   style={{
                     display: 'flex',
-                    width: '80%',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    width: '80%',
                     paddingBottom: '1rem',
                   }}
                 >
                   <div>로그인하세요</div>
-                  <Button accent onClick={() => setModal(!modal)}>
+                  <Button accent onClick={() => setModalEnabled(!modalEnabled)}>
                     로그인
                   </Button>
                 </div>
@@ -132,9 +133,11 @@ const Appbar = ({ title, fullPage }) => {
           </div>
         </AppbarBlock>
       </HeaderBlock>
-      {modal && (
-        <Modal onClose={() => setModal(false)}>
-          <AuthPage type={option.currentAuth} />
+      {modalEnabled && (
+        <Modal onClose={() => setModalEnabled(false)}>
+          <AuthTemplate>
+            <AuthForm type={option.currentAuth} />
+          </AuthTemplate>
         </Modal>
       )}
       {!fullPage && <Spacer />}

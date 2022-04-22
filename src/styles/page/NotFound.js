@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { backgroundColor, mainTextColor } from '../../../styles/theme';
+import { backgroundColor, mainTextColor } from '../theme';
 
 export const PageNotFound = styled.div`
   display: flex;

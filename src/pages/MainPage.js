@@ -2,7 +2,7 @@ import React from 'react';
 import Appbar from '../components/common/Appbar';
 import { DashboardArticle } from '../components/common/Article';
 
-import { ContentArea, SafeArea } from '../components/common/Area';
+import { ContentArea, SafeArea } from '../styles/common/Area';
 import { ProblemCard } from '../components/common/Card';
 
 const MainPage = () => {

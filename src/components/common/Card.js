@@ -1,56 +1,50 @@
+/*
+ * 카드
+ */
 import React from 'react';
 import styled from 'styled-components';
+// components
+import SolvedBadge from './Misc';
+// styles
 import palette from '../../lib/palette';
-import {
-  objectLevelOneColor,
-  objectLevelTwoColor,
-  buttonColor,
-} from '../../styles/theme';
-
+import { objectLevelOneColor, objectLevelTwoColor } from '../../styles/theme';
+// icons
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const Card = styled.div`
-  border-radius: 12px;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-
   display: flex;
   justify-content: center;
   align-items: center;
 
   background-color: ${objectLevelOneColor};
+  border-radius: 12px;
+
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
 
   .text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-
-    text-align: left;
-    word-wrap: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
 
     height: 2.25rem;
+
+    overflow: hidden;
+
+    text-align: left;
+    white-space: normal;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `;
 
 const CardBadge = styled.div`
+  padding: 0.5rem 0.5rem;
   margin: 0.25rem;
+
   background: ${objectLevelTwoColor};
   border-radius: 1rem;
-  padding: 0.5rem 0.5rem;
-  font-size: 0.75rem;
-`;
 
-export const SolvedBadge = styled.div`
-  background-color: ${buttonColor};
-  padding: 0.325rem 0.5rem;
-  border-radius: 0.5rem;
-  color: white;
-  font-size: small;
-  display: flex;
-  align-items: center;
+  font-size: 0.75rem;
 `;
 
 export const ProblemCardBlock = styled(Card)`
@@ -71,14 +65,14 @@ export const ProblemCardBlock = styled(Card)`
   }
 
   .category {
-    width: 100%;
     display: flex;
-
     flex-wrap: wrap;
     justify-content: flex-start;
-    overflow: hidden;
 
+    width: 100%;
     height: 2.25rem;
+
+    overflow: hidden;
   }
 
   &:hover {
@@ -87,11 +81,11 @@ export const ProblemCardBlock = styled(Card)`
 `;
 
 export const AuthCardBlock = styled(Card)`
-  padding: 1.5rem 2rem;
-  transition: all 0.5s ease-in-out;
-
   width: 12.5rem;
 
+  padding: 1.5rem 2rem;
+
+  transition: all 0.5s ease-in-out;
   @media (min-width: 320px) {
     width: 15rem;
   }

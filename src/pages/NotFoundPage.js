@@ -15,7 +15,7 @@ import {
   PageDescriptionNotFound,
   MenuNotFound,
   PageStyleNotFound,
-} from '../components/styles/page/NotFound';
+} from '../styles/page/NotFound';
 
 const NotFoundPage = () => {
   const windowInfo = useWindow(); // window info hook

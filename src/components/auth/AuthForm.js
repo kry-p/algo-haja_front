@@ -1,16 +1,18 @@
+/*
+ * 회원가입 및 로그인 폼
+ */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// components
 import { Button, LogoButton, UnderlinedButton } from '../common/Button';
 import { LoginRegisterFormInput } from '../common/Input';
-import { AuthFormBlock, SuggestBlock } from '../styles/common/Auth';
-
+// styles
+import { AuthFormBlock, SuggestBlock } from '../../styles/common/Auth';
+// redux actions
 import { toggleAuthmode } from '../../modules/option';
 
 const AuthForm = ({ type }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   return (
     <AuthFormBlock>
       <div
