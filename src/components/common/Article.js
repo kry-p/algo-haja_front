@@ -6,9 +6,9 @@ import SVG from 'react-inlinesvg';
 import Highlight from 'react-highlight';
 import { useNavigate } from 'react-router-dom';
 // components
-import StyledLink from './Link';
+import { Link } from './Link';
 import { RawButton, UnderlinedButton } from './Button';
-import SolvedBadge from './Misc';
+import { SolvedBadge } from './Misc';
 import {
   ArticleBlock,
   ProblemArticleBlock,
@@ -16,11 +16,15 @@ import {
   ArticleWrapper,
   ProblemArticleParagraphTitle,
   ProblemArticleParagraphDescription,
+  DashboardArticleTitle,
 } from '../../styles/common/Article';
 // icons
 import { BsArrowLeft } from 'react-icons/bs';
 // modules
 import tierGenerator from '../../lib/solvedacTier';
+
+// test
+import styled from 'styled-components';
 
 export const ProblemArticle = ({
   title,
@@ -43,7 +47,7 @@ export const ProblemArticle = ({
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ fontSize: '2rem' }}>{title}</div>
-          <SolvedBadge accent={solved}>
+          <SolvedBadge solved={solved} trying={trying}>
             {solved ? 'Solved' : trying ? 'Trying' : 'Not tried'}
           </SolvedBadge>
         </div>
@@ -66,11 +70,9 @@ export const ProblemArticle = ({
             않을 수 있습니다.
             <br />
             되도록{' '}
-            <StyledLink href={`https://acmicpc.net/problem/${problemNo}`}>
-              원문
-            </StyledLink>
+            <Link href={`https://acmicpc.net/problem/${problemNo}`}>원문</Link>
             을 참고해 주시기를 부탁드리며, 내용이 달라진 경우{' '}
-            <StyledLink href="#">수동 갱신</StyledLink>을 해 주세요.
+            <Link href="#">수동 갱신</Link>을 해 주세요.
           </div>
           <div className="content">{description}</div>
         </ProblemArticleParagraphDescription>
@@ -116,19 +118,13 @@ export const DashboardArticle = ({ title, contents, more }) => {
   return (
     <ArticleWrapper>
       <ArticleBlock>
-        <div
-          style={{
-            padding: '0.75rem',
-            fontSize: '1.3rem',
-          }}
-        >
-          {title}
-        </div>
+        <DashboardArticleTitle>{title}</DashboardArticleTitle>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Cards>
-            {contents.map((item, index) => (
-              <Fragment key={index}>{item}</Fragment>
-            ))}
+            {!!contents &&
+              contents.map((item, index) => (
+                <Fragment key={index}>{item}</Fragment>
+              ))}
           </Cards>
         </div>
         <div

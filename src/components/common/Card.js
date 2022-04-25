@@ -4,14 +4,14 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import SolvedBadge from './Misc';
+import { SolvedBadge } from './Misc';
 // styles
 import palette from '../../lib/palette';
 import { objectLevelOneColor, objectLevelTwoColor } from '../../styles/theme';
 // icons
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-const Card = styled.div`
+export const Card = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +37,7 @@ const Card = styled.div`
   }
 `;
 
-const CardBadge = styled.div`
+export const CardBadge = styled.div`
   padding: 0.5rem 0.5rem;
   margin: 0.25rem;
 
@@ -48,21 +48,9 @@ const CardBadge = styled.div`
 `;
 
 export const ProblemCardBlock = styled(Card)`
-  width: 15rem;
+  width: 100%;
   height: 10.5rem;
   transition: all 0.25s ease-in-out;
-
-  @media (min-width: 320px) {
-    width: 18rem;
-  }
-
-  @media (min-width: 512px) {
-    width: 14.5rem;
-  }
-
-  @media (min-width: 800px) {
-    width: 20rem;
-  }
 
   .category {
     display: flex;
@@ -127,14 +115,7 @@ export const ProblemCard = ({
           }}
         >
           <div>{title}</div>
-          <SolvedBadge
-            accent
-            style={{
-              visibility: solved ? 'visible' : 'hidden',
-            }}
-          >
-            Solved
-          </SolvedBadge>
+          <SolvedBadge solved={solved}>Solved</SolvedBadge>
         </div>
         <div
           style={{

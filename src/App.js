@@ -2,6 +2,7 @@ import React from 'react';
 import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
 import ProblemPage from './pages/ProblemPage';
+import TestPage from './pages/TestPage';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/problem" element={<ProblemPage />} />
+            <Route path="/test" element={<TestPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>

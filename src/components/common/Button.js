@@ -13,6 +13,7 @@ import {
 
 export const RawButton = styled.button`
   display: flex;
+  justify-content: center;
   align-items: center;
 
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -31,6 +32,7 @@ export const Button = styled(RawButton)`
 `;
 
 export const UnderlinedButton = styled(RawButton)`
+  padding: 0.5rem;
   text-decoration: underline;
 `;
 

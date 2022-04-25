@@ -2,19 +2,27 @@
  * 기타 컴포넌트
  */
 import styled from 'styled-components';
-import { buttonColor } from '../../styles/theme';
+import { badgeColor } from '../../styles/theme';
 
-const SolvedBadge = styled.div`
+export const SolvedBadge = styled.div`
+  ${badgeColor}
   display: flex;
   align-items: center;
 
   padding: 0.325rem 0.5rem;
 
-  background-color: ${buttonColor};
   border-radius: 0.5rem;
 
   color: white;
   font-size: small;
 `;
 
-export default SolvedBadge;
+export const RoundedCornerBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 8px;
+  overflow: hidden;
+`;

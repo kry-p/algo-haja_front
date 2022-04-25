@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import rootReducer from './modules';
@@ -14,13 +14,16 @@ const store =
   process.env.NODE_ENV === 'development'
     ? createStore(rootReducer, composeWithDevTools())
     : createStore(rootReducer);
+
 const persistor = persistStore(store);
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <App />
     </PersistGate>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );

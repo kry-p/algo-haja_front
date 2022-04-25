@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Input from '../../styles/common/Input';
 
 export const LoginRegisterFormInput = styled(Input)`
+  font-size: 0.9rem;
   width: 12rem;
 
   margin-top: 0.5rem;

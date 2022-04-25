@@ -6,19 +6,27 @@ export const ArticleWrapper = styled.div`
   justify-content: center;
 `;
 
+export const TableArticleWrapper = styled(ArticleWrapper)`
+  flex-direction: column;
+  margin: 0 2.5vw 0;
+
+  @media (min-width: 512px) {
+    margin: 0 5vw 0;
+  }
+
+  @media (min-width: 768px) {
+    margin: 0 7.5vw 0;
+  }
+`;
+
 export const ArticleBlock = styled.div`
   display: flex;
   flex-direction: column;
-  width: 280px;
+  width: 95vw;
 
   @media (min-width: 320px) {
-    width: 300px;
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-
-  @media (min-width: 512px) {
-    width: 95%;
   }
 `;
 
@@ -31,10 +39,19 @@ export const Cards = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
   }
+`;
+
+export const ArticleTitle = styled.div`
+  padding: 0.75rem;
+  font-size: 1.5rem;
+`;
+
+export const DashboardArticleTitle = styled(ArticleTitle)`
+  font-size: 1.3rem;
 `;
 
 export const ProblemArticleBlock = styled(ArticleBlock)`

@@ -5,7 +5,7 @@ import theme from 'styled-theming';
 import palette from '../lib/palette';
 
 export const mainTextColor = theme('theme', {
-  light: palette.gray[9],
+  light: palette.gray[10],
   dark: palette.gray[4],
 });
 
@@ -16,6 +16,21 @@ export const subTextColor = theme('theme', {
 
 export const backgroundColor = theme('theme', {
   light: palette.gray[0],
+  dark: palette.gray[10],
+});
+
+export const tableHeaderBackgroundColor = theme('theme', {
+  light: palette.cyan[6],
+  dark: palette.gray[8],
+});
+
+export const tableHeaderTextColor = theme('theme', {
+  light: palette.gray[1],
+  dark: palette.gray[4],
+});
+
+export const tableOddItemBackgroundColor = theme('theme', {
+  light: palette.gray[1],
   dark: palette.gray[9],
 });
 
@@ -203,10 +218,43 @@ export const codeHighlightColor = theme('theme', {
   `,
 });
 
+export const badgeColor = theme('theme', {
+  light: css`
+    background-color: ${palette.gray[6]};
+
+    ${(props) =>
+      props.trying &&
+      css`
+        background-color: ${palette.red[4]};
+      `}
+
+    ${(props) =>
+      props.solved &&
+      css`
+        background-color: ${palette.cyan[5]};
+      `}
+  `,
+  dark: css`
+    background-color: ${palette.gray[8]};
+
+    ${(props) =>
+      props.trying &&
+      css`
+        background-color: ${palette.red[6]};
+      `}
+
+    ${(props) =>
+      props.solved &&
+      css`
+        background-color: ${palette.cyan[7]};
+      `}
+  `,
+});
+
 export const buttonColor = theme('theme', {
   light: css`
     color: ${palette.gray[1]};
-    background-color: ${palette.gray[9]};
+    background-color: ${palette.gray[10]};
 
     &:hover {
       background-color: ${palette.gray[6]};
@@ -273,13 +321,13 @@ export const GlobalStyle = createGlobalStyle`
     font-family: MinSans-Medium, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
     background-color: ${(props) =>
-      props.dark ? palette.gray[9] : palette.gray[0]};
-    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
+      props.dark ? palette.gray[10] : palette.gray[0]};
+    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[10])};
   }
 
   button {
     font-family: MinSans-Medium;
-    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[9])};
+    color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[10])};
     transition: background-color 0.3s ease-in-out;
   }
 

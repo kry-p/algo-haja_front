@@ -2,10 +2,17 @@
  * 초록 모자 쓴 애
  */
 import styled from 'styled-components';
-import { subTextColor } from '../../styles/theme';
+import { mainTextColor, subTextColor } from '../../styles/theme';
 
-const Link = styled.a`
+export const Link = styled.a`
   color: ${subTextColor};
 `;
 
-export default Link;
+export const TableItemLink = styled(Link)`
+  color: ${mainTextColor};
+  user-select: none;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
