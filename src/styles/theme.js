@@ -34,24 +34,29 @@ export const tableOddItemBackgroundColor = theme('theme', {
   dark: palette.gray[9],
 });
 
+export const footerColor = theme('theme', {
+  light: palette.gray[2],
+  dark: palette.gray[9],
+});
+
 export const objectLevelOneColor = theme('theme', {
   light: palette.gray[0],
-  dark: palette.gray[8],
+  dark: palette.gray[9],
 });
 
 export const objectLevelTwoColor = theme('theme', {
   light: palette.gray[1],
-  dark: palette.gray[7],
+  dark: palette.gray[8],
 });
 
 export const objectLevelThreeColor = theme('theme', {
   light: palette.gray[2],
-  dark: palette.gray[6],
+  dark: palette.gray[7],
 });
 
 export const objectLevelFourColor = theme('theme', {
   light: palette.gray[3],
-  dark: palette.gray[5],
+  dark: palette.gray[6],
 });
 
 export const codeHighlightColor = theme('theme', {

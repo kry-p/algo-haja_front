@@ -11,7 +11,7 @@ import {
 
 import { SolvedBadge, RoundedCornerBlock } from './Misc';
 import { TableItemLink } from './Link';
-import { IconButton } from './Button';
+import { IconButton, RawButton } from './Button';
 import { CardBadge } from './Card';
 import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
 
@@ -79,9 +79,12 @@ export const ProblemTable = ({ title, data }) => {
                     </TableItemLink>
                   </div>
                   <div>
-                    <IconButton onClick={() => setTaglistOpen(!taglistOpen)}>
-                      <MdArrowDropDownCircle />
-                    </IconButton>
+                    <RawButton
+                      style={{ padding: '0' }}
+                      onClick={() => setTaglistOpen(!taglistOpen)}
+                    >
+                      <MdArrowDropDownCircle size={20} />
+                    </RawButton>
                   </div>
                   <div>
                     <SolvedBadge
