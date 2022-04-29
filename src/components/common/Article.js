@@ -2,13 +2,12 @@
  * 문서 구성요소
  */
 import React, { Fragment } from 'react';
-import SVG from 'react-inlinesvg';
 import Highlight from 'react-highlight';
 import { useNavigate } from 'react-router-dom';
 // components
 import { Link } from './Link';
 import { RawButton, UnderlinedButton } from './Button';
-import { SolvedBadge } from './Misc';
+import { SolvedacRatingBadge, SolvedBadge } from './Misc';
 import {
   ArticleBlock,
   ProblemArticleBlock,
@@ -21,7 +20,7 @@ import {
 // icons
 import { BsArrowLeft } from 'react-icons/bs';
 // modules
-import tierGenerator from '../../lib/solvedacTier';
+import { getSolvedacTierText } from '../../lib/solvedacTier';
 
 // test
 import styled from 'styled-components';
@@ -58,9 +57,9 @@ export const ProblemArticle = ({
             alignItems: 'center',
           }}
         >
-          <SVG src={`/resources/tier/${solvedacTier}.svg`} width="24" />
+          <SolvedacRatingBadge rating={solvedacTier} />
           <div style={{ paddingLeft: '0.8rem', fontSize: '1.2rem' }}>
-            {tierGenerator(solvedacTier, 'ko')}
+            {getSolvedacTierText(solvedacTier, 'ko')}
           </div>
         </div>
         <ProblemArticleParagraphTitle>문제</ProblemArticleParagraphTitle>

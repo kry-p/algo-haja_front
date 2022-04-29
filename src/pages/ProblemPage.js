@@ -3,6 +3,7 @@ import Appbar from '../components/common/Appbar';
 
 import { ContentArea, SafeArea } from '../styles/common/Area';
 import { ProblemArticle } from '../components/common/Article';
+import Footer from '../components/common/Footer';
 
 const solutionList = [
   String.raw`import java.util.Arrays;
@@ -107,7 +108,7 @@ const solutionList = [
   `,
 ];
 
-const MainPage = () => {
+const ProblemPage = () => {
   return (
     <>
       <Appbar title="알고하자" />
@@ -123,7 +124,8 @@ const MainPage = () => {
           />
         </SafeArea>
       </ContentArea>
+      <Footer />
     </>
   );
 };
-export default MainPage;
+export default ProblemPage;

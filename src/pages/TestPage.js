@@ -20,7 +20,7 @@ import Footer from '../components/common/Footer';
 const tableItems = [];
 for (let i = 0; i < 100; i++)
   tableItems.push({
-    tier: i % 31,
+    tier: i % 32,
     problemNumber: 1000 * (i + 1),
     problemName: `문제 제목 ${i + 1}`,
     tag: ['수학', '다이나믹 프로그래밍', '정수론'],

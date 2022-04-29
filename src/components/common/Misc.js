@@ -1,8 +1,15 @@
 /*
  * 기타 컴포넌트
  */
+import React from 'react';
 import styled from 'styled-components';
 import { badgeColor } from '../../styles/theme';
+
+import { AiTwotoneStar } from 'react-icons/ai';
+import {
+  getSolvedacTierColor,
+  getSolvedacTierLevel,
+} from '../../lib/solvedacTier';
 
 export const SolvedBadge = styled.div`
   ${badgeColor}
@@ -16,6 +23,30 @@ export const SolvedBadge = styled.div`
   color: white;
   font-size: small;
 `;
+
+export const SolvedacRatingBadge = ({ rating }) => {
+  const tierLevel = getSolvedacTierLevel(rating);
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'white',
+        padding: '0.5rem',
+      }}
+    >
+      <div style={{ zIndex: '1' }}>{getSolvedacTierLevel(rating)}</div>
+      <AiTwotoneStar
+        size={36}
+        style={{
+          position: 'absolute',
+          color: getSolvedacTierColor(rating),
+        }}
+      />
+    </div>
+  );
+};
 
 export const RoundedCornerBlock = styled.div`
   display: flex;

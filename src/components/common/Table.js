@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import SVG from 'react-inlinesvg';
 
 import { MdArrowDropDownCircle } from 'react-icons/md';
 
@@ -9,10 +8,9 @@ import {
   CombinedTableItem,
 } from '../../styles/common/Table';
 
-import { SolvedBadge, RoundedCornerBlock } from './Misc';
+import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
 import { TableItemLink } from './Link';
 import { IconButton, RawButton } from './Button';
-import { CardBadge } from './Card';
 import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
 
 export const ProblemTable = ({ title, data }) => {
@@ -53,10 +51,7 @@ export const ProblemTable = ({ title, data }) => {
                       borderRadius: '0',
                     }}
                   >
-                    <SVG
-                      src={`resources/tier/${attribute.tier}.svg`}
-                      width={16}
-                    />
+                    <SolvedacRatingBadge rating={attribute.tier} />
                     <div
                       style={{
                         display: 'flex',

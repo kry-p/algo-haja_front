@@ -8,7 +8,7 @@ import { Logo, StyledBurger } from '../../styles/common/Button';
 import {
   buttonColor,
   mainTextColor,
-  objectLevelThreeColor,
+  objectLevelTwoColor,
 } from '../../styles/theme';
 
 export const RawButton = styled.button`
@@ -47,7 +47,7 @@ export const IconButton = styled.button`
 
   background-color: transparent;
   &:hover {
-    background-color: ${objectLevelThreeColor};
+    background-color: ${objectLevelTwoColor};
   }
 `;
 

@@ -14,6 +14,15 @@ export const subTextColor = theme('theme', {
   dark: palette.gray[6],
 });
 
+export const headlineBackgroundFilter = theme('theme', {
+  light: css`
+    filter: contrast(70%) brightness(100%);
+  `,
+  dark: css`
+    filter: brightness(50%);
+  `,
+});
+
 export const backgroundColor = theme('theme', {
   light: palette.gray[0],
   dark: palette.gray[10],

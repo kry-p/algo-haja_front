@@ -36,7 +36,7 @@ const Footer = () => {
             alignItems: 'flex-start',
           }}
         >
-          <Logo>알고하자</Logo>
+          <Logo style={{ padding: 0 }}>알고하자</Logo>
           <span style={{ fontFamily: 'MinSans-Thin' }}>
             ⓒ 2022. kry-p <Link href="https://github.com/kry-p">GitHub</Link>
           </span>

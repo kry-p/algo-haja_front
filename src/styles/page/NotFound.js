@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { backgroundColor, mainTextColor } from '../theme';
+import { mainTextColor } from '../theme';
 
 export const PageNotFound = styled.div`
   display: flex;
@@ -38,8 +38,6 @@ export const PageStyleNotFound = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background: ${backgroundColor};
 
   width: 100%;
   height: 100%;
