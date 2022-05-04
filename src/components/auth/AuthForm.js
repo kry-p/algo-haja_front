@@ -58,6 +58,14 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.username}
           />
+          {type === 'register' && (
+            <LoginRegisterFormInput
+              placeholder="e-mail"
+              name="email"
+              onChange={onChange}
+              value={form.email}
+            />
+          )}
           <LoginRegisterFormInput
             placeholder="비밀번호"
             name="password"

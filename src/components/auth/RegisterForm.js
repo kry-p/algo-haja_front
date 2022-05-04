@@ -37,11 +37,11 @@ const RegisterForm = () => {
       })
     );
   };
-  // Submit 버튼 클릭 시 (로그인)
+  // Submit 버튼 클릭 시 (회원가입)
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password, passwordConfirm } = form;
-    if ([username, password, passwordConfirm].includes('')) {
+    const { username, email, password, passwordConfirm } = form;
+    if ([username, email, password, passwordConfirm].includes('')) {
       setError('모든 입력란을 작성해 주세요.');
       return;
     }
@@ -49,7 +49,7 @@ const RegisterForm = () => {
       setError('비밀번호 확인이 올바르지 않습니다.');
       return;
     }
-    dispatch(register({ username, password }));
+    dispatch(register({ username, email, password }));
   };
 
   // 폼 초기화

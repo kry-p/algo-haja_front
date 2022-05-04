@@ -4,12 +4,12 @@
 import client from './client';
 
 // 로그인
-export const login = ({ username, password }) =>
-  client.post('/api/auth/login', { username, password });
+export const login = ({ username, email, password }) =>
+  client.post('/api/auth/login', { username, email, password });
 
 // 회원가입
-export const register = ({ username, password }) =>
-  client.post('/api/auth/register', { username, password });
+export const register = ({ username, email, password }) =>
+  client.post('/api/auth/register', { username, email, password });
 
 // 토큰 체크
 export const check = () => client.get('/api/auth/check');
