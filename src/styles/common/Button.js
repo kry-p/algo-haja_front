@@ -5,11 +5,11 @@ export const Logo = styled.button`
   padding: 0.5rem 0.5rem;
 
   border: transparent;
+  color: ${mainTextColor};
   background-color: transparent;
 
   font-family: 'Yeongdo-Regular';
   font-size: 1.5rem;
-  color: ${mainTextColor};
 `;
 
 export const StyledBurger = styled.button`
@@ -20,10 +20,8 @@ export const StyledBurger = styled.button`
   position: fixed;
   top: 1.5rem;
   right: 2.125rem;
-
   width: 1.5rem;
   height: 1.5rem;
-
   padding: 0;
 
   border: none;

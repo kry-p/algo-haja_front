@@ -1,9 +1,11 @@
 /*
  * 모달
  */
+// React core
 import React, { useRef, useEffect } from 'react';
+// Style
 import styled from 'styled-components';
-// components
+// Component
 import { ModalBlock } from '../../styles/common/Modal';
 
 const Dummy = styled.div``;
@@ -11,6 +13,7 @@ const Modal = ({ children, onClose }) => {
   const modalCard = useRef();
   const modal = useRef();
 
+  // 모달 외부 클릭 감지
   useEffect(() => {
     function handleClickOutside(e) {
       if (modalCard.current && !modalCard.current.contains(e.target)) {

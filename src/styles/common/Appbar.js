@@ -19,15 +19,15 @@ export const Spacer = styled.div`
 `;
 
 export const AppbarBlock = styled.div`
-  width: 100%;
-  height: 4.5rem;
-  position: absolute;
-  z-index: 1;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  width: 100%;
+  height: 4.5rem;
+  position: absolute;
+  z-index: 1;
 
   ${(props) =>
     props.shadowEnabled &&
@@ -122,12 +122,14 @@ export const MenuMobile = styled.div`
 `;
 
 export const MenuItemMobile = styled.div`
-  width: 100%;
-  height: 4rem;
-  padding-left: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  width: 100%;
+  height: 4rem;
+  padding-left: 3rem;
+
   background: transparent;
   border: 0px;
   font-size: large;

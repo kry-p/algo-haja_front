@@ -2,13 +2,17 @@
  * 404 페이지
  * 라우팅 목록에 없는 모든 요청은 여기로 리디렉션
  */
+// React core
 import React from 'react';
+// React Router
 import { useNavigate } from 'react-router-dom';
-// hooks
+// Hook
 import useWindow from '../lib/hooks/useWindow';
-// components
-import Appbar from '../components/common/Appbar';
+// Container
+import AppbarContainer from '../containers/AppbarContainer';
+// Components
 import { Button } from '../components/common/Button';
+// Styles
 import {
   PageNotFound,
   PageTypoNotFound,
@@ -22,7 +26,7 @@ const NotFoundPage = () => {
   const navigate = useNavigate(); // router hook
   return (
     <>
-      <Appbar fullPage title="알고하자" />
+      <AppbarContainer fullPage title="알고하자" />
       <PageNotFound
         style={{
           height: `${windowInfo.height}px`,

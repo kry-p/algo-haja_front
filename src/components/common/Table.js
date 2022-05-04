@@ -1,18 +1,24 @@
+/*
+ * 테이블
+ */
+// React core
 import React, { Fragment, useState } from 'react';
-
-import { MdArrowDropDownCircle } from 'react-icons/md';
-
+// Components
+import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
+import { TableItemLink } from './Link';
+import { RawButton } from './Button';
+import { CardBadge } from './Card';
+// Styles
 import {
   ProblemTableItem,
   ProblemTableHeader,
   CombinedTableItem,
 } from '../../styles/common/Table';
-
-import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
-import { TableItemLink } from './Link';
-import { IconButton, RawButton } from './Button';
 import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
+// Icon
+import { MdArrowDropDownCircle } from 'react-icons/md';
 
+// 문제 테이블
 export const ProblemTable = ({ title, data }) => {
   return (
     <TableArticleWrapper>
@@ -44,10 +50,10 @@ export const ProblemTable = ({ title, data }) => {
                 <ProblemTableItem odd={index % 2 != 0}>
                   <div
                     style={{
-                      width: '80%',
+                      width: '65%',
                       display: 'flex',
                       alignContent: 'center',
-                      justifyContent: 'space-evenly',
+                      justifyContent: 'space-between',
                       borderRadius: '0',
                     }}
                   >

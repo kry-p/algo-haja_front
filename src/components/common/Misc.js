@@ -1,16 +1,20 @@
 /*
  * 기타 컴포넌트
  */
+// React core
 import React from 'react';
+// Styles
 import styled from 'styled-components';
 import { badgeColor } from '../../styles/theme';
-
-import { AiTwotoneStar } from 'react-icons/ai';
+// Icon
+import { AiFillStar } from 'react-icons/ai';
+// Library
 import {
   getSolvedacTierColor,
   getSolvedacTierLevel,
 } from '../../lib/solvedacTier';
 
+// 풀이 여부 뱃지
 export const SolvedBadge = styled.div`
   ${badgeColor}
   display: flex;
@@ -24,6 +28,7 @@ export const SolvedBadge = styled.div`
   font-size: small;
 `;
 
+// solved.ac 레이팅 뱃지
 export const SolvedacRatingBadge = ({ rating }) => {
   const tierLevel = getSolvedacTierLevel(rating);
   return (
@@ -34,10 +39,11 @@ export const SolvedacRatingBadge = ({ rating }) => {
         alignItems: 'center',
         color: 'white',
         padding: '0.5rem',
+        fontSize: '0.8rem',
       }}
     >
-      <div style={{ zIndex: '1' }}>{getSolvedacTierLevel(rating)}</div>
-      <AiTwotoneStar
+      <div style={{ zIndex: '1' }}>{tierLevel}</div>
+      <AiFillStar
         size={36}
         style={{
           position: 'absolute',
@@ -48,6 +54,7 @@ export const SolvedacRatingBadge = ({ rating }) => {
   );
 };
 
+// 둥근 모서리 처리
 export const RoundedCornerBlock = styled.div`
   display: flex;
   flex-direction: column;

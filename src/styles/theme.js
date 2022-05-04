@@ -1,3 +1,6 @@
+/*
+ * 전역 테마 컬러
+ */
 import { createGlobalStyle } from 'styled-components';
 import { css } from 'styled-components';
 import reset from 'styled-reset';
@@ -12,6 +15,11 @@ export const mainTextColor = theme('theme', {
 export const subTextColor = theme('theme', {
   light: palette.gray[6],
   dark: palette.gray[6],
+});
+
+export const errorMessageColor = theme('theme', {
+  light: palette.red[6],
+  dark: palette.red[4],
 });
 
 export const headlineBackgroundFilter = theme('theme', {
@@ -66,6 +74,15 @@ export const objectLevelThreeColor = theme('theme', {
 export const objectLevelFourColor = theme('theme', {
   light: palette.gray[3],
   dark: palette.gray[6],
+});
+
+export const authCardBackgroundColor = theme('theme', {
+  light: css`
+    background: rgba(248, 249, 250, 0.7);
+  `,
+  dark: css`
+    background: rgba(43, 48, 53, 0.9);
+  `,
 });
 
 export const codeHighlightColor = theme('theme', {

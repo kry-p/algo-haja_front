@@ -1,31 +1,21 @@
-import { createAction } from 'redux-actions';
+/*
+ * 웹 애플리케이션 설정
+ */
+import { createAction, handleActions } from 'redux-actions';
 
 const TOGGLE_DARKMODE = 'option/TOGGLE_DARKMODE';
-const TOGGLE_AUTHMODE = 'option/TOGGLE_AUTHMODE';
 
 export const toggleDarkmode = createAction(TOGGLE_DARKMODE);
-export const toggleAuthmode = createAction(TOGGLE_AUTHMODE);
 
 const initialState = {
   darkmode: false,
-  currentAuth: 'login',
 };
 
-function option(state = initialState, action) {
-  switch (action.type) {
-    case TOGGLE_DARKMODE:
-      return {
-        ...state,
-        darkmode: !state.darkmode,
-      };
-    case TOGGLE_AUTHMODE:
-      return {
-        ...state,
-        currentAuth: state.currentAuth === 'login' ? 'register' : 'login',
-      };
-    default:
-      return state;
-  }
-}
+const option = handleActions(
+  {
+    [TOGGLE_DARKMODE]: (state) => ({ ...state, darkmode: !state.darkmode }),
+  },
+  initialState
+);
 
 export default option;

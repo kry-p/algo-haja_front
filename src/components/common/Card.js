@@ -1,22 +1,28 @@
 /*
  * 카드
  */
+// React core
 import React from 'react';
 import styled from 'styled-components';
-// components
+// Component
 import { SolvedBadge } from './Misc';
-// styles
+// Styles
 import palette from '../../lib/palette';
-import { objectLevelOneColor, objectLevelTwoColor } from '../../styles/theme';
-// icons
+import {
+  authCardBackgroundColor,
+  objectLevelOneColor,
+  objectLevelTwoColor,
+} from '../../styles/theme';
+// Icons
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
+// 카드 기본형
 export const Card = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: ${objectLevelOneColor};
+  background: ${objectLevelOneColor};
   border-radius: 12px;
 
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
@@ -37,6 +43,7 @@ export const Card = styled.div`
   }
 `;
 
+// 카드 뱃지 (풀이 여부 표시)
 export const CardBadge = styled.div`
   padding: 0.5rem 0.5rem;
   margin: 0.25rem;
@@ -47,6 +54,7 @@ export const CardBadge = styled.div`
   font-size: 0.75rem;
 `;
 
+// 문제 카드
 export const ProblemCardBlock = styled(Card)`
   width: 100%;
   height: 10.5rem;
@@ -68,10 +76,13 @@ export const ProblemCardBlock = styled(Card)`
   }
 `;
 
+// 로그인 / 회원가입 카드 인터페이스
 export const AuthCardBlock = styled(Card)`
+  ${authCardBackgroundColor}
   width: 12.5rem;
-
   padding: 1.5rem 2rem;
+
+  backdrop-filter: blur(10px);
 
   transition: all 0.5s ease-in-out;
   @media (min-width: 320px) {

@@ -1,9 +1,15 @@
+/*
+ * 문제 상세정보 페이지
+ */
+// React core
 import React from 'react';
-import Appbar from '../components/common/Appbar';
-
-import { ContentArea, SafeArea } from '../styles/common/Area';
+// Container
+import AppbarContainer from '../containers/AppbarContainer';
+// Components
 import { ProblemArticle } from '../components/common/Article';
 import Footer from '../components/common/Footer';
+// Styles
+import { ContentArea, SafeArea } from '../styles/common/Area';
 
 const solutionList = [
   String.raw`import java.util.Arrays;
@@ -111,7 +117,7 @@ const solutionList = [
 const ProblemPage = () => {
   return (
     <>
-      <Appbar title="알고하자" />
+      <AppbarContainer title="알고하자" />
       <ContentArea>
         <SafeArea>
           <ProblemArticle

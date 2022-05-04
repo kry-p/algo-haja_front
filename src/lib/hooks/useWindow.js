@@ -1,3 +1,6 @@
+/*
+ * 윈도우 크기 훅
+ */
 import { useState, useEffect } from 'react';
 
 export default function useWindow() {

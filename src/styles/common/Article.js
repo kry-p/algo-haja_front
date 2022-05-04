@@ -55,15 +55,16 @@ export const DashboardArticleTitle = styled(ArticleTitle)`
 `;
 
 export const ProblemArticleBlock = styled(ArticleBlock)`
-  width: 80%;
   display: grid;
   gap: 1.2rem;
+  padding-bottom: 2rem;
+  width: 80%;
 `;
 
 export const ProblemArticleParagraphTitle = styled.div`
-  font-size: 1.2rem;
   padding-bottom: 0.5rem;
   border-bottom: 1.5px solid ${objectLevelFourColor};
+  font-size: 1.2rem;
 `;
 
 export const ProblemArticleParagraphDescription = styled.div`

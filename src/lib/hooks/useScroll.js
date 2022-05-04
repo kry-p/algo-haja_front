@@ -1,3 +1,6 @@
+/*
+ * 스크롤 위치 훅
+ */
 import { useState, useEffect } from 'react';
 
 export default function useScroll() {

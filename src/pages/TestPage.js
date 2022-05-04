@@ -4,21 +4,18 @@
  *
  * SafeArea 안에 테스트하고자 하는 요소를 삽입하면 됩니다.
  */
+// React core
 import React from 'react';
-import styled from 'styled-components';
-
-import Appbar from '../components/common/Appbar';
-
-import { ContentArea, SafeArea } from '../styles/common/Area';
+// Container
+import AppbarContainer from '../containers/AppbarContainer';
+// Components
 import { ProblemTable } from '../components/common/Table';
-import { objectLevelThreeColor, footerColor } from '../styles/theme';
-
-import { Link } from '../components/common/Link';
-import { Logo } from '../styles/common/Button';
 import Footer from '../components/common/Footer';
+// Styles
+import { ContentArea, SafeArea } from '../styles/common/Area';
 
 const tableItems = [];
-for (let i = 0; i < 100; i++)
+for (let i = 0; i < 99; i++)
   tableItems.push({
     tier: i % 32,
     problemNumber: 1000 * (i + 1),
@@ -31,7 +28,7 @@ for (let i = 0; i < 100; i++)
 const TestPage = () => {
   return (
     <>
-      <Appbar title="알고하자" />
+      <AppbarContainer title="알고하자" />
       <ContentArea>
         <SafeArea>
           <ProblemTable title="전체 문제 목록" data={tableItems} />

@@ -1,8 +1,14 @@
+/*
+ * 푸터
+ */
+// React core
 import React from 'react';
+// Component
+import { Link } from './Link';
+// Styles
 import styled from 'styled-components';
 import { footerColor } from '../../styles/theme';
 import { Logo } from '../../styles/common/Button';
-import { Link } from './Link';
 
 const StyledFooter = styled.div`
   display: fixed;

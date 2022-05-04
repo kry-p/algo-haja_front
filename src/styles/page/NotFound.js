@@ -11,12 +11,11 @@ export const PageNotFound = styled.div`
 `;
 
 export const PageTypoNotFound = styled.span`
+  padding-bottom: 1.5rem;
+  color: ${mainTextColor};
   font-family: 'MinSans-Thin';
   font-size: 6rem;
-  padding-bottom: 1.5rem;
   user-select: none;
-  color: ${mainTextColor};
-
   @media (min-width: 512px) {
     font-size: 10rem;
   }
@@ -24,16 +23,16 @@ export const PageTypoNotFound = styled.span`
 
 export const MenuNotFound = styled.div`
   display: grid;
-  padding-top: 1rem;
   gap: 0.5rem;
   grid-template-rows: 1fr;
+
+  padding-top: 1rem;
   @media (min-width: 512px) {
     grid-template-columns: 2fr 1fr;
   }
 `;
 
 export const PageStyleNotFound = styled.div`
-  font-family: 'MinSans-Medium';
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +40,8 @@ export const PageStyleNotFound = styled.div`
 
   width: 100%;
   height: 100%;
+
+  font-family: 'MinSans-Medium';
 `;
 
 export const PageDescriptionNotFound = styled.span`

@@ -1,12 +1,13 @@
 /*
  * 상단 앱 바
  */
+// React core
 import React, { useState } from 'react';
+// React Router
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-// hooks
+// Hooks
 import useScroll from '../../lib/hooks/useScroll';
-// components
+// Components
 import { Button, LogoButton, Burger, IconButton } from './Button';
 import {
   DRAWER_WIDTH,
@@ -19,41 +20,28 @@ import {
   MenuMobile,
   MenuItemMobile,
 } from '../../styles/common/Appbar';
-import AuthTemplate from '../auth/AuthTemplate';
-import AuthForm from '../auth/AuthForm';
-import Modal from './Modal';
-// icons
+// Icons
 import { MdOutlineDarkMode } from 'react-icons/md';
-// redux actions
-import { toggleDarkmode } from '../../modules/option';
 
-const mainRouteData = [
-  ['문제', '#', ''],
-  ['그룹', '#'],
-  ['MY', '#'],
+// Menu
+const MENU = [
+  ['문제', '#', '푼 문제를 확인합니다.'],
+  ['그룹', '#', '그룹 멤버와 함께 문제를 해결합니다.'],
+  ['MY', '#', '내 정보를 봅니다.'],
 ];
 
-const Appbar = ({ title, fullPage }) => {
-  // hooks
-  const dispatch = useDispatch();
+const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
+  // Hooks
   const navigate = useNavigate();
   const scroll = useScroll();
-
-  // state
-  const [modalEnabled, setModalEnabled] = useState(false);
+  // State
   const [drawerXPosition, setDrawerXPosition] = useState(0);
   const [open, setOpen] = useState(false);
-  // state (Redux)
-  const option = useSelector((state) => state.option);
 
-  // state actions
-  const toggleMenuOpen = () => {
-    if (open) setDrawerXPosition(0);
-    else setDrawerXPosition(-DRAWER_WIDTH);
-  };
   const toggleOpen = () => {
     setOpen(!open);
-    toggleMenuOpen();
+    if (open) setDrawerXPosition(0);
+    else setDrawerXPosition(-DRAWER_WIDTH);
   };
 
   return (
@@ -65,23 +53,29 @@ const Appbar = ({ title, fullPage }) => {
           </div>
           <div className="right">
             <MenuDesktop className="menu-desktop">
-              {mainRouteData.map((item) => (
+              {MENU.map((item) => (
                 <MenuItemDesktop
                   className="item"
                   onClick={() => navigate(item[1])}
                   key={item}
                 >
-                  {item[0]}
+                  {item[0] === 'MY' ? (user ? user.username : 'MY') : item[0]}
                 </MenuItemDesktop>
               ))}
-              <Button
-                accent
-                className="item"
-                onClick={() => setModalEnabled(!modalEnabled)}
-              >
-                로그인
-              </Button>
-              <IconButton onClick={() => dispatch(toggleDarkmode())}>
+              {user ? (
+                <Button accent className="item" onClick={() => onLogout()}>
+                  로그아웃
+                </Button>
+              ) : (
+                <Button
+                  accent
+                  className="item"
+                  onClick={() => navigate('/login')}
+                >
+                  로그인
+                </Button>
+              )}
+              <IconButton onClick={onToggleDarkmode}>
                 <MdOutlineDarkMode size={18} />
               </IconButton>
             </MenuDesktop>
@@ -100,7 +94,7 @@ const Appbar = ({ title, fullPage }) => {
                     height: '4.5rem',
                   }}
                 >
-                  <IconButton onClick={() => dispatch(toggleDarkmode())}>
+                  <IconButton onClick={onToggleDarkmode}>
                     <MdOutlineDarkMode size={18} />
                   </IconButton>
                 </div>
@@ -113,19 +107,29 @@ const Appbar = ({ title, fullPage }) => {
                     paddingBottom: '1rem',
                   }}
                 >
-                  <div>로그인하세요</div>
-                  <Button accent onClick={() => setModalEnabled(!modalEnabled)}>
-                    로그인
-                  </Button>
+                  <div>{user ? user.username : '로그인하세요'}</div>
+                  {user ? (
+                    <Button accent className="item">
+                      로그아웃
+                    </Button>
+                  ) : (
+                    <Button
+                      accent
+                      className="item"
+                      onClick={() => navigate('/login')}
+                    >
+                      로그인
+                    </Button>
+                  )}
                 </div>
-                {mainRouteData.map((item) => (
+                {MENU.map((item) => (
                   <MenuItemMobile
                     className="item"
                     onClick={() => navigate(item[1])}
                     key={item}
                   >
                     <div>{item[0]}</div>
-                    <div className="description">메뉴 1 상세정보</div>
+                    <div className="description">{item[2]}</div>
                   </MenuItemMobile>
                 ))}
               </MenuMobile>
@@ -133,13 +137,6 @@ const Appbar = ({ title, fullPage }) => {
           </div>
         </AppbarBlock>
       </HeaderBlock>
-      {modalEnabled && (
-        <Modal onClose={() => setModalEnabled(false)}>
-          <AuthTemplate>
-            <AuthForm type={option.currentAuth} />
-          </AuthTemplate>
-        </Modal>
-      )}
       {!fullPage && <Spacer />}
     </>
   );

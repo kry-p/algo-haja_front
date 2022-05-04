@@ -1,3 +1,6 @@
+/*
+ * solved.ac 티어 관련
+ */
 const TIER = {
   ko: [
     '난이도 정보 없음',
@@ -32,28 +35,11 @@ const BADGE_COLOR = [
   '#D186D1', // master
 ];
 
-export const getSolvedacTierColor = (tierConstant) => {
-  return BADGE_COLOR[Math.ceil(tierConstant / 5)];
-  // switch (rating) {
-  //   case rating < 1 || rating > 31:
-  //     return BADGE_COLOR.unrated;
-  //   case rating < 6:
-  //     return BADGE_COLOR.bronze;
-  //   case rating < 11:
-  //     return BADGE_COLOR.silver;
-  //   case rating < 16:
-  //     return BADGE_COLOR.gold;
-  //   case rating < 21:
-  //     return BADGE_COLOR.platinum;
-  //   case rating < 26:
-  //     return BADGE_COLOR.diamond;
-  //   case rating < 31:
-  //     return BADGE_COLOR.ruby;
-  //   default:
-  //     return BADGE_COLOR.master;
-  // }
-};
+// 티어 색상
+export const getSolvedacTierColor = (tierConstant) =>
+  BADGE_COLOR[Math.ceil(tierConstant / 5)];
 
+// 세부 레벨
 export const getSolvedacTierLevel = (tierConstant) =>
   tierConstant == 0
     ? '?'
@@ -61,6 +47,7 @@ export const getSolvedacTierLevel = (tierConstant) =>
     ? 'M'
     : LEVEL[(tierConstant - 1) % 5];
 
+// 텍스트
 export const getSolvedacTierText = (tierConstant, lang) => {
   const usingTierInfo = TIER[lang];
 
