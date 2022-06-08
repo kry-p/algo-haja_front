@@ -13,6 +13,8 @@ import { login } from '../../modules/auth';
 // Components
 import AuthForm from './AuthForm';
 
+import { toast } from 'react-toastify';
+
 const LoginForm = () => {
   // Hooks
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ const LoginForm = () => {
     }
     if (auth) {
       dispatch(check());
+      toast.info('로그인되었습니다.');
     }
   }, [auth, authError, dispatch]);
 

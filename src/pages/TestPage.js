@@ -5,7 +5,8 @@
  * SafeArea 안에 테스트하고자 하는 요소를 삽입하면 됩니다.
  */
 // React core
-import React from 'react';
+import React, { useState } from 'react';
+
 // Container
 import AppbarContainer from '../containers/AppbarContainer';
 // Components
@@ -13,6 +14,7 @@ import { ProblemTable } from '../components/common/Table';
 import Footer from '../components/common/Footer';
 // Styles
 import { ContentArea, SafeArea } from '../styles/common/Area';
+import Toast from '../components/common/Toast';
 
 const tableItems = [];
 for (let i = 0; i < 99; i++)

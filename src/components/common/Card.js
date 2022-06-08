@@ -3,7 +3,7 @@
  */
 // React core
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // Component
 import { SolvedBadge } from './Misc';
 // Styles
@@ -52,6 +52,15 @@ export const CardBadge = styled.div`
   border-radius: 1rem;
 
   font-size: 0.75rem;
+
+  ${(props) =>
+    props.big &&
+    css`
+      font-size: 1rem;
+      padding: 0.625rem 1rem;
+      border-radius: 2rem;
+      margin: 0.5rem;
+    `}
 `;
 
 // 문제 카드

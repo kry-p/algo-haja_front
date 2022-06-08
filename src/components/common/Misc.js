@@ -20,6 +20,8 @@ export const SolvedBadge = styled.div`
   display: flex;
   align-items: center;
 
+  height: 1.25rem;
+
   padding: 0.325rem 0.5rem;
 
   border-radius: 0.5rem;

@@ -85,6 +85,43 @@ export const authCardBackgroundColor = theme('theme', {
   `,
 });
 
+export const toastColor = theme('theme', {
+  light: css`
+    ${(props) =>
+      props.accepted &&
+      css`
+        background-color: ${palette.blue[2]};
+      `}
+    ${(props) =>
+      props.success &&
+      css`
+        background-color: ${palette.green[2]};
+      `}
+  ${(props) =>
+      props.failure &&
+      css`
+        background-color: ${palette.red[2]};
+      `}
+  `,
+  dark: css`
+    ${(props) =>
+      props.accepted &&
+      css`
+        background-color: ${palette.blue[6]};
+      `}
+    ${(props) =>
+      props.success &&
+      css`
+        background-color: ${palette.green[6]};
+      `}
+  ${(props) =>
+      props.failure &&
+      css`
+        background-color: ${palette.red[6]};
+      `}
+  `,
+});
+
 export const codeHighlightColor = theme('theme', {
   // atom-one-light & atom-one-dark theme
   light: css`

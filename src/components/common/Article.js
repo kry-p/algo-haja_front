@@ -24,18 +24,78 @@ import {
 import { BsArrowLeft } from 'react-icons/bs';
 // Modules
 import { getSolvedacTierText } from '../../lib/solvedacTier';
+import { updateProblemInfo } from '../../lib/api/problem';
+
+import { CardBadge } from './Card';
+
+import { toast } from 'react-toastify';
 
 // 문제 상세정보
 export const ProblemArticle = ({
-  title,
-  problemNo,
-  solvedacTier,
-  solved,
-  trying,
-  description,
-  mySolutionList,
-  groupSolutionList,
+  problemId,
+  user,
+  problem,
+  loading,
+  error,
 }) => {
+  if (error) {
+    if (error.response && error.response.status == 404) {
+      return (
+        <>
+          <ArticleWrapper>
+            <ProblemArticleBlock>
+              <div>
+                <HoverToUnderlineButton>
+                  <BsArrowLeft size={20} />
+                  <div style={{ paddingLeft: '1rem' }}>
+                    문제 목록으로 돌아가기
+                  </div>
+                </HoverToUnderlineButton>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ fontSize: '2rem' }}>404</div>
+              </div>
+              가져올 수 없는 문제입니다. 아래와 같은 문제가 있을 수 있습니다.
+              <ul style={{ lineHeight: '1.5rem' }}>
+                <li>• BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
+                <li>
+                  • 해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을
+                  경우{' '}
+                  <Link
+                    href="#"
+                    onClick={async () => {
+                      updateProblemInfo({ problemId });
+                      toast.info(
+                        '문제 정보를 요청했습니다. 반영에는 수 분이 걸릴 수 있습니다.'
+                      );
+                    }}
+                  >
+                    가져오도록 요청
+                  </Link>
+                  할 수 있습니다.
+                </li>
+              </ul>
+            </ProblemArticleBlock>
+          </ArticleWrapper>
+        </>
+      );
+    }
+  }
+
+  if (loading || !problem) {
+    return (
+      <ProblemArticleBlock>
+        <div>
+          <HoverToUnderlineButton>
+            <BsArrowLeft size={20} />
+            <div style={{ paddingLeft: '1rem' }}>문제 목록으로 돌아가기</div>
+          </HoverToUnderlineButton>
+        </div>
+        문제 정보를 가져오는 중입니다.
+      </ProblemArticleBlock>
+    );
+  }
+
   return (
     <ArticleWrapper>
       <ProblemArticleBlock>
@@ -46,69 +106,82 @@ export const ProblemArticle = ({
           </HoverToUnderlineButton>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ fontSize: '2rem' }}>{title}</div>
-          <SolvedBadge solved={solved} trying={trying}>
-            {solved ? 'Solved' : trying ? 'Trying' : 'Not tried'}
-          </SolvedBadge>
+          <div style={{ fontSize: '2rem' }}>{problem.problem.problemName}</div>
+          {problem.username && (
+            <SolvedBadge solved={problem.userSolved} trying={problem.userTried}>
+              {problem.userSolved
+                ? 'Solved'
+                : problem.userTried
+                ? 'Trying'
+                : 'Not tried'}
+            </SolvedBadge>
+          )}
         </div>
-        <div>{`#${problemNo}`}</div>
+        <div>{`#${problem.problem.problemId}`}</div>
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
           }}
         >
-          <SolvedacRatingBadge rating={solvedacTier} />
+          <SolvedacRatingBadge rating={problem.problem.solvedacTier} />
           <div style={{ paddingLeft: '0.8rem', fontSize: '1.2rem' }}>
-            {getSolvedacTierText(solvedacTier, 'ko')}
+            {getSolvedacTierText(problem.problem.solvedacTier, 'ko')}
           </div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start',
+            width: '100%',
+          }}
+        >
+          {!!problem.problem.tags.ko
+            ? problem.problem.tags.ko.map((item) => (
+                <CardBadge big key={item}>
+                  {item}
+                </CardBadge>
+              ))
+            : null}
         </div>
         <ProblemArticleParagraphTitle>문제</ProblemArticleParagraphTitle>
         <ProblemArticleParagraphDescription>
-          {!!description ? (
-            <>
-              <div className="disclaimer">
-                주의 : 아래 내용은 BOJ 웹사이트의 텍스트만을 가져온 것이므로
-                정확하지 않을 수 있습니다.
-                <br />
-                되도록{' '}
-                <Link href={`https://acmicpc.net/problem/${problemNo}`}>
-                  원문
-                </Link>
-                을 참고해 주시기를 부탁드리며, 내용이 달라진 경우{' '}
-                <Link href="#">수동 갱신</Link>을 해 주세요.
-              </div>
-              <div className="content">{description}</div>
-            </>
-          ) : (
-            <>
-              <div className="disclaimer">
-                문제 정보가 없습니다. 문제를 최초로 확인한 경우 내용이 아직
-                가져와지지 않아 표시되지 않을 수 있습니다.
-                <br />
-                내용이 계속 나오지 않을 경우 <Link href="#">수동 갱신</Link>을
-                해 주세요.
-              </div>
-            </>
-          )}
+          <div className="disclaimer">
+            주의 : 각 문제의 저작권은 BOJ에 귀속되어 있으므로 문제 내용을
+            제공하지 않습니다.
+            <br />
+            <Link
+              href={`https://acmicpc.net/problem/${problem.problem.problemId}`}
+            >
+              링크
+            </Link>
+            에서 문제 정보를 확인해 주세요.
+          </div>
         </ProblemArticleParagraphDescription>
         <ProblemArticleParagraphTitle>내 풀이</ProblemArticleParagraphTitle>
         <div>
-          {!!mySolutionList ? (
-            mySolutionList.map((item, index) => {
-              return (
-                <ProblemArticleParagraphDescription key={index}>
-                  <div>{'풀이 ' + (index + 1)}</div>
-                  <div className="solution-code">
-                    <Highlight>{item}</Highlight>
-                  </div>
-                </ProblemArticleParagraphDescription>
-              );
-            })
+          {!!problem.solve ? (
+            problem.solve.user && problem.solve.user.length != 0 ? (
+              problem.solve.user.map((item, index) => {
+                return (
+                  <ProblemArticleParagraphDescription key={index}>
+                    <div>{'풀이 ' + (index + 1)}</div>
+                    <div className="solution-code">
+                      <Highlight>{item.source}</Highlight>
+                    </div>
+                  </ProblemArticleParagraphDescription>
+                );
+              })
+            ) : (
+              <div>
+                풀이가 없습니다. <Link href="#">여기</Link>를 눌러 추가해
+                주세요.
+              </div>
+            )
           ) : (
             <div>
-              풀이가 없습니다. <Link href="#">여기</Link>를 눌러 풀이를 수동으로
-              추가할 수 있습니다.
+              풀이를 확인하려면 <Link href="/login">로그인</Link>하세요.
             </div>
           )}
         </div>
@@ -116,18 +189,48 @@ export const ProblemArticle = ({
           그룹 내 다른 사용자의 풀이
         </ProblemArticleParagraphTitle>
         <div>
-          {!!groupSolutionList
-            ? groupSolutionList.map((item, index) => {
+          {!!problem.solve ? (
+            problem.solve.group && problem.solve.group.length != 0 ? (
+              problem.solve.group.map((item) => {
                 return (
-                  <ProblemArticleParagraphDescription key={index}>
-                    <div>{'풀이 ' + (index + 1)}</div>
-                    <div className="solution-code">
-                      <Highlight>{item}</Highlight>
+                  <>
+                    <div style={{ fontSize: 'large', paddingBottom: '1rem' }}>
+                      {item.groupName} 그룹
                     </div>
-                  </ProblemArticleParagraphDescription>
+                    {item.solve.length == 0 ? (
+                      <ProblemArticleParagraphDescription>
+                        그룹 내 다른 사용자의 풀이가 없습니다.
+                      </ProblemArticleParagraphDescription>
+                    ) : (
+                      item.solve
+                        .filter(
+                          (solve) => solve.actualUsername != user.username
+                        )
+                        .map((solve, index) => {
+                          return (
+                            <ProblemArticleParagraphDescription key={index}>
+                              <div>{solve.actualUsername}</div>
+                              <div className="solution-code">
+                                <Highlight>{solve.source}</Highlight>
+                              </div>
+                            </ProblemArticleParagraphDescription>
+                          );
+                        })
+                    )}
+                  </>
                 );
               })
-            : '풀이가 없습니다.'}
+            ) : (
+              <div>
+                그룹 사용자의 풀이가 없습니다. 그룹에 올바르게 소속되어 있는지
+                확인해 주세요.
+              </div>
+            )
+          ) : (
+            <div>
+              풀이를 확인하려면 <Link href="/login">로그인</Link>하세요.
+            </div>
+          )}
         </div>
       </ProblemArticleBlock>
     </ArticleWrapper>

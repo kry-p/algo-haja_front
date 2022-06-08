@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { codeHighlightColor, objectLevelFourColor } from '../theme';
+import { codeHighlightColor, objectLevelThreeColor } from '../theme';
 
 export const ArticleWrapper = styled.div`
   display: flex;
@@ -62,8 +62,10 @@ export const ProblemArticleBlock = styled(ArticleBlock)`
 `;
 
 export const ProblemArticleParagraphTitle = styled.div`
+  padding-top: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1.5px solid ${objectLevelFourColor};
+  margin-bottom: 0.5rem;
+  border-bottom: 1.5px solid ${objectLevelThreeColor};
   font-size: 1.2rem;
 `;
 

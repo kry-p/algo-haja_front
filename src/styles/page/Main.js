@@ -42,23 +42,27 @@ export const MainHeadline = styled.div`
 `;
 
 export const MainHeadlineDescription = styled.div`
+  width: calc(0.8 * 100vw);
+
   color: ${mainTextColor};
   z-index: 1;
 
-  width: 70%;
-  padding: 2rem;
+  padding: 1rem;
   font-size: 1.1rem;
+  line-height: 2rem;
 
   @media (min-width: 384px) {
+    width: 320px;
     font-size: 1.2rem;
+  }
+
+  @media (min-width: 512px) {
+    width: 384px;
   }
 
   @media (min-width: 768px) {
     font-size: 1.3rem;
-  }
-
-  @media (min-width: 1024px) {
-    width: calc(1024px * 0.7);
+    width: 720px;
   }
 `;
 

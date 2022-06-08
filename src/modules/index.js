@@ -9,6 +9,7 @@ import option from './option';
 import loading from './loading';
 import auth, { authSaga } from './auth';
 import user, { userSaga } from './user';
+import problem, { problemSaga } from './problem';
 
 // Redux-persist
 const persistConfig = {
@@ -18,9 +19,9 @@ const persistConfig = {
 };
 
 // Redux root reducer
-const rootReducer = combineReducers({ option, auth, loading, user });
+const rootReducer = combineReducers({ option, auth, loading, user, problem });
 export function* rootSaga() {
-  yield all([authSaga(), userSaga()]);
+  yield all([authSaga(), userSaga(), problemSaga()]);
 }
 
 export default persistReducer(persistConfig, rootReducer);
