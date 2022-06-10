@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { codeHighlightColor, objectLevelThreeColor } from '../theme';
 
+/**
+ * Wrapper
+ */
 export const ArticleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -19,31 +22,9 @@ export const TableArticleWrapper = styled(ArticleWrapper)`
   }
 `;
 
-export const ArticleBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 95vw;
-
-  @media (min-width: 320px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-`;
-
-export const Cards = styled.div`
-  display: grid;
-  align-items: center;
-  gap: 0.5rem;
-
-  @media (min-width: 512px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 768px) {
-    gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
+/**
+ * Title
+ */
 
 export const ArticleTitle = styled.div`
   padding: 0.75rem;
@@ -52,13 +33,7 @@ export const ArticleTitle = styled.div`
 
 export const DashboardArticleTitle = styled(ArticleTitle)`
   font-size: 1.3rem;
-`;
-
-export const ProblemArticleBlock = styled(ArticleBlock)`
-  display: grid;
-  gap: 1.2rem;
   padding-bottom: 2rem;
-  width: 80%;
 `;
 
 export const ProblemArticleParagraphTitle = styled.div`
@@ -67,6 +42,14 @@ export const ProblemArticleParagraphTitle = styled.div`
   margin-bottom: 0.5rem;
   border-bottom: 1.5px solid ${objectLevelThreeColor};
   font-size: 1.2rem;
+`;
+
+/**
+ * Description
+ */
+export const DashboardArticleDescription = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const ProblemArticleParagraphDescription = styled.div`
@@ -95,4 +78,45 @@ export const ProblemArticleParagraphDescription = styled.div`
     transition: 0s;
     overflow: scroll;
   }
+`;
+
+/**
+ * Block
+ */
+export const ArticleBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+
+  @media (min-width: 320px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+`;
+export const ProblemArticleBlock = styled(ArticleBlock)`
+  display: grid;
+  gap: 1.2rem;
+  padding-bottom: 2rem;
+  width: 80%;
+`;
+
+export const CardBlock = styled.div`
+  display: grid;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media (min-width: 512px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+`;
+
+export const MoreButtonBlock = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
 `;

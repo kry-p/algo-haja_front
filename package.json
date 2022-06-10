@@ -15,6 +15,7 @@
     "react-inlinesvg": "^3.0.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
+    "react-select": "^5.3.2",
     "react-toastify": "^9.0.3",
     "redux": "^4.2.0",
     "redux-actions": "^2.6.5",

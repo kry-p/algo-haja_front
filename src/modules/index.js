@@ -10,6 +10,7 @@ import loading from './loading';
 import auth, { authSaga } from './auth';
 import user, { userSaga } from './user';
 import problem, { problemSaga } from './problem';
+import problems, { problemsSaga } from './problems';
 
 // Redux-persist
 const persistConfig = {
@@ -19,9 +20,16 @@ const persistConfig = {
 };
 
 // Redux root reducer
-const rootReducer = combineReducers({ option, auth, loading, user, problem });
+const rootReducer = combineReducers({
+  option,
+  auth,
+  loading,
+  user,
+  problem,
+  problems,
+});
 export function* rootSaga() {
-  yield all([authSaga(), userSaga(), problemSaga()]);
+  yield all([authSaga(), userSaga(), problemSaga(), problemsSaga()]);
 }
 
 export default persistReducer(persistConfig, rootReducer);

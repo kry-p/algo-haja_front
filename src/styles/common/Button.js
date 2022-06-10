@@ -1,3 +1,6 @@
+/**
+ * Button
+ */
 import styled from 'styled-components';
 import { mainTextColor } from '../theme';
 
@@ -12,6 +15,7 @@ export const Logo = styled.button`
   font-size: 1.5rem;
 `;
 
+// Hamburger button
 export const StyledBurger = styled.button`
   display: flex;
   flex-direction: column;

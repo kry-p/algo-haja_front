@@ -1,4 +1,4 @@
-/*
+/**
  * 문서 구성요소
  */
 // React core
@@ -7,28 +7,29 @@ import React, { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 // React-highlight
 import Highlight from 'react-highlight';
+// Toast
+import { toast } from 'react-toastify';
 // Components
 import { Link } from './Link';
 import { HoverToUnderlineButton, UnderlinedButton } from './Button';
 import { SolvedacRatingBadge, SolvedBadge } from './Misc';
+import { CardBadge } from './Card';
 import {
+  ArticleWrapper,
   ArticleBlock,
   ProblemArticleBlock,
-  Cards,
-  ArticleWrapper,
-  ProblemArticleParagraphTitle,
-  ProblemArticleParagraphDescription,
+  MoreButtonBlock,
+  CardBlock,
   DashboardArticleTitle,
+  ProblemArticleParagraphTitle,
+  DashboardArticleDescription,
+  ProblemArticleParagraphDescription,
 } from '../../styles/common/Article';
 // Icons
 import { BsArrowLeft } from 'react-icons/bs';
 // Modules
 import { getSolvedacTierText } from '../../lib/solvedacTier';
 import { updateProblemInfo } from '../../lib/api/problem';
-
-import { CardBadge } from './Card';
-
-import { toast } from 'react-toastify';
 
 // 문제 상세정보
 export const ProblemArticle = ({
@@ -38,61 +39,59 @@ export const ProblemArticle = ({
   loading,
   error,
 }) => {
+  const navigate = useNavigate();
   if (error) {
     if (error.response && error.response.status == 404) {
       return (
-        <>
-          <ArticleWrapper>
-            <ProblemArticleBlock>
-              <div>
-                <HoverToUnderlineButton>
-                  <BsArrowLeft size={20} />
-                  <div style={{ paddingLeft: '1rem' }}>
-                    문제 목록으로 돌아가기
-                  </div>
-                </HoverToUnderlineButton>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ fontSize: '2rem' }}>404</div>
-              </div>
-              가져올 수 없는 문제입니다. 아래와 같은 문제가 있을 수 있습니다.
-              <ul style={{ lineHeight: '1.5rem' }}>
-                <li>• BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
-                <li>
-                  • 해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을
-                  경우{' '}
-                  <Link
-                    href="#"
-                    onClick={async () => {
-                      updateProblemInfo({ problemId });
-                      toast.info(
-                        '문제 정보를 요청했습니다. 반영에는 수 분이 걸릴 수 있습니다.'
-                      );
-                    }}
-                  >
-                    가져오도록 요청
-                  </Link>
-                  할 수 있습니다.
-                </li>
-              </ul>
-            </ProblemArticleBlock>
-          </ArticleWrapper>
-        </>
+        <ArticleWrapper>
+          <ProblemArticleBlock>
+            <div>
+              <HoverToUnderlineButton onClick={() => navigate(-1)}>
+                <BsArrowLeft size={20} />
+                <div>이전으로 돌아가기</div>
+              </HoverToUnderlineButton>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ fontSize: '2rem' }}>404</div>
+            </div>
+            가져올 수 없는 문제입니다. 아래와 같은 문제가 있을 수 있습니다.
+            <ul style={{ lineHeight: '1.5rem' }}>
+              <li>• BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
+              <li>
+                • 해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을 경우{' '}
+                <Link
+                  href="#"
+                  onClick={async () => {
+                    updateProblemInfo({ problemId });
+                    toast.info(
+                      '문제 정보를 요청했습니다. 반영에는 수 분이 걸릴 수 있습니다.'
+                    );
+                  }}
+                >
+                  가져오도록 요청
+                </Link>
+                할 수 있습니다.
+              </li>
+            </ul>
+          </ProblemArticleBlock>
+        </ArticleWrapper>
       );
     }
   }
 
   if (loading || !problem) {
     return (
-      <ProblemArticleBlock>
-        <div>
-          <HoverToUnderlineButton>
-            <BsArrowLeft size={20} />
-            <div style={{ paddingLeft: '1rem' }}>문제 목록으로 돌아가기</div>
-          </HoverToUnderlineButton>
-        </div>
-        문제 정보를 가져오는 중입니다.
-      </ProblemArticleBlock>
+      <ArticleWrapper>
+        <ProblemArticleBlock>
+          <div>
+            <HoverToUnderlineButton onClick={() => navigate(-1)}>
+              <BsArrowLeft size={20} />
+              <div>이전으로 돌아가기</div>
+            </HoverToUnderlineButton>
+          </div>
+          문제 목록을 가져오는 중입니다.
+        </ProblemArticleBlock>
+      </ArticleWrapper>
     );
   }
 
@@ -100,9 +99,9 @@ export const ProblemArticle = ({
     <ArticleWrapper>
       <ProblemArticleBlock>
         <div>
-          <HoverToUnderlineButton>
+          <HoverToUnderlineButton onClick={() => navigate(-1)}>
             <BsArrowLeft size={20} />
-            <div style={{ paddingLeft: '1rem' }}>문제 목록으로 돌아가기</div>
+            <div>이전으로 돌아가기</div>
           </HoverToUnderlineButton>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -244,25 +243,19 @@ export const DashboardArticle = ({ title, contents, more }) => {
     <ArticleWrapper>
       <ArticleBlock>
         <DashboardArticleTitle>{title}</DashboardArticleTitle>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Cards>
+        <DashboardArticleDescription>
+          <CardBlock>
             {!!contents &&
               contents.map((item, index) => (
                 <Fragment key={index}>{item}</Fragment>
               ))}
-          </Cards>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            padding: '1rem',
-          }}
-        >
+          </CardBlock>
+        </DashboardArticleDescription>
+        <MoreButtonBlock>
           <UnderlinedButton onClick={() => navigate(more)}>
             더 보기
           </UnderlinedButton>
-        </div>
+        </MoreButtonBlock>
       </ArticleBlock>
     </ArticleWrapper>
   );

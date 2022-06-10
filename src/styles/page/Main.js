@@ -1,17 +1,8 @@
+/**
+ * Styles for landing page
+ */
 import styled from 'styled-components';
 import { headlineBackgroundFilter, mainTextColor } from '../theme';
-
-export const AppStyle = styled.div`
-  width: 100vw;
-`;
-
-export const PageMain = styled.div`
-  width: 100%;
-`;
-
-export const MainBlock = styled.div`
-  height: 100vh;
-`;
 
 export const MainHeadlineBackground = styled.div`
   ${headlineBackgroundFilter}
@@ -41,6 +32,27 @@ export const MainHeadline = styled.div`
   }
 `;
 
+export const MainHeadlineTitle = styled.div`
+  display: grid;
+  gap: 1rem;
+
+  color: ${mainTextColor};
+  font-size: 3rem;
+  z-index: 1;
+
+  @media (min-width: 384px) {
+    font-size: 4rem;
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr auto;
+    font-size: 5rem;
+
+    div:first-child {
+      grid-column: 1 / span 2;
+    }
+  }
+`;
+
 export const MainHeadlineDescription = styled.div`
   width: calc(0.8 * 100vw);
 
@@ -63,26 +75,5 @@ export const MainHeadlineDescription = styled.div`
   @media (min-width: 768px) {
     font-size: 1.3rem;
     width: 720px;
-  }
-`;
-
-export const MainHeadlineTitle = styled.div`
-  display: grid;
-  gap: 1rem;
-
-  color: ${mainTextColor};
-  font-size: 3rem;
-  z-index: 1;
-
-  @media (min-width: 384px) {
-    font-size: 4rem;
-  }
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr auto;
-    font-size: 5rem;
-
-    div:first-child {
-      grid-column: 1 / span 2;
-    }
   }
 `;

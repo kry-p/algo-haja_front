@@ -56,17 +56,17 @@ export const CardBadge = styled.div`
   ${(props) =>
     props.big &&
     css`
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0.625rem 1rem;
       border-radius: 2rem;
-      margin: 0.5rem;
+      margin: 0rem 0.5rem 0.5rem 0rem;
     `}
 `;
 
 // 문제 카드
 export const ProblemCardBlock = styled(Card)`
   width: 100%;
-  height: 10.5rem;
+  height: 8.5rem;
   transition: all 0.25s ease-in-out;
 
   .category {
@@ -99,13 +99,7 @@ export const AuthCardBlock = styled(Card)`
   }
 `;
 
-export const ProblemCard = ({
-  title,
-  solved,
-  description,
-  stars,
-  categories,
-}) => {
+export const ProblemCard = ({ title, solved, rating, tags }) => {
   const starsGenerator = (stars) => {
     const starsArray = [];
     for (let step = 0; step < stars; step++) starsArray.push(true);
@@ -139,24 +133,13 @@ export const ProblemCard = ({
         </div>
         <div
           style={{
-            fontFamily: 'MinSans-Thin',
-            lineHeight: 'normal',
-            fontSize: 'small',
-            width: '100%',
-          }}
-          className="text"
-        >
-          {description}
-        </div>
-        <div
-          style={{
             width: '100%',
             display: 'flex',
             justifyContent: 'space-between',
           }}
         >
           <div>
-            {starsGenerator(stars).map((item, index) =>
+            {starsGenerator(rating).map((item, index) =>
               item ? (
                 <AiFillStar size={18} color={palette.yellow[5]} key={index} />
               ) : (
@@ -167,8 +150,8 @@ export const ProblemCard = ({
           <div />
         </div>
         <div className="category">
-          {!!categories
-            ? categories.map((item) => <CardBadge key={item}>{item}</CardBadge>)
+          {!!tags
+            ? tags.map((item) => <CardBadge key={item}>{item}</CardBadge>)
             : null}
         </div>
       </div>

@@ -1,3 +1,6 @@
+/**
+ * Input
+ */
 import styled from 'styled-components';
 import { mainTextColor, subTextColor } from '../theme';
 

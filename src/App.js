@@ -4,22 +4,31 @@
 // React core
 import React from 'react';
 // React Router
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+} from 'react-router-dom';
 // Redux
 import { useSelector } from 'react-redux';
+// framer-motion
+import { AnimatePresence } from 'framer-motion';
+// react-toastify
+import StyledToastContainer from './components/common/Toast';
 // 페이지
 import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
-import ProblemPage from './pages/ProblemPage';
+import ProblemListPage from './pages/problem/ProblemListPage';
+import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
+import ProblemDescriptionPage from './pages/problem/ProblemDescriptionPage';
 import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 // 전역 테마
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/theme';
-
-import { AnimatePresence } from 'framer-motion';
-import StyledToastContainer from './components/common/Toast';
 
 const App = () => {
   const location = useLocation();
@@ -28,7 +37,12 @@ const App = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainPage />} />
         <Route path="/problem">
-          <Route path=":problemId" element={<ProblemPage />} />
+          <Route path="/problem/list">
+            <Route path=":type" element={<ProblemListPage />} />
+            <Route path="" element={<Navigate to="/404" replace={true} />} />
+          </Route>
+          <Route path="" element={<ProblemDashboardPage />} />
+          <Route path=":problemId" element={<ProblemDescriptionPage />} />
         </Route>
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -40,6 +54,7 @@ const App = () => {
 };
 
 const Root = () => {
+  // Theme switching by styled-theming & React-redux
   const darkmode = useSelector((state) => state.option.darkmode);
   return (
     <>

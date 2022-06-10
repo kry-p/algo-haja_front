@@ -1,5 +1,5 @@
-/*
- * 전역 테마 컬러
+/**
+ * Global theme colors
  */
 import { createGlobalStyle } from 'styled-components';
 import { css } from 'styled-components';
@@ -7,55 +7,9 @@ import reset from 'styled-reset';
 import theme from 'styled-theming';
 import palette from '../lib/palette';
 
-export const mainTextColor = theme('theme', {
-  light: palette.gray[10],
-  dark: palette.gray[4],
-});
-
-export const subTextColor = theme('theme', {
-  light: palette.gray[6],
-  dark: palette.gray[6],
-});
-
-export const errorMessageColor = theme('theme', {
-  light: palette.red[6],
-  dark: palette.red[4],
-});
-
-export const headlineBackgroundFilter = theme('theme', {
-  light: css`
-    filter: contrast(70%) brightness(100%);
-  `,
-  dark: css`
-    filter: brightness(50%);
-  `,
-});
-
-export const backgroundColor = theme('theme', {
-  light: palette.gray[0],
-  dark: palette.gray[10],
-});
-
-export const tableHeaderBackgroundColor = theme('theme', {
-  light: palette.cyan[6],
-  dark: palette.gray[8],
-});
-
-export const tableHeaderTextColor = theme('theme', {
-  light: palette.gray[1],
-  dark: palette.gray[4],
-});
-
-export const tableOddItemBackgroundColor = theme('theme', {
-  light: palette.gray[1],
-  dark: palette.gray[9],
-});
-
-export const footerColor = theme('theme', {
-  light: palette.gray[2],
-  dark: palette.gray[9],
-});
-
+/**
+ * Object level
+ */
 export const objectLevelOneColor = theme('theme', {
   light: palette.gray[0],
   dark: palette.gray[9],
@@ -76,12 +30,143 @@ export const objectLevelFourColor = theme('theme', {
   dark: palette.gray[6],
 });
 
+/**
+ * Text
+ */
+export const mainTextColor = theme('theme', {
+  light: palette.gray[10],
+  dark: palette.gray[4],
+});
+
+export const subTextColor = theme('theme', {
+  light: palette.gray[6],
+  dark: palette.gray[6],
+});
+
+export const errorMessageColor = theme('theme', {
+  light: palette.red[6],
+  dark: palette.red[4],
+});
+
+export const tableHeaderTextColor = theme('theme', {
+  light: palette.gray[1],
+  dark: palette.gray[4],
+});
+
+/**
+ * UI element
+ */
+export const buttonColor = theme('theme', {
+  light: css`
+    color: ${palette.gray[1]};
+    background-color: ${palette.gray[10]};
+
+    &:hover {
+      background-color: ${palette.gray[6]};
+    }
+
+    ${(props) =>
+      props.accent &&
+      css`
+        background-color: ${palette.cyan[5]};
+        &:hover {
+          background-color: ${palette.cyan[4]};
+        }
+      `}
+  `,
+  dark: css`
+    color: ${palette.gray[1]};
+    background-color: ${palette.gray[8]};
+
+    &:hover {
+      background-color: ${palette.gray[7]};
+    }
+
+    ${(props) =>
+      props.accent &&
+      css`
+        background-color: ${palette.cyan[8]};
+        &:hover {
+          background-color: ${palette.cyan[7]};
+        }
+      `}
+  `,
+});
+
+export const footerColor = theme('theme', {
+  light: palette.gray[2],
+  dark: palette.gray[9],
+});
+
+export const badgeColor = theme('theme', {
+  light: css`
+    background-color: ${palette.gray[6]};
+
+    ${(props) =>
+      props.trying &&
+      css`
+        background-color: ${palette.red[4]};
+      `}
+
+    ${(props) =>
+      props.solved &&
+      css`
+        background-color: ${palette.cyan[5]};
+      `}
+  `,
+  dark: css`
+    background-color: ${palette.gray[8]};
+
+    ${(props) =>
+      props.trying &&
+      css`
+        background-color: ${palette.red[6]};
+      `}
+
+    ${(props) =>
+      props.solved &&
+      css`
+        background-color: ${palette.cyan[7]};
+      `}
+  `,
+});
+
+/**
+ * Background
+ */
+export const backgroundColor = theme('theme', {
+  light: palette.gray[0],
+  dark: palette.gray[10],
+});
+
+export const tableHeaderBackgroundColor = theme('theme', {
+  light: palette.cyan[6],
+  dark: palette.gray[8],
+});
+
+export const tableOddItemBackgroundColor = theme('theme', {
+  light: palette.gray[1],
+  dark: palette.gray[9],
+});
+
 export const authCardBackgroundColor = theme('theme', {
   light: css`
     background: rgba(248, 249, 250, 0.7);
   `,
   dark: css`
     background: rgba(43, 48, 53, 0.9);
+  `,
+});
+
+/**
+ * Special items
+ */
+export const headlineBackgroundFilter = theme('theme', {
+  light: css`
+    filter: contrast(70%) brightness(100%);
+  `,
+  dark: css`
+    filter: brightness(50%);
   `,
 });
 
@@ -283,76 +368,6 @@ export const codeHighlightColor = theme('theme', {
     .hljs-link {
       text-decoration: underline;
     }
-  `,
-});
-
-export const badgeColor = theme('theme', {
-  light: css`
-    background-color: ${palette.gray[6]};
-
-    ${(props) =>
-      props.trying &&
-      css`
-        background-color: ${palette.red[4]};
-      `}
-
-    ${(props) =>
-      props.solved &&
-      css`
-        background-color: ${palette.cyan[5]};
-      `}
-  `,
-  dark: css`
-    background-color: ${palette.gray[8]};
-
-    ${(props) =>
-      props.trying &&
-      css`
-        background-color: ${palette.red[6]};
-      `}
-
-    ${(props) =>
-      props.solved &&
-      css`
-        background-color: ${palette.cyan[7]};
-      `}
-  `,
-});
-
-export const buttonColor = theme('theme', {
-  light: css`
-    color: ${palette.gray[1]};
-    background-color: ${palette.gray[10]};
-
-    &:hover {
-      background-color: ${palette.gray[6]};
-    }
-
-    ${(props) =>
-      props.accent &&
-      css`
-        background-color: ${palette.cyan[5]};
-        &:hover {
-          background-color: ${palette.cyan[4]};
-        }
-      `}
-  `,
-  dark: css`
-    color: ${palette.gray[1]};
-    background-color: ${palette.gray[8]};
-
-    &:hover {
-      background-color: ${palette.gray[7]};
-    }
-
-    ${(props) =>
-      props.accent &&
-      css`
-        background-color: ${palette.cyan[8]};
-        &:hover {
-          background-color: ${palette.cyan[7]};
-        }
-      `}
   `,
 });
 

@@ -1,3 +1,6 @@
+/**
+ * Styles for 404 page
+ */
 import styled from 'styled-components';
 import { mainTextColor } from '../theme';
 

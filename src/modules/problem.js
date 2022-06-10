@@ -10,8 +10,6 @@ import { takeLatest } from 'redux-saga/effects';
 
 const [READ_PROBLEM, READ_PROBLEM_SUCCESS, READ_PROBLEM_FAILURE] =
   createRequestActionTypes('problem/READ_PROBLEM');
-const [READ_SOLVE, READ_SOLVE_SUCCESS, READ_SOLVE_FAILURE] =
-  createRequestActionTypes('problem/READ_SOLVE');
 const UNLOAD_PROBLEM = 'problem/UNLOAD_PROBLEM';
 
 export const readProblem = createAction(READ_PROBLEM, (problemId) => problemId);

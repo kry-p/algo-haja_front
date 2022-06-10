@@ -36,6 +36,13 @@ export const Button = styled(RawButton)`
 
 // 호버링 시 밑줄이 표시되는 버튼 (일부 링크용)
 export const HoverToUnderlineButton = styled(RawButton)`
+  div:nth-child(n) {
+    padding-left: 1rem;
+  }
+  div:first-child {
+    padding-left: 0;
+  }
+
   &:hover {
     text-decoration: underline;
   }

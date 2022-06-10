@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { errorMessageColor } from '../theme';
 
 export const AuthTemplateBlock = styled.div`

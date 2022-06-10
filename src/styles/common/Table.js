@@ -1,3 +1,6 @@
+/**
+ * Table
+ */
 import styled, { css } from 'styled-components';
 import {
   tableOddItemBackgroundColor,
@@ -43,19 +46,19 @@ const TableHeader = styled(TableItem)`
   color: ${tableHeaderTextColor};
 `;
 
-export const ProblemTableItem = styled(TableItem)`
-  grid-template-columns: 6rem auto 0rem 4rem 4rem;
+export const ProblemTableHeader = styled(TableHeader)`
+  grid-template-columns: 6rem auto 4rem 4rem;
 
   @media (min-width: 384px) {
-    grid-template-columns: 8rem auto 3rem 4rem 4rem;
+    grid-template-columns: 8rem auto 4rem 4rem;
   }
 `;
 
-export const ProblemTableHeader = styled(TableHeader)`
-  grid-template-columns: 6rem auto 0rem 4rem 4rem;
+export const ProblemTableItem = styled(TableItem)`
+  grid-template-columns: 6rem auto 4rem 4rem;
 
   @media (min-width: 384px) {
-    grid-template-columns: 8rem auto 3rem 4rem 4rem;
+    grid-template-columns: 8rem auto 4rem 4rem;
   }
 `;
 

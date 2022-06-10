@@ -1,4 +1,4 @@
-/*
+/**
  * React app core
  */
 // Core
@@ -16,10 +16,10 @@ import { persistStore } from 'redux-persist';
 // Components
 import App from './App';
 
-// 개발용
+// For development
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-// Redux-saga 미들웨어
+// Redux-saga middleware
 const sagaMiddleware = createSagaMiddleware();
 // Redux store
 // TODO: deprecated createStore()
