@@ -187,7 +187,12 @@ export const ProblemArticle = ({
         <ProblemArticleParagraphTitle>
           그룹 내 다른 사용자의 풀이
         </ProblemArticleParagraphTitle>
-        <div>
+        <ProblemArticleParagraphDescription>
+          <div className="disclaimer">
+            공사 중입니다. 그룹 기능이 추가되면 제공될 예정입니다.
+          </div>
+        </ProblemArticleParagraphDescription>
+        {/* <div>
           {!!problem.solve ? (
             problem.solve.group && problem.solve.group.length != 0 ? (
               problem.solve.group.map((item) => {
@@ -230,7 +235,7 @@ export const ProblemArticle = ({
               풀이를 확인하려면 <Link href="/login">로그인</Link>하세요.
             </div>
           )}
-        </div>
+        </div> */}
       </ProblemArticleBlock>
     </ArticleWrapper>
   );

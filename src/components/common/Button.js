@@ -3,13 +3,14 @@
  */
 // React core
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // Styles
 import { Logo, StyledBurger } from '../../styles/common/Button';
 import {
   buttonColor,
   mainTextColor,
   objectLevelTwoColor,
+  paginationColor,
 } from '../../styles/theme';
 
 // 기본 버튼
@@ -46,6 +47,17 @@ export const HoverToUnderlineButton = styled(RawButton)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+// 페이지네이션 버튼
+export const PaginationButton = styled(Button)`
+  ${(props) =>
+    props.enabled &&
+    css`
+      ${paginationColor}
+    `}
+  margin: 0rem 0.5rem;
+  padding: 0.5rem;
 `;
 
 // 항상 밑줄이 표시되는 버튼
@@ -87,4 +99,6 @@ export const Burger = ({ open, setOpen }) => {
 };
 
 // 로고 버튼
-export const LogoButton = ({ title }) => <Logo>{title}</Logo>;
+export const LogoButton = ({ title, ...props }) => (
+  <Logo {...props}>{title}</Logo>
+);

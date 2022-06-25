@@ -93,6 +93,21 @@ export const buttonColor = theme('theme', {
   `,
 });
 
+export const paginationColor = theme('theme', {
+  light: css`
+    background-color: ${palette.cyan[5]};
+    &:hover {
+      background-color: ${palette.cyan[4]};
+    }
+  `,
+  dark: css`
+    background-color: ${palette.cyan[8]};
+    &:hover {
+      background-color: ${palette.cyan[7]};
+    }
+  `,
+});
+
 export const footerColor = theme('theme', {
   light: palette.gray[2],
   dark: palette.gray[9],

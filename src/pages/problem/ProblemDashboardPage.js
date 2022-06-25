@@ -18,35 +18,6 @@ const ProblemDashboardPage = () => {
       <ContentArea>
         <SafeArea>
           <ProblemDashboardContainer />
-          {/* <DashboardArticle
-            title="테스트"
-            contents={[
-              <ProblemCard
-                title="제목"
-                solved={true}
-                rating={3}
-                tags={['수학', 'asdf', 'adfsfads', 'asdffds']}
-              />,
-              <ProblemCard
-                title="제목"
-                solved={true}
-                rating={3}
-                tags={['수학', 'asdf', 'adfsfads', 'asdffds']}
-              />,
-              <ProblemCard
-                title="제목"
-                solved={true}
-                rating={3}
-                tags={['수학', 'asdf', 'adfsfads', 'asdffds']}
-              />,
-              <ProblemCard
-                title="제목"
-                solved={true}
-                rating={3}
-                tags={['수학', 'asdf', 'adfsfads', 'asdffds']}
-              />,
-            ]}
-          /> */}
         </SafeArea>
       </ContentArea>
       <Footer />

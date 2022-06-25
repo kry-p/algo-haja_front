@@ -21,9 +21,9 @@ import StyledToastContainer from './components/common/Toast';
 import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
 import ProblemListPage from './pages/problem/ProblemListPage';
-import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
+// import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
 import ProblemDescriptionPage from './pages/problem/ProblemDescriptionPage';
-import TestPage from './pages/TestPage';
+// import TestPage from './pages/TestPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 // 전역 테마
@@ -32,6 +32,7 @@ import { GlobalStyle } from './styles/theme';
 
 const App = () => {
   const location = useLocation();
+  const { user } = useSelector(({ user }) => ({ user: user.user }));
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
@@ -41,10 +42,10 @@ const App = () => {
             <Route path=":type" element={<ProblemListPage />} />
             <Route path="" element={<Navigate to="/404" replace={true} />} />
           </Route>
-          <Route path="" element={<ProblemDashboardPage />} />
+          {/* <Route path="" element={<ProblemDashboardPage />} /> */}
           <Route path=":problemId" element={<ProblemDescriptionPage />} />
         </Route>
-        <Route path="/test" element={<TestPage />} />
+        {/* <Route path="/test" element={<TestPage />} /> */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />

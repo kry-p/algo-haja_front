@@ -17,20 +17,27 @@ import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
 
 import { SOLVED, TRIED } from '../../lib/constants';
 
-import { HoverToUnderlineButton } from './Button';
-import { BsArrowLeft } from 'react-icons/bs';
+import { HoverToUnderlineButton, PaginationButton } from './Button';
+import {
+  BsArrowLeft,
+  BsArrowLeftShort,
+  BsArrowRightShort,
+} from 'react-icons/bs';
 
-import Select from 'react-select';
+// import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
+import { Pagination } from './Pagination';
 
 // 문제 테이블
 export const ProblemTable = ({ title, data, loading, error }) => {
-  const [select, setSelect] = useState(0);
+  // const [select, setSelect] = useState(0);
+  const [page, setPage] = useState(0);
   const navigate = useNavigate();
+  const LIMIT = 20;
 
-  const handleChange = ({ value }) => {
-    setSelect(value);
-  };
+  // const handleChange = ({ value }) => {
+  //   setSelect(value);
+  // };
 
   if (error) {
     if (error.response && error.response.status == 404) {
@@ -61,7 +68,8 @@ export const ProblemTable = ({ title, data, loading, error }) => {
           </HoverToUnderlineButton>
         </div>
         <ArticleTitle>{title}</ArticleTitle>
-        <div
+        {/* 그룹 기능 구현 시 활성화 */}
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'flex-end',
@@ -80,7 +88,7 @@ export const ProblemTable = ({ title, data, loading, error }) => {
               />
             </>
           )}
-        </div>
+        </div> */}
         <RoundedCornerBlock>
           <ProblemTableHeader>
             <div />
@@ -100,39 +108,44 @@ export const ProblemTable = ({ title, data, loading, error }) => {
               <CombinedTableItem>문제가 없습니다.</CombinedTableItem>
             </ProblemTableItem>
           ) : (
-            data.map((attribute, index) => {
-              return (
-                <Fragment key={index}>
-                  <ProblemTableItem odd={index % 2 != 0}>
-                    <div
-                      style={{
-                        width: '65%',
-                        display: 'flex',
-                        alignContent: 'center',
-                        justifyContent: 'space-between',
-                        borderRadius: '0',
-                      }}
-                    >
-                      <SolvedacRatingBadge rating={attribute.solvedacTier} />
+            data
+              .slice(page * LIMIT, (page + 1) * LIMIT)
+              .map((attribute, index) => {
+                return (
+                  <Fragment key={index}>
+                    <ProblemTableItem odd={index % 2 != 0}>
                       <div
                         style={{
+                          width: '65%',
                           display: 'flex',
-                          alignItems: 'center',
-                          paddingLeft: '0.5rem',
+                          alignContent: 'center',
+                          justifyContent: 'space-between',
+                          borderRadius: '0',
                         }}
                       >
+                        <SolvedacRatingBadge rating={attribute.solvedacTier} />
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            paddingLeft: '0.5rem',
+                          }}
+                        >
+                          <TableItemLink
+                            href={`/problem/${attribute.problemId}`}
+                          >
+                            {attribute.problemId}
+                          </TableItemLink>
+                        </div>
+                      </div>
+                      <div>
                         <TableItemLink href={`/problem/${attribute.problemId}`}>
-                          {attribute.problemId}
+                          {attribute.problemName}
                         </TableItemLink>
                       </div>
-                    </div>
-                    <div>
-                      <TableItemLink href={`/problem/${attribute.problemId}`}>
-                        {attribute.problemName}
-                      </TableItemLink>
-                    </div>
-                    <div>
-                      <SolvedBadge
+                      <div>
+                        {/* 그룹 기능 구현 시 활성화 */}
+                        {/* <SolvedBadge
                         solved={
                           isGroup
                             ? attribute.solved.group[select][1] === SOLVED
@@ -151,36 +164,65 @@ export const ProblemTable = ({ title, data, loading, error }) => {
                             ? 'Trying'
                             : 'No try'
                           : 'N / A'}
-                      </SolvedBadge>
-                    </div>
-                    {/* {console.log(select.selectedOption)} */}
-                    <div>
-                      <SolvedBadge
-                        solved={attribute.solved.user === SOLVED}
-                        trying={attribute.solved.user === TRIED}
-                      >
-                        {attribute.solved.user === SOLVED
-                          ? 'Solved'
-                          : attribute.solved.user === TRIED
-                          ? 'Trying'
-                          : 'No try'}
-                      </SolvedBadge>
-                    </div>
-                  </ProblemTableItem>
-                  {!!attribute.tags && (
-                    <ProblemTableItem odd={index % 2 != 0} disabled={false}>
-                      <CombinedTableItem>
-                        {attribute.tags.ko.map((item) => (
-                          <CardBadge key={item}>{item}</CardBadge>
-                        ))}
-                      </CombinedTableItem>
+                      </SolvedBadge> */}
+                        <SolvedBadge solved={false} trying={false}>
+                          N / A
+                        </SolvedBadge>
+                      </div>
+                      <div>
+                        <SolvedBadge
+                          solved={attribute.solved.user === SOLVED}
+                          trying={attribute.solved.user === TRIED}
+                        >
+                          {attribute.solved.user === SOLVED
+                            ? 'Solved'
+                            : attribute.solved.user === TRIED
+                            ? 'Trying'
+                            : 'No try'}
+                        </SolvedBadge>
+                      </div>
                     </ProblemTableItem>
-                  )}
-                </Fragment>
-              );
-            })
+                    {!!attribute.tags && (
+                      <ProblemTableItem odd={index % 2 != 0} disabled={false}>
+                        <CombinedTableItem>
+                          {attribute.tags.ko.map((item) => (
+                            <CardBadge key={item}>{item}</CardBadge>
+                          ))}
+                        </CombinedTableItem>
+                      </ProblemTableItem>
+                    )}
+                  </Fragment>
+                );
+              })
           )}
         </RoundedCornerBlock>
+        <Pagination>
+          <PaginationButton
+            onClick={() => {
+              if (page > 0) setPage(page - 1);
+            }}
+          >
+            <BsArrowLeftShort />
+          </PaginationButton>
+          {[...new Array(Math.floor(data.length / LIMIT) + 1)]
+            .slice(Math.floor(page / 10) * 10, Math.floor(page / 10) * 10 + 10)
+            .map((item, index) => (
+              <PaginationButton
+                key={index}
+                onClick={() => setPage(Math.floor(page / 10) * 10 + index)}
+                enabled={Math.floor(page / 10) * 10 + index === page}
+              >
+                {Math.floor(page / 10) * 10 + index + 1}
+              </PaginationButton>
+            ))}
+          <PaginationButton
+            onClick={() => {
+              if (page < Math.floor(data.length / LIMIT)) setPage(page + 1);
+            }}
+          >
+            <BsArrowRightShort />
+          </PaginationButton>
+        </Pagination>
       </TableArticleWrapper>
     </>
   );

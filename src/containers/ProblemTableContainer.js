@@ -36,7 +36,7 @@ const ProblemTableContainer = () => {
     return () => {
       dispatch(unloadList());
     };
-  }, [dispatch]);
+  }, [user, dispatch]);
 
   return (
     <ProblemTable

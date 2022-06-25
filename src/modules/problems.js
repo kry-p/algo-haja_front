@@ -9,8 +9,8 @@ import * as problemAPI from '../lib/api/problem';
 import { takeLatest } from 'redux-saga/effects';
 
 const [READ_USERLIST, READ_USERLIST_SUCCESS, READ_USERLIST_FAILURE] =
-  createRequestActionTypes('problem/READ_USERLIST');
-const UNLOAD_LIST = 'problem/UNLOAD_LIST';
+  createRequestActionTypes('problems/READ_USERLIST');
+const UNLOAD_LIST = 'problems/UNLOAD_LIST';
 
 export const readUserList = createAction(READ_USERLIST);
 export const unloadList = createAction(UNLOAD_LIST);
@@ -27,6 +27,7 @@ export function* problemsSaga() {
 const initialState = {
   list: null,
   error: null,
+  currentPage: -1,
 };
 
 const problems = handleActions(
