@@ -1,4 +1,4 @@
-/*
+/**
  * 회원가입 및 로그인 폼
  */
 // React core
@@ -8,10 +8,10 @@ import { useNavigate } from 'react-router-dom';
 // Redux
 import { useDispatch } from 'react-redux';
 import { initializeForm } from '../../modules/auth';
-// Components
+// Component
 import { Button, LogoButton, UnderlinedButton } from '../common/Button';
 import { LoginRegisterFormInput } from '../common/Input';
-// Styles
+// Style
 import {
   AuthFormBlock,
   SuggestBlock,

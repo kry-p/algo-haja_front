@@ -1,4 +1,4 @@
-/*
+/**
  * solved.ac 티어 관련
  */
 const TIER = {

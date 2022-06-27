@@ -1,4 +1,4 @@
-/*
+/**
  * 카드
  */
 // React core
@@ -6,14 +6,14 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 // Component
 import { SolvedBadge } from './Misc';
-// Styles
+// Style
 import palette from '../../lib/palette';
 import {
   authCardBackgroundColor,
   objectLevelOneColor,
   objectLevelTwoColor,
 } from '../../styles/theme';
-// Icons
+// Icon
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 // 카드 기본형

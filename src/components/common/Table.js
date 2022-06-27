@@ -1,40 +1,55 @@
-/*
+/**
  * 테이블
  */
 // React core
-import React, { Fragment, useState } from 'react';
-// Components
+import React, { Fragment, useState, useEffect } from 'react';
+// React router
+import { useNavigate } from 'react-router-dom';
+// React-select
+// import Select from 'react-select';
+// Component
 import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
 import { TableItemLink } from './Link';
 import { CardBadge } from './Card';
-// Styles
+import { HoverToUnderlineButton, PaginationButton } from './Button';
+import { Pagination } from './Pagination';
+// Style
 import {
   ProblemTableItem,
   ProblemTableHeader,
   CombinedTableItem,
 } from '../../styles/common/Table';
 import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
-
+// Library
 import { SOLVED, TRIED } from '../../lib/constants';
-
-import { HoverToUnderlineButton, PaginationButton } from './Button';
+// Icon
 import {
   BsArrowLeft,
   BsArrowLeftShort,
   BsArrowRightShort,
 } from 'react-icons/bs';
-
-// import Select from 'react-select';
-import { useNavigate } from 'react-router-dom';
-import { Pagination } from './Pagination';
+// Hoook
+import useWindow from '../../lib/hooks/useWindow';
 
 // 문제 테이블
 export const ProblemTable = ({ title, data, loading, error }) => {
   // const [select, setSelect] = useState(0);
-  const [page, setPage] = useState(0);
-  const navigate = useNavigate();
   const LIMIT = 20;
+  const [page, setPage] = useState(0);
+  const [pageDivisor, setPageDivisor] = useState(5);
+  const [pagePivot, setPagePivot] = useState(
+    Math.floor(page / pageDivisor) * pageDivisor
+  );
+  const window = useWindow();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (window.width > 511) setPageDivisor(10);
+    else setPageDivisor(5);
+  }, [window]);
+  useEffect(() => {
+    setPagePivot(Math.floor(page / pageDivisor) * pageDivisor);
+  }, [page]);
   // const handleChange = ({ value }) => {
   //   setSelect(value);
   // };
@@ -131,15 +146,13 @@ export const ProblemTable = ({ title, data, loading, error }) => {
                             paddingLeft: '0.5rem',
                           }}
                         >
-                          <TableItemLink
-                            href={`/problem/${attribute.problemId}`}
-                          >
+                          <TableItemLink to={`/problem/${attribute.problemId}`}>
                             {attribute.problemId}
                           </TableItemLink>
                         </div>
                       </div>
                       <div>
-                        <TableItemLink href={`/problem/${attribute.problemId}`}>
+                        <TableItemLink to={`/problem/${attribute.problemId}`}>
                           {attribute.problemName}
                         </TableItemLink>
                       </div>
@@ -205,14 +218,14 @@ export const ProblemTable = ({ title, data, loading, error }) => {
             <BsArrowLeftShort />
           </PaginationButton>
           {[...new Array(Math.floor(data.length / LIMIT) + 1)]
-            .slice(Math.floor(page / 10) * 10, Math.floor(page / 10) * 10 + 10)
+            .slice(pagePivot, pagePivot + pageDivisor)
             .map((item, index) => (
               <PaginationButton
                 key={index}
-                onClick={() => setPage(Math.floor(page / 10) * 10 + index)}
-                enabled={Math.floor(page / 10) * 10 + index === page}
+                onClick={() => setPage(pagePivot + index)}
+                enabled={pagePivot + index === page}
               >
-                {Math.floor(page / 10) * 10 + index + 1}
+                {pagePivot + index + 1}
               </PaginationButton>
             ))}
           <PaginationButton

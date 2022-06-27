@@ -1,27 +1,27 @@
 /**
- * 문제 상세정보 페이지
+ * 문제풀이 등록 페이지
  */
 // React core
 import React from 'react';
 // Container
 import AppbarContainer from '../../containers/AppbarContainer';
-import ProblemArticleContainer from '../../containers/ProblemArticleContainer';
 // Component
 import Footer from '../../components/common/Footer';
-// Style
+// Styles
 import { ContentArea, SafeArea } from '../../styles/common/Area';
+import ProblemSolveSubmitContainer from '../../containers/ProblemSolveSubmitContainer';
 
-const ProblemDescriptionPage = () => {
+const ProblemSolveSubmitPage = () => {
   return (
     <>
       <AppbarContainer title="알고하자" />
       <ContentArea>
         <SafeArea>
-          <ProblemArticleContainer />
+          <ProblemSolveSubmitContainer />
         </SafeArea>
       </ContentArea>
       <Footer />
     </>
   );
 };
-export default ProblemDescriptionPage;
+export default ProblemSolveSubmitPage;

@@ -1,14 +1,15 @@
-/*
- * 상단 앱 바
+/**
+ * 상단 앱바
  */
 // React core
 import React, { useState } from 'react';
 // React Router
 import { useNavigate } from 'react-router-dom';
-// Hooks
+// Hook
 import useScroll from '../../lib/hooks/useScroll';
-// Components
+// Component
 import { Button, LogoButton, Burger, IconButton } from './Button';
+// Style
 import {
   DRAWER_WIDTH,
   HeaderBlock,
@@ -20,15 +21,10 @@ import {
   MenuMobile,
   MenuItemMobile,
 } from '../../styles/common/Appbar';
-// Icons
+// Icon
 import { MdOutlineDarkMode } from 'react-icons/md';
-
-// Menu
-const MENU = [
-  ['문제', '/problem/list/user', '푼 문제를 확인합니다.'],
-  ['그룹 (공사중)', '#', '그룹 멤버와 함께 문제를 해결합니다.'],
-  ['MY', '#', '내 정보를 봅니다.'],
-];
+// Constant
+import { MENU } from '../../lib/constants';
 
 const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
   // Hooks

@@ -7,10 +7,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
+// Component
+import AuthForm from './AuthForm';
+// Reducer
 import { changeField, initializeForm, register } from '../../modules/auth';
 import { check } from '../../modules/user';
-// Components
-import AuthForm from './AuthForm';
 
 const RegisterForm = () => {
   // Hooks

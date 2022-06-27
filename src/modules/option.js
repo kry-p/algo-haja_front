@@ -1,4 +1,4 @@
-/*
+/**
  * 웹 애플리케이션 설정
  */
 import { createAction, handleActions } from 'redux-actions';

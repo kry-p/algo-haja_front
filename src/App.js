@@ -1,4 +1,4 @@
-/*
+/**
  * App
  */
 // React core
@@ -18,14 +18,15 @@ import { AnimatePresence } from 'framer-motion';
 // react-toastify
 import StyledToastContainer from './components/common/Toast';
 // 페이지
-import NotFoundPage from './pages/NotFoundPage';
 import MainPage from './pages/MainPage';
+import NotFoundPage from './pages/NotFoundPage';
 import ProblemListPage from './pages/problem/ProblemListPage';
-// import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
 import ProblemDescriptionPage from './pages/problem/ProblemDescriptionPage';
-// import TestPage from './pages/TestPage';
+import ProblemSolveSubmitPage from './pages/problem/ProblemSolveSubmitPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+// import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
+// import TestPage from './pages/TestPage';
 // 전역 테마
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/theme';
@@ -44,6 +45,10 @@ const App = () => {
           </Route>
           {/* <Route path="" element={<ProblemDashboardPage />} /> */}
           <Route path=":problemId" element={<ProblemDescriptionPage />} />
+          <Route
+            path="submit/:problemId"
+            element={<ProblemSolveSubmitPage />}
+          />
         </Route>
         {/* <Route path="/test" element={<TestPage />} /> */}
         <Route path="/login" element={<LoginPage />} />

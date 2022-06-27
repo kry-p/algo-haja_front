@@ -1,14 +1,16 @@
-/*
+/**
  * 랜딩 페이지
  */
 // React core
 import React from 'react';
-// Components
+// Framer-motion
+import { motion, AnimatePresence } from 'framer-motion';
+// Container
+import AppbarContainer from '../containers/AppbarContainer';
+// Component
 import { ArticleTitle } from '../styles/common/Article';
 import { HoverToUnderlineButton } from '../components/common/Button';
 import Footer from '../components/common/Footer';
-// Container
-import AppbarContainer from '../containers/AppbarContainer';
 // Styles
 import { ContentArea, SafeArea } from '../styles/common/Area';
 import {
@@ -17,10 +19,9 @@ import {
   MainHeadlineTitle,
   MainHeadlineDescription,
 } from '../styles/page/Main';
+import animation from '../styles/animation/animation';
 // Icon
 import { BsArrowRight } from 'react-icons/bs';
-import { motion, AnimatePresence } from 'framer-motion';
-import animation from '../styles/animation/animation';
 
 const MainPage = () => {
   return (

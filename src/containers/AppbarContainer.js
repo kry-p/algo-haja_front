@@ -1,17 +1,19 @@
-/*
+/**
  * 앱 바 컨테이너
- * Disclaimer: Container includes Redux states.
  */
 // React core
 import React from 'react';
-// Component
-import Appbar from '../components/common/Appbar';
+// React router
+import { useNavigate } from 'react-router-dom';
 // React Redux
 import { useDispatch, useSelector } from 'react-redux';
+// React-toastify
+import { toast } from 'react-toastify';
+// Component
+import Appbar from '../components/common/Appbar';
+// Reducer
 import { toggleDarkmode } from '../modules/option';
 import { logout } from '../modules/user';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 const AppbarContainer = ({ title, fullPage }) => {
   const dispatch = useDispatch();

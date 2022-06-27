@@ -1,5 +1,5 @@
-/*
- * 인증 with Redux-saga
+/**
+ * 인증
  */
 import { createAction, handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';

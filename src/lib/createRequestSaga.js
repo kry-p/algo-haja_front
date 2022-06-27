@@ -1,4 +1,4 @@
-/*
+/**
  * Saga for API requests
  */
 import { call, put } from 'redux-saga/effects';

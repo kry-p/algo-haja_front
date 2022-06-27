@@ -1,17 +1,20 @@
+/**
+ * 문제풀이 등록 컨테이너
+ */
 // React core
 import React, { useEffect } from 'react';
 // React router
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // Redux
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { ProblemArticle } from '../components/common/Article';
+import { ProblemSubmitArticle } from '../components/common/Article';
 // Reducer
 import { readProblem, unloadProblem } from '../modules/problem';
 
-const ProblemArticleContainer = () => {
+const ProblemSolveSubmitContainer = () => {
   const { problemId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,22 +28,17 @@ const ProblemArticleContainer = () => {
   useEffect(() => {
     if (!user) {
       navigate('/login');
-      toast.error('문제 정보를 확인하려면 로그인해 주세요.');
+      toast.error('문제 풀이를 등록하려면 로그인해 주세요.');
     }
     dispatch(readProblem(problemId));
     return () => {
       dispatch(unloadProblem());
     };
   }, [dispatch, problemId]);
+
   return (
-    <ProblemArticle
-      problemId={problemId}
-      user={user}
-      problem={problem}
-      loading={loading}
-      error={error}
-    />
+    <ProblemSubmitArticle problem={problem} loading={loading} error={error} />
   );
 };
 
-export default ProblemArticleContainer;
+export default ProblemSolveSubmitContainer;

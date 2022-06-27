@@ -1,10 +1,14 @@
-/*
+/**
  * Redux root
  */
+// Redux
 import { combineReducers } from 'redux';
+// Redux-persist
 import { persistReducer } from 'redux-persist';
-import { all } from 'redux-saga/effects';
 import storage from 'redux-persist/lib/storage';
+// Redux-saga
+import { all } from 'redux-saga/effects';
+// Reducers
 import option from './option';
 import loading from './loading';
 import auth, { authSaga } from './auth';

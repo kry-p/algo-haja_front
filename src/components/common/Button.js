@@ -4,7 +4,7 @@
 // React core
 import React from 'react';
 import styled, { css } from 'styled-components';
-// Styles
+// Style
 import { Logo, StyledBurger } from '../../styles/common/Button';
 import {
   buttonColor,
@@ -51,11 +51,13 @@ export const HoverToUnderlineButton = styled(RawButton)`
 
 // 페이지네이션 버튼
 export const PaginationButton = styled(Button)`
+  background: ${objectLevelTwoColor};
   ${(props) =>
     props.enabled &&
     css`
       ${paginationColor}
     `}
+  color: ${mainTextColor};
   margin: 0rem 0.5rem;
   padding: 0.5rem;
 `;

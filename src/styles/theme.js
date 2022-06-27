@@ -126,7 +126,7 @@ export const badgeColor = theme('theme', {
     ${(props) =>
       props.solved &&
       css`
-        background-color: ${palette.cyan[5]};
+        background-color: ${palette.green[5]};
       `}
   `,
   dark: css`
@@ -141,7 +141,7 @@ export const badgeColor = theme('theme', {
     ${(props) =>
       props.solved &&
       css`
-        background-color: ${palette.cyan[7]};
+        background-color: ${palette.green[7]};
       `}
   `,
 });
@@ -431,6 +431,18 @@ export const GlobalStyle = createGlobalStyle`
 
   div {
     transition: background-color 0.3s ease-in-out;
+  }
+
+  a {
+    color: ${subTextColor};
+  }
+
+  input:focus {
+    outline: none;
+  }
+  
+  textarea:focus {
+    outline: none;
   }
 
   html {

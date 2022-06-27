@@ -1,4 +1,4 @@
-/*
+/**
  * 사용자 정보
  */
 import { createAction, handleActions } from 'redux-actions';

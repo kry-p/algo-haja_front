@@ -1,3 +1,6 @@
+/**
+ * framer-motion animations
+ */
 const animation = {
   initial: {
     transform: `translateY(5%)`,

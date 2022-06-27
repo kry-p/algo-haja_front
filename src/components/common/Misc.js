@@ -1,10 +1,10 @@
-/*
+/**
  * 기타 컴포넌트
  */
 // React core
 import React from 'react';
-// Styles
 import styled from 'styled-components';
+// Style
 import { badgeColor } from '../../styles/theme';
 // Icon
 import { AiFillStar } from 'react-icons/ai';

@@ -1,9 +1,18 @@
+/**
+ * 문제 목록 컨테이너
+ */
+// React core
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// React router
 import { useNavigate, useParams } from 'react-router-dom';
-import { ProblemTable } from '../components/common/Table';
-import { readUserList, unloadList } from '../modules/problems';
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+// React-toastify
 import { toast } from 'react-toastify';
+// Component
+import { ProblemTable } from '../components/common/Table';
+// Reducer
+import { readUserList, unloadList } from '../modules/problems';
 
 const ProblemTableContainer = () => {
   const { type } = useParams();

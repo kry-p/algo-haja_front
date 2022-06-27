@@ -1,9 +1,14 @@
+/**
+ * 토스트
+ */
+// React core
 import React from 'react';
-import { useSelector } from 'react-redux';
-
 import styled from 'styled-components';
-
+// React router
+import { useSelector } from 'react-redux';
+// Container
 import { ToastContainer } from 'react-toastify';
+// CSS
 import 'react-toastify/dist/ReactToastify.css';
 
 const StyledContainer = styled(ToastContainer)`

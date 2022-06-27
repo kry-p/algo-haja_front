@@ -1,3 +1,6 @@
+/**
+ * Article
+ */
 import styled from 'styled-components';
 import { codeHighlightColor, objectLevelThreeColor } from '../theme';
 
@@ -25,7 +28,6 @@ export const TableArticleWrapper = styled(ArticleWrapper)`
 /**
  * Title
  */
-
 export const ArticleTitle = styled.div`
   padding: 0.75rem;
   font-size: 1.5rem;

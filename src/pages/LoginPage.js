@@ -1,13 +1,14 @@
-/*
+/**
  * 로그인 페이지
  */
 // React core
 import React from 'react';
-// Components
+// Framer-motion
+import { motion, AnimatePresence } from 'framer-motion';
+// Component
 import AuthTemplate from '../components/auth/AuthTemplate';
 import LoginForm from '../components/auth/LoginForm';
-
-import { motion, AnimatePresence } from 'framer-motion';
+// Style
 import animation from '../styles/animation/animation';
 
 const LoginPage = () => {

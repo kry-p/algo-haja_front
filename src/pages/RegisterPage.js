@@ -1,9 +1,9 @@
-/*
+/**
  * 회원가입 페이지
  */
 // React core
 import React from 'react';
-// Components
+// Component
 import AuthTemplate from '../components/auth/AuthTemplate';
 import RegisterForm from '../components/auth/RegisterForm';
 

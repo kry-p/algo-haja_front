@@ -1,14 +1,14 @@
-/*
+/**
  * 회원가입 및 로그인 폼 템플릿
  */
 // React core
 import React from 'react';
-// Hooks
-import useWindow from '../../lib/hooks/useWindow';
-// Components
+// Component
 import { AuthCardBlock } from '../common/Card';
-// Styles
+// Style
 import { AuthTemplateBlock } from '../../styles/common/Auth';
+// Hook
+import useWindow from '../../lib/hooks/useWindow';
 
 const AuthTemplate = ({ children }) => {
   // Hooks

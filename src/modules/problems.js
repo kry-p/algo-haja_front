@@ -1,5 +1,5 @@
 /**
- * 문제 목록 with Redux-saga
+ * 문제 목록
  */
 import { createAction, handleActions } from 'redux-actions';
 import createRequestSaga, {

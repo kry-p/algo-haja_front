@@ -1,7 +1,7 @@
-import React from 'react';
+/**
+ * 페이지네이션
+ */
 import styled from 'styled-components';
-import palette from '../../lib/palette';
-import { objectLevelTwoColor } from '../../styles/theme';
 
 export const Pagination = styled.div`
   display: flex;

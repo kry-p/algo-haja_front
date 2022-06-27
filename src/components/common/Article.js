@@ -2,18 +2,16 @@
  * 문서 구성요소
  */
 // React core
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 // React Router
 import { useNavigate } from 'react-router-dom';
 // React-highlight
 import Highlight from 'react-highlight';
-// Toast
+// React-toastify
 import { toast } from 'react-toastify';
-// Components
+// Component
 import { Link } from './Link';
-import { HoverToUnderlineButton, UnderlinedButton } from './Button';
-import { SolvedacRatingBadge, SolvedBadge } from './Misc';
-import { CardBadge } from './Card';
+import { Button, HoverToUnderlineButton, UnderlinedButton } from './Button';
 import {
   ArticleWrapper,
   ArticleBlock,
@@ -25,16 +23,17 @@ import {
   DashboardArticleDescription,
   ProblemArticleParagraphDescription,
 } from '../../styles/common/Article';
-// Icons
+// Icon
 import { BsArrowLeft } from 'react-icons/bs';
-// Modules
-import { getSolvedacTierText } from '../../lib/solvedacTier';
-import { updateProblemInfo } from '../../lib/api/problem';
+// Module
+import { ProblemError404, ProblemTitle, ProblemDescription } from './Problem';
+import { CodeInput } from './Input';
+import { addSolve } from '../../lib/api/problem';
 
 // 문제 상세정보
 export const ProblemArticle = ({
   problemId,
-  user,
+  // user,
   problem,
   loading,
   error,
@@ -51,28 +50,7 @@ export const ProblemArticle = ({
                 <div>이전으로 돌아가기</div>
               </HoverToUnderlineButton>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div style={{ fontSize: '2rem' }}>404</div>
-            </div>
-            가져올 수 없는 문제입니다. 아래와 같은 문제가 있을 수 있습니다.
-            <ul style={{ lineHeight: '1.5rem' }}>
-              <li>• BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
-              <li>
-                • 해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을 경우{' '}
-                <Link
-                  href="#"
-                  onClick={async () => {
-                    updateProblemInfo({ problemId });
-                    toast.info(
-                      '문제 정보를 요청했습니다. 반영에는 수 분이 걸릴 수 있습니다.'
-                    );
-                  }}
-                >
-                  가져오도록 요청
-                </Link>
-                할 수 있습니다.
-              </li>
-            </ul>
+            <ProblemError404 problemId={problemId} />
           </ProblemArticleBlock>
         </ArticleWrapper>
       );
@@ -104,83 +82,37 @@ export const ProblemArticle = ({
             <div>이전으로 돌아가기</div>
           </HoverToUnderlineButton>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ fontSize: '2rem' }}>{problem.problem.problemName}</div>
-          {problem.username && (
-            <SolvedBadge solved={problem.userSolved} trying={problem.userTried}>
-              {problem.userSolved
-                ? 'Solved'
-                : problem.userTried
-                ? 'Trying'
-                : 'Not tried'}
-            </SolvedBadge>
-          )}
-        </div>
-        <div>{`#${problem.problem.problemId}`}</div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <SolvedacRatingBadge rating={problem.problem.solvedacTier} />
-          <div style={{ paddingLeft: '0.8rem', fontSize: '1.2rem' }}>
-            {getSolvedacTierText(problem.problem.solvedacTier, 'ko')}
-          </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'flex-start',
-            width: '100%',
-          }}
-        >
-          {!!problem.problem.tags.ko
-            ? problem.problem.tags.ko.map((item) => (
-                <CardBadge big key={item}>
-                  {item}
-                </CardBadge>
-              ))
-            : null}
-        </div>
+        <ProblemTitle problem={problem} />
         <ProblemArticleParagraphTitle>문제</ProblemArticleParagraphTitle>
-        <ProblemArticleParagraphDescription>
-          <div className="disclaimer">
-            주의 : 각 문제의 저작권은 BOJ에 귀속되어 있으므로 문제 내용을
-            제공하지 않습니다.
-            <br />
-            <Link
-              href={`https://acmicpc.net/problem/${problem.problem.problemId}`}
-            >
-              링크
-            </Link>
-            에서 문제 정보를 확인해 주세요.
-          </div>
-        </ProblemArticleParagraphDescription>
+        <ProblemDescription problemId={problem.problem.problemId} />
         <ProblemArticleParagraphTitle>내 풀이</ProblemArticleParagraphTitle>
         <div>
+          <div className="disclaimer" style={{ paddingBottom: '1rem' }}>
+            풀이를 추가하려면{' '}
+            <Link to={`/problem/submit/${problemId}`}>여기</Link>를 누르세요.
+          </div>
           {!!problem.solve ? (
             problem.solve.user && problem.solve.user.length != 0 ? (
               problem.solve.user.map((item, index) => {
                 return (
-                  <ProblemArticleParagraphDescription key={index}>
-                    <div>{'풀이 ' + (index + 1)}</div>
-                    <div className="solution-code">
-                      <Highlight>{item.source}</Highlight>
-                    </div>
-                  </ProblemArticleParagraphDescription>
+                  <Fragment key={index}>
+                    <ProblemArticleParagraphDescription key={index}>
+                      <div>{'풀이 ' + (index + 1)}</div>
+                      <div className="solution-code">
+                        <Highlight>{item.source}</Highlight>
+                      </div>
+                    </ProblemArticleParagraphDescription>
+                  </Fragment>
                 );
               })
             ) : (
-              <div>
-                풀이가 없습니다. <Link href="#">여기</Link>를 눌러 추가해
-                주세요.
+              <div className="disclaimer">
+                풀이가 없습니다. <Link to="#">여기</Link>를 눌러 추가해 주세요.
               </div>
             )
           ) : (
             <div>
-              풀이를 확인하려면 <Link href="/login">로그인</Link>하세요.
+              풀이를 확인하려면 <Link to="/login">로그인</Link>하세요.
             </div>
           )}
         </div>
@@ -262,6 +194,101 @@ export const DashboardArticle = ({ title, contents, more }) => {
           </UnderlinedButton>
         </MoreButtonBlock>
       </ArticleBlock>
+    </ArticleWrapper>
+  );
+};
+
+export const ProblemSubmitArticle = ({ problem, loading, error }) => {
+  const navigate = useNavigate();
+  const [code, setCode] = useState(``);
+  if (error) {
+    if (error.response && error.response.status == 404) {
+      return (
+        <ArticleWrapper>
+          <ProblemArticleBlock>
+            <div>
+              <HoverToUnderlineButton onClick={() => navigate(-1)}>
+                <BsArrowLeft size={20} />
+                <div>이전으로 돌아가기</div>
+              </HoverToUnderlineButton>
+            </div>
+            <ProblemError404 problemId={problemId} />
+          </ProblemArticleBlock>
+        </ArticleWrapper>
+      );
+    }
+  }
+
+  if (loading || !problem) {
+    return (
+      <ArticleWrapper>
+        <ProblemArticleBlock>
+          <div>
+            <HoverToUnderlineButton onClick={() => navigate(-1)}>
+              <BsArrowLeft size={20} />
+              <div>이전으로 돌아가기</div>
+            </HoverToUnderlineButton>
+          </div>
+          문제 정보를 가져오는 중입니다.
+        </ProblemArticleBlock>
+      </ArticleWrapper>
+    );
+  }
+
+  return (
+    <ArticleWrapper>
+      <ProblemArticleBlock>
+        <div>
+          <HoverToUnderlineButton onClick={() => navigate(-1)}>
+            <BsArrowLeft size={20} />
+            <div>이전으로 돌아가기</div>
+          </HoverToUnderlineButton>
+        </div>
+        <ProblemTitle problem={problem} />
+        <ProblemArticleParagraphTitle>
+          문제풀이 등록
+        </ProblemArticleParagraphTitle>
+        <ProblemArticleParagraphDescription>
+          <div className="disclaimer">
+            주의 : 알고하자는 BOJ 채점서버와 연계되지 않으므로 코드의 오류를
+            검증할 수 없습니다.
+            <br />
+            BOJ에서 AC를 받은 뒤 등록을 권장합니다.
+          </div>
+          <CodeInput code={code} onChange={setCode} />
+        </ProblemArticleParagraphDescription>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            accent
+            onClick={async () => {
+              if (code.length === 0) {
+                toast.error('내용이 없습니다.');
+                return;
+              }
+
+              try {
+                await addSolve({
+                  problemId: problem.problem.problemId,
+                  source: code,
+                });
+                toast.info('풀이가 추가되었습니다.');
+                navigate(-1);
+              } catch (err) {
+                if (err.request.status === 409)
+                  toast.error(
+                    '풀이를 추가할 수 없습니다. 동일한 풀이가 있습니다.'
+                  );
+                else
+                  toast.error(
+                    '풀이를 추가할 수 없습니다. 서버가 다운되었을 수 있습니다.'
+                  );
+              }
+            }}
+          >
+            등록하기
+          </Button>
+        </div>
+      </ProblemArticleBlock>
     </ArticleWrapper>
   );
 };

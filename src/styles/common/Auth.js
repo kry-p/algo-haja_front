@@ -1,3 +1,6 @@
+/**
+ * Authentication
+ */
 import styled from 'styled-components';
 import { errorMessageColor } from '../theme';
 

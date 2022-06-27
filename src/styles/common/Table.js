@@ -47,7 +47,7 @@ const TableHeader = styled(TableItem)`
 `;
 
 export const ProblemTableHeader = styled(TableHeader)`
-  grid-template-columns: 6rem auto 4rem 4rem;
+  grid-template-columns: 8rem auto 4rem 4rem;
 
   @media (min-width: 384px) {
     grid-template-columns: 8rem auto 4rem 4rem;
@@ -55,7 +55,7 @@ export const ProblemTableHeader = styled(TableHeader)`
 `;
 
 export const ProblemTableItem = styled(TableItem)`
-  grid-template-columns: 6rem auto 4rem 4rem;
+  grid-template-columns: 8rem auto 4rem 4rem;
 
   @media (min-width: 384px) {
     grid-template-columns: 8rem auto 4rem 4rem;

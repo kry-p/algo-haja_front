@@ -1,4 +1,4 @@
-/*
+/**
  * 로그인 폼
  */
 // React core
@@ -7,13 +7,14 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
+// React-toastify
+import { toast } from 'react-toastify';
+// Component
+import AuthForm from './AuthForm';
+// Reducer
 import { changeField, initializeForm } from '../../modules/auth';
 import { check } from '../../modules/user';
 import { login } from '../../modules/auth';
-// Components
-import AuthForm from './AuthForm';
-
-import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   // Hooks

@@ -1,4 +1,4 @@
-/*
+/**
  * 404 페이지
  * 라우팅 목록에 없는 모든 요청은 여기로 리디렉션
  */
@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import useWindow from '../lib/hooks/useWindow';
 // Container
 import AppbarContainer from '../containers/AppbarContainer';
-// Components
+// Component
 import { Button } from '../components/common/Button';
-// Styles
+// Style
 import {
   PageNotFound,
   PageTypoNotFound,
