@@ -37,5 +37,5 @@ export const ErrorMessage = styled.div`
   text-align: center;
   line-height: 200%;
 
-  transition: all 0.25s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1);
 `;

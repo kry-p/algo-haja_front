@@ -82,7 +82,7 @@ export const Drawer = styled.div`
   width: 270px;
   height: 100vh;
 
-  transition: 0.5s cubic-bezier(0.8, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.8, 0, 0.2, 1);
   background-color: ${backgroundColor};
 
   box-shadow: 0rem 0rem 0.25rem 0.125rem rgba(0, 0, 0, 0.1);
@@ -108,7 +108,7 @@ export const MenuItemDesktop = styled.button`
   background: transparent;
   border: 0px;
   font-size: medium;
-  font-family: MinSans-Medium;
+  font-family: Pretendard-Regular;
   transition: all 0.3s ease-in;
 
   &:hover {

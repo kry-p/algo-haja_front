@@ -23,11 +23,9 @@ import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
 // Library
 import { SOLVED, TRIED } from '../../lib/constants';
 // Icon
-import {
-  BsArrowLeft,
-  BsArrowLeftShort,
-  BsArrowRightShort,
-} from 'react-icons/bs';
+import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
+import { BsArrowLeftShort } from '@react-icons/all-files/bs/BsArrowLeftShort';
+import { BsArrowRightShort } from '@react-icons/all-files/bs/BsArrowRightShort';
 // Hoook
 import useWindow from '../../lib/hooks/useWindow';
 

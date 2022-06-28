@@ -5,6 +5,8 @@
 import React, { useState } from 'react';
 // React Router
 import { useNavigate } from 'react-router-dom';
+// Redux
+import { useSelector } from 'react-redux';
 // Hook
 import useScroll from '../../lib/hooks/useScroll';
 // Component
@@ -22,7 +24,8 @@ import {
   MenuItemMobile,
 } from '../../styles/common/Appbar';
 // Icon
-import { MdOutlineDarkMode } from 'react-icons/md';
+import { IoMoonOutline } from '@react-icons/all-files/io5/IoMoonOutline';
+import { IoMoon } from '@react-icons/all-files/io5/IoMoon';
 // Constant
 import { MENU } from '../../lib/constants';
 
@@ -33,6 +36,7 @@ const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
   // State
   const [drawerXPosition, setDrawerXPosition] = useState(0);
   const [open, setOpen] = useState(false);
+  const darkmode = useSelector((state) => state.option.darkmode);
 
   const toggleOpen = () => {
     setOpen(!open);
@@ -72,7 +76,7 @@ const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
                 </Button>
               )}
               <IconButton onClick={onToggleDarkmode}>
-                <MdOutlineDarkMode size={18} />
+                {darkmode ? <IoMoonOutline size={16} /> : <IoMoon size={16} />}
               </IconButton>
             </MenuDesktop>
             <Burger className="menu-mobile" open={open} setOpen={toggleOpen} />
@@ -91,7 +95,11 @@ const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
                   }}
                 >
                   <IconButton onClick={onToggleDarkmode}>
-                    <MdOutlineDarkMode size={18} />
+                    {darkmode ? (
+                      <IoMoonOutline size={16} />
+                    ) : (
+                      <IoMoon size={16} />
+                    )}
                   </IconButton>
                 </div>
                 <div

@@ -24,7 +24,7 @@ import {
   ProblemArticleParagraphDescription,
 } from '../../styles/common/Article';
 // Icon
-import { BsArrowLeft } from 'react-icons/bs';
+import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
 // Module
 import { ProblemError404, ProblemTitle, ProblemDescription } from './Problem';
 import { CodeInput } from './Input';
@@ -87,27 +87,32 @@ export const ProblemArticle = ({
         <ProblemDescription problemId={problem.problem.problemId} />
         <ProblemArticleParagraphTitle>내 풀이</ProblemArticleParagraphTitle>
         <div>
-          <div className="disclaimer" style={{ paddingBottom: '1rem' }}>
-            풀이를 추가하려면{' '}
-            <Link to={`/problem/submit/${problemId}`}>여기</Link>를 누르세요.
-          </div>
           {!!problem.solve ? (
             problem.solve.user && problem.solve.user.length != 0 ? (
-              problem.solve.user.map((item, index) => {
-                return (
-                  <Fragment key={index}>
-                    <ProblemArticleParagraphDescription key={index}>
-                      <div>{'풀이 ' + (index + 1)}</div>
-                      <div className="solution-code">
-                        <Highlight>{item.source}</Highlight>
-                      </div>
-                    </ProblemArticleParagraphDescription>
-                  </Fragment>
-                );
-              })
+              <>
+                <div className="disclaimer" style={{ paddingBottom: '1rem' }}>
+                  풀이를 추가하려면{' '}
+                  <Link to={`/problem/submit/${problemId}`}>여기</Link>를
+                  누르세요.
+                </div>
+                {problem.solve.user.map((item, index) => {
+                  return (
+                    <Fragment key={index}>
+                      <ProblemArticleParagraphDescription key={index}>
+                        <div>{'풀이 ' + (index + 1)}</div>
+                        <div className="solution-code">
+                          <Highlight>{item.source}</Highlight>
+                        </div>
+                      </ProblemArticleParagraphDescription>
+                    </Fragment>
+                  );
+                })}
+              </>
             ) : (
               <div className="disclaimer">
-                풀이가 없습니다. <Link to="#">여기</Link>를 눌러 추가해 주세요.
+                풀이가 없습니다.{' '}
+                <Link to={`/problem/submit/${problemId}`}>여기</Link>를 눌러
+                추가해 주세요.
               </div>
             )
           ) : (

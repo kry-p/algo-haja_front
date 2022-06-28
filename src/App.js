@@ -33,7 +33,6 @@ import { GlobalStyle } from './styles/theme';
 
 const App = () => {
   const location = useLocation();
-  const { user } = useSelector(({ user }) => ({ user: user.user }));
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>

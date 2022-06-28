@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const StyledContainer = styled(ToastContainer)`
   .Toastify__toast {
-    font-family: MinSans-Medium;
+    font-family: Pretendard-Regular;
     line-height: 1.5rem;
   }
 `;

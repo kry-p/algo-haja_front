@@ -15,6 +15,7 @@ const LoginPage = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       <motion.div
+        key="login"
         initial={animation.initial}
         animate={animation.animate}
         exit={animation.exit}

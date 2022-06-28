@@ -43,7 +43,7 @@ const Footer = () => {
           }}
         >
           <Logo style={{ padding: 0 }}>알고하자</Logo>
-          <span style={{ fontFamily: 'MinSans-Thin' }}>
+          <span style={{ fontFamily: 'Pretendard-ExtraLight' }}>
             ⓒ 2022. kry-p{' '}
             <ExternalLink href="https://github.com/kry-p">GitHub</ExternalLink>
           </span>
@@ -57,7 +57,7 @@ const Footer = () => {
             <br />
             영도체 - 영도문화도시센터
             <br />
-            민산스 - Kim Jinseong
+            프리텐다드 - 길형진
             <br />
             D2 Coding - 네이버
           </span>

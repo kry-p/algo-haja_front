@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // Style
 import { badgeColor } from '../../styles/theme';
 // Icon
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 // Library
 import {
   getSolvedacTierColor,

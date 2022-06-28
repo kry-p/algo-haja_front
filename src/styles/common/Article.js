@@ -61,12 +61,12 @@ export const ProblemArticleParagraphDescription = styled.div`
   line-height: normal;
 
   .disclaimer .sub-title {
-    font-family: MinSans-Medium;
+    font-family: Pretendard-Regular;
     font-size: 1rem;
   }
 
   .content {
-    font-family: MinSans-Thin;
+    font-family: Pretendard-ExtraLight;
   }
 
   .solution-code {

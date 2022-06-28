@@ -16,7 +16,7 @@ export const PageNotFound = styled.div`
 export const PageTypoNotFound = styled.span`
   padding-bottom: 1.5rem;
   color: ${mainTextColor};
-  font-family: 'MinSans-Thin';
+  font-family: Pretendard-ExtraLight;
   font-size: 6rem;
   user-select: none;
   @media (min-width: 512px) {
@@ -43,8 +43,6 @@ export const PageStyleNotFound = styled.div`
 
   width: 100%;
   height: 100%;
-
-  font-family: 'MinSans-Medium';
 `;
 
 export const PageDescriptionNotFound = styled.span`

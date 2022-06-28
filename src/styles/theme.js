@@ -390,41 +390,42 @@ export const GlobalStyle = createGlobalStyle`
   ${reset}
   @font-face {
     font-family: "Yeongdo-Regular";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/Yeongdo-Rg.woff") format("woff");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "MinSans-Thin";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff") format("woff");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "MinSans-Medium";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff") format("woff");
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/Yeongdo/Yeongdo.woff2") format("woff");
     font-display: swap;
   }
 
   @font-face {
     font-family: 'D2Coding';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff')
-      format('woff');
+    src: url('https://cdn.jsdelivr.net/gh/Joungkyun/font-d2coding@1.3.2/D2Coding.woff2')
+      format('woff2');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Pretendard-ExtraLight";
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff2') format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Pretendard-Regular";
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff2') format('woff2');
     font-display: swap;
   }
 
   body {
     padding: 0;
     margin: 0;
-    font-family: MinSans-Medium, -apple-system, sans-serif;
+    font-family: Pretendard-Regular, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
     background-color: ${(props) =>
       props.dark ? palette.gray[10] : palette.gray[0]};
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[10])};
+    transition: background-color 0.3s ease-in-out;
   }
 
   button {
-    font-family: MinSans-Medium;
+    font-family: Pretendard-Regular;
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[10])};
     transition: background-color 0.3s ease-in-out;
   }
@@ -447,10 +448,6 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
-  }
-
-  input {
-    font-family: MinSans-Medium;
   }
 
   img {

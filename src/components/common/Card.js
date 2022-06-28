@@ -14,8 +14,8 @@ import {
   objectLevelTwoColor,
 } from '../../styles/theme';
 // Icon
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-
+import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
+import { AiOutlineStar } from '@react-icons/all-files/ai/AiOutlineStar';
 // 카드 기본형
 export const Card = styled.div`
   display: flex;
@@ -67,7 +67,7 @@ export const CardBadge = styled.div`
 export const ProblemCardBlock = styled(Card)`
   width: 100%;
   height: 8.5rem;
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   .category {
     display: flex;
@@ -93,7 +93,7 @@ export const AuthCardBlock = styled(Card)`
 
   backdrop-filter: blur(10px);
 
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   @media (min-width: 320px) {
     width: 15rem;
   }

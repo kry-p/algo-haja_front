@@ -24,7 +24,7 @@ export const RawButton = styled.button`
   background: transparent;
 
   font-size: 0.9rem;
-  font-family: MinSans-Medium;
+  font-family: Pretendard-Regular;
 
   user-select: none;
 `;
