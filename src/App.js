@@ -25,6 +25,7 @@ import ProblemDescriptionPage from './pages/problem/ProblemDescriptionPage';
 import ProblemSolveSubmitPage from './pages/problem/ProblemSolveSubmitPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import UserManagementPage from './pages/UserManagementPage';
 // import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
 // import TestPage from './pages/TestPage';
 // 전역 테마
@@ -50,6 +51,10 @@ const App = () => {
           />
         </Route>
         {/* <Route path="/test" element={<TestPage />} /> */}
+        <Route path="/mypage">
+          <Route path="/mypage/modify" element={<UserManagementPage />} />
+          <Route path="" element={<Navigate to="/404" replace={true} />} />
+        </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />

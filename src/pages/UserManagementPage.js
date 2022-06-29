@@ -1,190 +1,31 @@
-/**
- * 테스트용 페이지
- * 각종 컴포넌트를 만들고 의도한 대로 작동하는지 테스트하는 페이지입니다.
- *
- * SafeArea 안에 테스트하고자 하는 요소를 삽입하면 됩니다.
- */
 // React core
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
 // Container
 import AppbarContainer from '../containers/AppbarContainer';
 // Component
 import Footer from '../components/common/Footer';
-// Styles
+import { Button } from '../components/common/Button';
+// Style
 import { ContentArea, SafeArea } from '../styles/common/Area';
+import Input from '../styles/common/Input';
+import {
+  ContentWrapper,
+  Settings,
+  SettingsTitle,
+  SettingsSubtitle,
+  SettingsItem,
+  SettingsDescription,
+  MenuWrapper,
+  MenuItem,
+  MenuItemContent,
+  SubmitArea,
+} from '../styles/page/Settings';
 // Constant
 import { TITLE } from '../lib/constants';
-import {
-  objectLevelOneColor,
-  objectLevelTwoColor,
-  objectLevelThreeColor,
-  subTextColor,
-} from '../styles/theme';
-import Input from '../styles/common/Input';
-import { Button } from '../components/common/Button';
-
+// Icon
 import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
 import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
 import { AiOutlineGithub } from '@react-icons/all-files/ai/AiOutlineGithub';
-
-const ContentWrapper = styled.div`
-  display: grid;
-  gap: 1rem;
-
-  @media (max-width: 511px) {
-    grid-template-rows: 1fr auto;
-  }
-
-  @media (min-width: 512px) {
-    align-items: start;
-    grid-template-columns: 6rem auto;
-  }
-
-  @media (min-width: 768px) {
-    grid-template-columns: 16rem auto;
-  }
-`;
-
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: ${objectLevelOneColor};
-  border: 1px solid ${objectLevelThreeColor};
-  border-radius: 1rem;
-  align-items: center;
-  overflow: hidden;
-
-  ${(props) =>
-    props.left &&
-    css`
-      margin: 0rem 1rem;
-
-      div:nth-child(2n) {
-        background: ${objectLevelTwoColor};
-      }
-
-      div {
-        &:hover {
-          background: ${objectLevelThreeColor};
-        }
-      }
-
-      @media (min-width: 512px) {
-        margin: 0rem 0rem 1rem 1rem;
-      }
-    `}
-
-  ${(props) =>
-    props.right &&
-    css`
-      margin: 0rem 1rem;
-      @media (min-width: 512px) {
-        margin: 0rem 1rem 1rem 0rem;
-      }
-    `}
-`;
-
-const MenuItem = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 4rem;
-  width: 100%;
-`;
-
-const Settings = styled.div`
-  display: grid;
-  gap: 1.5rem;
-  padding: 2rem 0rem;
-  width: calc(100% - 2rem);
-`;
-
-const SettingsItem = styled.div`
-  display: grid;
-  gap: 0.5rem;
-  align-items: start;
-
-  @media (min-width: 512px) {
-    grid-template-columns: 6rem auto;
-  }
-
-  .title {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    font-size: 1rem;
-  }
-`;
-
-const SettingsTitle = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-
-  font-size: larger;
-`;
-
-const SettingsSubtitle = styled.div`
-  padding: 0.5rem 0rem;
-  font-size: 0.9rem;
-  color: ${subTextColor};
-`;
-
-const SettingsDescription = styled.div`
-  display: grid;
-  grid-template-columns: auto 4rem;
-  gap: 1rem;
-  width: 100%;
-
-  ${(props) =>
-    props.xlarge &&
-    css`
-      width: 100%;
-      grid-template-columns: auto;
-
-      @media (min-width: 384px) {
-        width: 320px;
-      }
-    `}
-
-  ${(props) =>
-    props.large &&
-    css`
-      width: 15rem;
-      @media (min-width: 320px) {
-        width: 16rem;
-      }
-    `}
-
-  ${(props) =>
-    props.medium &&
-    css`
-      width: 12.5rem;
-      @media (min-width: 320px) {
-        width: 14rem;
-      }
-    `}
-      
-
-    ${(props) =>
-    props.small &&
-    css`
-      width: 10rem;
-      @media (min-width: 320px) {
-        width: 12rem;
-      }
-    `}
-`;
-
-const SubmitArea = styled.div`
-  display: flex;
-  justify-content: flex-start;
-
-  width: 100%;
-`;
 
 const PrimitiveInfoPage = () => (
   <Settings>
@@ -287,28 +128,14 @@ const PersonalGitPage = () => (
   </Settings>
 );
 
-const MenuItemContent = styled.div`
-  display: grid;
-  grid-template-columns: 5rem auto;
-  justify-items: center;
-  align-items: center;
-  width: 100%;
-
-  @media (min-width: 512px) and (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
-
-  .text {
-    justify-self: start;
-    @media (min-width: 512px) and (max-width: 767px) {
-      display: none;
-    }
-  }
-`;
-
-const TestPage = () => {
+const UserManagementPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const pages = [<PrimitiveInfoPage />, <BojPage />, <PersonalGitPage />];
+  const menus = [
+    { text: '기본 정보', icon: <AiOutlineUser size={24} /> },
+    { text: 'BOJ 연동', icon: <AiOutlineCheck size={24} /> },
+    { text: '개인 Git 저장소', icon: <AiOutlineGithub size={24} /> },
+  ];
   return (
     <>
       <AppbarContainer title={TITLE} />
@@ -319,7 +146,20 @@ const TestPage = () => {
           </div>
           <ContentWrapper>
             <MenuWrapper left>
-              <MenuItem onClick={() => setCurrentPage(0)}>
+              {menus.map((menu, index) => (
+                <MenuItem
+                  key={index}
+                  selected={currentPage === index}
+                  onClick={() => setCurrentPage(index)}
+                >
+                  <MenuItemContent>
+                    {menu.icon}
+                    <span className="text">{menu.text}</span>
+                  </MenuItemContent>
+                </MenuItem>
+              ))}
+
+              {/* <MenuItem onClick={() => setCurrentPage(0)}>
                 <MenuItemContent>
                   <AiOutlineUser size={24} />
                   <span className="text">기본 정보</span>
@@ -336,7 +176,7 @@ const TestPage = () => {
                   <AiOutlineGithub size={24} />
                   <span className="text"> 개인 Git 저장소</span>
                 </MenuItemContent>
-              </MenuItem>
+              </MenuItem> */}
             </MenuWrapper>
             <MenuWrapper right>{pages[currentPage]}</MenuWrapper>
           </ContentWrapper>
@@ -346,4 +186,4 @@ const TestPage = () => {
     </>
   );
 };
-export default TestPage;
+export default UserManagementPage;

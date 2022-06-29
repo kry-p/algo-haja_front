@@ -11,12 +11,17 @@ import { initializeForm } from '../../modules/auth';
 // Component
 import { Button, LogoButton, UnderlinedButton } from '../common/Button';
 import { LoginRegisterFormInput } from '../common/Input';
+import { HoverToUnderlineButton } from '../common/Button';
 // Style
 import {
   AuthFormBlock,
   SuggestBlock,
   ErrorMessage,
 } from '../../styles/common/Auth';
+// Icon
+import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
+// Constant
+import { TITLE } from '../../lib/constants';
 
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   // Hooks
@@ -36,13 +41,24 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   return (
     <AuthFormBlock>
       <div
+        style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}
+      >
+        <HoverToUnderlineButton
+          style={{ padding: '0.5rem 1rem 0.5rem 0rem' }}
+          onClick={() => navigate('/')}
+        >
+          <BsArrowLeft size={20} />
+          <div>홈으로</div>
+        </HoverToUnderlineButton>
+      </div>
+      <div
         style={{
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
         }}
       >
-        <LogoButton title="알고하자" />
+        <LogoButton title={TITLE} />
       </div>
       <div>{type === 'login' ? '로그인' : '회원가입'}</div>
       <form

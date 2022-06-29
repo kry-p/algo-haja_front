@@ -3,8 +3,12 @@
  */
 // React core
 import React from 'react';
+// React router
+import { useNavigate } from 'react-router-dom';
 // Framer-motion
 import { motion, AnimatePresence } from 'framer-motion';
+// React-toastify
+import { toast } from 'react-toastify';
 // Container
 import AppbarContainer from '../containers/AppbarContainer';
 // Component
@@ -22,12 +26,15 @@ import {
 import animation from '../styles/animation/animation';
 // Icon
 import { BsArrowRight } from '@react-icons/all-files/bs/BsArrowRight';
+// Constant
+import { TITLE } from '../lib/constants';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <AnimatePresence exitBeforeEnter>
-        <AppbarContainer title="알고하자" fullPage />
+        <AppbarContainer title={TITLE} fullPage />
         <motion.div
           key="main"
           initial={animation.initial}
@@ -49,7 +56,7 @@ const MainPage = () => {
               </span>
             </MainHeadlineDescription>
           </MainHeadline>
-          <ContentArea>
+          <ContentArea ignoreMinHeight>
             <SafeArea>
               <div
                 style={{
@@ -77,13 +84,14 @@ const MainPage = () => {
                   </div>
                   <HoverToUnderlineButton
                     style={{ padding: '1.5rem 0.75rem', fontSize: '1rem' }}
+                    onClick={() => navigate('/problem/list/user')}
                   >
                     <BsArrowRight />
                     <div style={{ paddingLeft: '1rem' }}>내가 푼 문제 보기</div>
                   </HoverToUnderlineButton>
                 </div>
                 <div>
-                  <ArticleTitle>스터디 그룹</ArticleTitle>
+                  <ArticleTitle>스터디 그룹 (공사중)</ArticleTitle>
                   <div
                     style={{
                       paddingLeft: '0.8rem',
@@ -99,6 +107,7 @@ const MainPage = () => {
                   </div>
                   <HoverToUnderlineButton
                     style={{ padding: '1.5rem 0.75rem', fontSize: '1rem' }}
+                    onClick={() => toast.info('서비스 준비 중입니다.')}
                   >
                     <BsArrowRight />
                     <div style={{ paddingLeft: '1rem' }}>그룹 만들기</div>

@@ -15,7 +15,7 @@ const TableItem = styled.div`
   width: 100%;
   height: 3rem;
 
-  transition: height 0.25s ease-in-out;
+  transition: height 0.3s ease-in-out;
   user-select: none;
   ${(props) =>
     props.odd &&

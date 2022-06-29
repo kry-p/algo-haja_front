@@ -26,31 +26,37 @@ import { SOLVED, TRIED } from '../../lib/constants';
 import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
 import { BsArrowLeftShort } from '@react-icons/all-files/bs/BsArrowLeftShort';
 import { BsArrowRightShort } from '@react-icons/all-files/bs/BsArrowRightShort';
-// Hoook
-import useWindow from '../../lib/hooks/useWindow';
 
 // 문제 테이블
-export const ProblemTable = ({ title, data, loading, error }) => {
+export const ProblemTable = ({
+  title,
+  data,
+  loading,
+  error,
+  location,
+  currentPage,
+}) => {
   // const [select, setSelect] = useState(0);
   const LIMIT = 20;
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(currentPage - 1);
   const [pageDivisor, setPageDivisor] = useState(5);
   const [pagePivot, setPagePivot] = useState(
     Math.floor(page / pageDivisor) * pageDivisor
   );
-  const window = useWindow();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (window.width > 511) setPageDivisor(10);
-    else setPageDivisor(5);
-  }, [window]);
-  useEffect(() => {
     setPagePivot(Math.floor(page / pageDivisor) * pageDivisor);
   }, [page]);
+
   // const handleChange = ({ value }) => {
   //   setSelect(value);
   // };
+
+  const onChangePage = (page) => {
+    navigate(`${location}?page=${page + 1}`);
+    setPage(page);
+  };
 
   if (error) {
     if (error.response && error.response.status == 404) {
@@ -210,7 +216,7 @@ export const ProblemTable = ({ title, data, loading, error }) => {
         <Pagination>
           <PaginationButton
             onClick={() => {
-              if (page > 0) setPage(page - 1);
+              if (page > 0) onChangePage(page - 1);
             }}
           >
             <BsArrowLeftShort />
@@ -220,7 +226,7 @@ export const ProblemTable = ({ title, data, loading, error }) => {
             .map((item, index) => (
               <PaginationButton
                 key={index}
-                onClick={() => setPage(pagePivot + index)}
+                onClick={() => onChangePage(pagePivot + index)}
                 enabled={pagePivot + index === page}
               >
                 {pagePivot + index + 1}
@@ -228,7 +234,8 @@ export const ProblemTable = ({ title, data, loading, error }) => {
             ))}
           <PaginationButton
             onClick={() => {
-              if (page < Math.floor(data.length / LIMIT)) setPage(page + 1);
+              if (page < Math.floor(data.length / LIMIT))
+                onChangePage(page + 1);
             }}
           >
             <BsArrowRightShort />

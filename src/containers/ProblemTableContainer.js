@@ -4,7 +4,7 @@
 // React core
 import React, { useEffect } from 'react';
 // React router
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 // React-toastify
@@ -13,11 +13,16 @@ import { toast } from 'react-toastify';
 import { ProblemTable } from '../components/common/Table';
 // Reducer
 import { readUserList, unloadList } from '../modules/problems';
+// Query String
+import qs from 'qs';
 
 const ProblemTableContainer = () => {
-  const { type } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { type } = useParams();
+  const { page } = qs.parse(location.search, { ignoreQueryPrefix: true });
+
   const { problems, error, loading } = useSelector(({ problems, loading }) => ({
     problems: problems.list,
     error: problems.error,
@@ -53,6 +58,8 @@ const ProblemTableContainer = () => {
       data={problems}
       loading={loading}
       error={error}
+      location={location.pathname}
+      currentPage={page ? page : 1}
     />
   );
 };

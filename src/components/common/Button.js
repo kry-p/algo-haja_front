@@ -10,7 +10,7 @@ import {
   buttonColor,
   mainTextColor,
   objectLevelTwoColor,
-  paginationColor,
+  accentColor,
 } from '../../styles/theme';
 
 // 기본 버튼
@@ -55,7 +55,7 @@ export const PaginationButton = styled(Button)`
   ${(props) =>
     props.enabled &&
     css`
-      ${paginationColor}
+      ${accentColor}
     `}
   color: ${mainTextColor};
   margin: 0rem 0.5rem;

@@ -9,6 +9,8 @@ import { ExternalLink } from './Link';
 // Style
 import { footerColor } from '../../styles/theme';
 import { Logo } from '../../styles/common/Button';
+// Constant
+import { TITLE } from '../../lib/constants';
 
 const StyledFooter = styled.div`
   display: fixed;
@@ -19,7 +21,6 @@ const StyledFooter = styled.div`
   background-color: ${footerColor};
   box-shadow: 0rem 0rem 0.25rem 0.125rem rgba(0, 0, 0, 0.1);
 `;
-
 const Footer = () => {
   return (
     <StyledFooter>
@@ -42,7 +43,7 @@ const Footer = () => {
             alignItems: 'flex-start',
           }}
         >
-          <Logo style={{ padding: 0 }}>알고하자</Logo>
+          <Logo style={{ padding: 0 }}>{TITLE}</Logo>
           <span style={{ fontFamily: 'Pretendard-ExtraLight' }}>
             ⓒ 2022. kry-p{' '}
             <ExternalLink href="https://github.com/kry-p">GitHub</ExternalLink>

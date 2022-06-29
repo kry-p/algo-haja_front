@@ -1,3 +1,6 @@
+// 타이틀
+export const TITLE = '알고하자 α';
+
 // 문제 풀이 여부
 export const NO_TRY = 0;
 export const TRIED = 1;

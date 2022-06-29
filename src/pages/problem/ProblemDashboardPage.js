@@ -10,11 +10,13 @@ import ProblemDashboardContainer from '../../containers/ProblemDashboardContaine
 import Footer from '../../components/common/Footer';
 // Styles
 import { ContentArea, SafeArea } from '../../styles/common/Area';
+// Constant
+import { TITLE } from '../../lib/constants';
 
 const ProblemDashboardPage = () => {
   return (
     <>
-      <AppbarContainer title="알고하자" />
+      <AppbarContainer title={TITLE} />
       <ContentArea>
         <SafeArea>
           <ProblemDashboardContainer />

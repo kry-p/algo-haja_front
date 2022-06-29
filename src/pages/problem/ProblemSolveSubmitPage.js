@@ -10,11 +10,13 @@ import Footer from '../../components/common/Footer';
 // Styles
 import { ContentArea, SafeArea } from '../../styles/common/Area';
 import ProblemSolveSubmitContainer from '../../containers/ProblemSolveSubmitContainer';
+// Constant
+import { TITLE } from '../../lib/constants';
 
 const ProblemSolveSubmitPage = () => {
   return (
     <>
-      <AppbarContainer title="알고하자" />
+      <AppbarContainer title={TITLE} />
       <ContentArea>
         <SafeArea>
           <ProblemSolveSubmitContainer />

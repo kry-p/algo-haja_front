@@ -10,11 +10,13 @@ import ProblemTableContainer from '../../containers/ProblemTableContainer';
 import Footer from '../../components/common/Footer';
 // Style
 import { ContentArea, SafeArea } from '../../styles/common/Area';
+// Constant
+import { TITLE } from '../../lib/constants';
 
 const ProblemListPage = () => {
   return (
     <>
-      <AppbarContainer title="알고하자" />
+      <AppbarContainer title={TITLE} />
       <ContentArea>
         <SafeArea>
           <ProblemTableContainer />

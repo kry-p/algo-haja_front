@@ -19,6 +19,7 @@ export const HeaderBlock = styled.div`
 
 export const Spacer = styled.div`
   height: 6rem;
+  background-color: ${backgroundColor};
 `;
 
 export const AppbarBlock = styled.div`

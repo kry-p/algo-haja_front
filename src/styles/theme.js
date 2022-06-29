@@ -93,17 +93,17 @@ export const buttonColor = theme('theme', {
   `,
 });
 
-export const paginationColor = theme('theme', {
+export const accentColor = theme('theme', {
   light: css`
-    background-color: ${palette.cyan[5]};
+    background-color: ${palette.cyan[2]};
     &:hover {
-      background-color: ${palette.cyan[4]};
+      background-color: ${palette.cyan[1]};
     }
   `,
   dark: css`
-    background-color: ${palette.cyan[8]};
+    background-color: ${palette.cyan[7]};
     &:hover {
-      background-color: ${palette.cyan[7]};
+      background-color: ${palette.cyan[9]};
     }
   `,
 });
@@ -418,8 +418,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: Pretendard-Regular, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
-    background-color: ${(props) =>
-      props.dark ? palette.gray[10] : palette.gray[0]};
+    background: ${objectLevelOneColor};
     color: ${(props) => (props.dark ? palette.gray[1] : palette.gray[10])};
     transition: background-color 0.3s ease-in-out;
   }

@@ -9,6 +9,7 @@ const Input = styled.input`
 
   padding-bottom: 0.5rem;
   border: none;
+  border-radius: 0;
   border-bottom: 1px solid ${subTextColor};
 
   color: ${mainTextColor};
