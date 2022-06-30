@@ -2,7 +2,7 @@
  * Input
  */
 import styled from 'styled-components';
-import { mainTextColor, subTextColor } from '../theme';
+import { mainTextColor, objectLevelTwoColor, subTextColor } from '../theme';
 
 const Input = styled.input`
   width: 100%;
@@ -19,6 +19,10 @@ const Input = styled.input`
   outline: none;
   & + & {
     margin-top: 1rem;
+  }
+
+  &:disabled {
+    color: ${subTextColor};
   }
 `;
 

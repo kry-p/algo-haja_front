@@ -136,8 +136,9 @@ export const SettingsDescription = styled.div`
     css`
       grid-template-columns: auto;
       width: 100%;
-      @media (min-width: 384px) {
-        width: 320px;
+
+      @media (min-width: 512px) {
+        width: 80%;
       }
     `}
   ${(props) =>
@@ -164,6 +165,15 @@ export const SettingsDescription = styled.div`
         width: 12rem;
       }
     `}
+`;
+
+/**
+ * Misc.
+ */
+export const Divider = styled.div`
+  width: 100%;
+  height: 1px;
+  background: ${objectLevelThreeColor};
 `;
 
 /**
