@@ -20,6 +20,7 @@ import StyledToastContainer from './components/common/Toast';
 // 페이지
 import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage';
+import GuidePage from './pages/GuidePage';
 import ProblemListPage from './pages/problem/ProblemListPage';
 import ProblemDescriptionPage from './pages/problem/ProblemDescriptionPage';
 import ProblemSolveSubmitPage from './pages/problem/ProblemSolveSubmitPage';
@@ -28,7 +29,6 @@ import RegisterPage from './pages/RegisterPage';
 import MyInfoPage from './pages/MyInfoPage';
 import UserdataModifyPage from './pages/UserdataModifyPage';
 // import ProblemDashboardPage from './pages/problem/ProblemDashboardPage';
-// import TestPage from './pages/TestPage';
 // 전역 테마
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/theme';
@@ -51,13 +51,13 @@ const App = () => {
             element={<ProblemSolveSubmitPage />}
           />
         </Route>
-        {/* <Route path="/test" element={<TestPage />} /> */}
         <Route path="/mypage">
           <Route path="/mypage/modify" element={<UserdataModifyPage />} />
           <Route path="" element={<MyInfoPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/guide" element={<GuidePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AnimatePresence>

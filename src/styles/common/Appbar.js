@@ -90,7 +90,7 @@ export const Drawer = styled.div`
 
   z-index: 2;
 
-  @media (min-width: 512px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -100,7 +100,7 @@ export const MenuDesktop = styled.div`
   .item {
     margin-right: 0.5rem;
   }
-  @media (max-width: 511px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;

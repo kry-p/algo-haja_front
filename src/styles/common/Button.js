@@ -43,7 +43,7 @@ export const StyledBurger = styled.button`
     right: calc((100vw - 1024px) / 3 + 2rem);
   }
 
-  @media (min-width: 512px) {
+  @media (min-width: 768px) {
     display: none;
   }
 

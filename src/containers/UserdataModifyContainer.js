@@ -18,7 +18,7 @@ const UserdataModifyContainer = () => {
   useEffect(() => {
     if (!user) {
       navigate('/login');
-      toast.error('문제 정보를 확인하려면 로그인해 주세요.');
+      toast.error('먼저 로그인해 주세요.');
     }
     dispatch(readUser());
 

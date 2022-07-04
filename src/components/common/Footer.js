@@ -49,6 +49,10 @@ const Footer = () => {
             <ExternalLink href="https://github.com/kry-p">GitHub</ExternalLink>
           </span>
           <span>
+            알고하자는 현재 알파 버전이며, 예고 없이 기능이 추가되거나 삭제될 수
+            있습니다.
+          </span>
+          <span>
             이 웹사이트에 적용된 글꼴은 아래와 같습니다.
             <br />
             영도체 - 영도문화도시센터
