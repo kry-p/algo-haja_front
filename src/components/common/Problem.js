@@ -11,7 +11,7 @@ import { SolvedacRatingBadge, SolvedBadge } from './Misc';
 import { CardBadge } from './Card';
 import { Link, ExternalLink } from './Link';
 // Style
-import { ProblemArticleParagraphDescription } from '../../styles/common/Article';
+import { ArticleParagraphDescription } from '../../styles/common/Article';
 // Library
 import { updateProblemInfo } from '../../lib/api/problem';
 import { getSolvedacTierText } from '../../lib/solvedacTier';
@@ -76,7 +76,7 @@ export const ProblemTitle = ({ problem }) => {
 
 export const ProblemDescription = ({ problemId }) => {
   return (
-    <ProblemArticleParagraphDescription>
+    <ArticleParagraphDescription>
       <div className="disclaimer">
         주의 : 각 문제의 저작권은 BOJ에 귀속되어 있으므로 문제 내용을 제공하지
         않습니다.
@@ -106,7 +106,7 @@ export const ProblemDescription = ({ problemId }) => {
         </Link>
         를 요청할 수 있습니다.
       </div>
-    </ProblemArticleParagraphDescription>
+    </ArticleParagraphDescription>
   );
 };
 
@@ -117,10 +117,16 @@ export const ProblemError404 = ({ problemId }) => {
         <ProblemTitleBlockText>404</ProblemTitleBlockText>
       </ProblemTitleBlock>
       가져올 수 없는 문제입니다. 아래와 같은 문제가 있을 수 있습니다.
-      <ul style={{ lineHeight: '1.5rem' }}>
-        <li>• BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
+      <ul
+        style={{
+          lineHeight: '1.5rem',
+          listStyleType: 'disc',
+          paddingLeft: '1rem',
+        }}
+      >
+        <li>BOJ 문제 목록에 없는 문제를 잘못 요청했습니다.</li>
         <li>
-          • 해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을 경우{' '}
+          해당 문제가 가져와지지 않았습니다. 해당 문제가 BOJ에 있을 경우{' '}
           <Link
             to="#"
             onClick={async () => {

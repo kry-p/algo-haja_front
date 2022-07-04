@@ -185,36 +185,26 @@ export const headlineBackgroundFilter = theme('theme', {
   `,
 });
 
-export const toastColor = theme('theme', {
+export const resultBadgeColor = theme('theme', {
   light: css`
-    ${(props) =>
-      props.accepted &&
-      css`
-        background-color: ${palette.blue[2]};
-      `}
     ${(props) =>
       props.success &&
       css`
-        background-color: ${palette.green[2]};
+        background-color: ${palette.green[3]};
       `}
-  ${(props) =>
+    ${(props) =>
       props.failure &&
       css`
-        background-color: ${palette.red[2]};
+        background-color: ${palette.red[3]};
       `}
   `,
   dark: css`
     ${(props) =>
-      props.accepted &&
-      css`
-        background-color: ${palette.blue[6]};
-      `}
-    ${(props) =>
       props.success &&
       css`
-        background-color: ${palette.green[6]};
+        background-color: ${palette.green[7]};
       `}
-  ${(props) =>
+    ${(props) =>
       props.failure &&
       css`
         background-color: ${palette.red[6]};

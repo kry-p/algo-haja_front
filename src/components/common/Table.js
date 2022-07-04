@@ -23,10 +23,8 @@ import { ArticleTitle, TableArticleWrapper } from '../../styles/common/Article';
 // Library
 import { SOLVED, TRIED } from '../../lib/constants';
 // Icon
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
-import { BsArrowLeftShort } from '@react-icons/all-files/bs/BsArrowLeftShort';
-import { BsArrowRightShort } from '@react-icons/all-files/bs/BsArrowRightShort';
-
+import { IoArrowBack } from '@react-icons/all-files/io5/IoArrowBack';
+import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 // 문제 테이블
 export const ProblemTable = ({
   title,
@@ -82,7 +80,7 @@ export const ProblemTable = ({
       <TableArticleWrapper>
         <div>
           <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <BsArrowLeft size={20} />
+            <IoArrowBack size={20} />
             <div>이전으로 돌아가기</div>
           </HoverToUnderlineButton>
         </div>
@@ -219,7 +217,7 @@ export const ProblemTable = ({
               if (page > 0) onChangePage(page - 1);
             }}
           >
-            <BsArrowLeftShort />
+            <IoArrowBack />
           </PaginationButton>
           {[...new Array(Math.floor(data.length / LIMIT) + 1)]
             .slice(pagePivot, pagePivot + pageDivisor)
@@ -238,7 +236,7 @@ export const ProblemTable = ({
                 onChangePage(page + 1);
             }}
           >
-            <BsArrowRightShort />
+            <IoArrowForward />
           </PaginationButton>
         </Pagination>
       </TableArticleWrapper>

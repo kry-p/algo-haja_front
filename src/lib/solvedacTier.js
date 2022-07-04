@@ -3,7 +3,7 @@
  */
 const TIER = {
   ko: [
-    '난이도 정보 없음',
+    '정보 없음',
     '브론즈',
     '실버',
     '골드',
@@ -24,6 +24,7 @@ const TIER = {
   ],
 };
 const LEVEL = [5, 4, 3, 2, 1];
+const LEVEL_ROME = ['V', 'IV', 'III', 'II', 'I'];
 const BADGE_COLOR = [
   '#2D2D2D', // unrated
   '#AC5600', // bronze
@@ -47,6 +48,14 @@ export const getSolvedacTierLevel = (tierConstant) =>
     ? 'M'
     : LEVEL[(tierConstant - 1) % 5];
 
+// 로마 숫자 세부레벨
+export const getSolvedacTierRomeLevel = (tierConstant) =>
+  tierConstant == 0
+    ? '?'
+    : tierConstant == 31
+    ? 'M'
+    : LEVEL_ROME[(tierConstant - 1) % 5];
+
 // 텍스트
 export const getSolvedacTierText = (tierConstant, lang) => {
   const usingTierInfo = TIER[lang];
@@ -59,6 +68,6 @@ export const getSolvedacTierText = (tierConstant, lang) => {
     default:
       return `${
         usingTierInfo[Math.ceil(tierConstant / 5)]
-      } ${getSolvedacTierLevel(tierConstant)}`;
+      } ${getSolvedacTierRomeLevel(tierConstant)}`;
   }
 };

@@ -3,29 +3,22 @@ import React, { useState } from 'react';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { Button } from '../../common/Button';
+import { Button } from '../../../common/Button';
 // Style
-import Input from '../../../styles/common/Input';
+import Input from '../../../../styles/common/Input';
 import {
-  ContentWrapper,
   Settings,
   SettingsTitle,
   SettingsSubtitle,
   SettingsItem,
   SettingsDescription,
-  MenuWrapper,
-  MenuItem,
-  MenuItemContent,
   Divider,
   SubmitArea,
-} from '../../../styles/page/Settings';
+} from '../../../../styles/page/Mypage';
 // Icon
-import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
-import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
-import { AiOutlineGithub } from '@react-icons/all-files/ai/AiOutlineGithub';
-import { changePassword } from '../../../lib/api/user';
-
-import { PASSWORD_REGEX } from '../../../lib/constants';
+import { changePassword } from '../../../../lib/api/user';
+// Constant
+import { PASSWORD_REGEX } from '../../../../lib/constants';
 
 const PrimitiveInfo = ({ user }) => {
   const isEmailVerified = user.isEmailVerified;
@@ -148,8 +141,12 @@ const PrimitiveInfo = ({ user }) => {
                 newPasswordConfirm: '',
               });
             } catch (err) {
-              if (err.request.status == 401)
+              if (err.request.status === 401)
                 toast.error('기존 비밀번호가 올바르지 않습니다.');
+              else if (error.request.status === 400)
+                toast.error(
+                  '비밀번호는 영문, 숫자, 특수문자를 모두 포함, 8자 이상이어야 합니다.'
+                );
               else toast.error('비밀번호 변경에 실패했습니다.');
             }
           }}

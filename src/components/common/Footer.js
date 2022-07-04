@@ -49,11 +49,6 @@ const Footer = () => {
             <ExternalLink href="https://github.com/kry-p">GitHub</ExternalLink>
           </span>
           <span>
-            Baekjoon Online Judge는 주식회사{' '}
-            <ExternalLink href="https://startlink.io/">스타트링크</ExternalLink>
-            의 상표입니다.
-          </span>
-          <span>
             이 웹사이트에 적용된 글꼴은 아래와 같습니다.
             <br />
             영도체 - 영도문화도시센터

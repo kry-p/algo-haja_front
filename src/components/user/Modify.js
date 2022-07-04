@@ -6,22 +6,22 @@ import {
   MenuWrapper,
   MenuItem,
   MenuItemContent,
-} from '../../styles/page/Settings';
+} from '../../styles/page/Mypage';
 // Subpage
-import PrimitiveInfo from './page/PrimitiveInfo';
-import Boj from './page/Boj';
-import PersonalGit from './page/PersonalGit';
+import PrimitiveInfo from './page/modify/PrimitiveInfo';
+import Boj from './page/modify/Boj';
+import PersonalGit from './page/modify/PersonalGit';
 // Icon
-import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
-import { AiOutlineCheck } from '@react-icons/all-files/ai/AiOutlineCheck';
-import { AiOutlineGithub } from '@react-icons/all-files/ai/AiOutlineGithub';
+import { IoPersonOutline } from '@react-icons/all-files/io5/IoPersonOutline';
+import { IoSyncOutline } from '@react-icons/all-files/io5/IoSyncOutline';
+import { IoLogoGithub } from '@react-icons/all-files/io5/IoLogoGithub';
 
 const Modify = ({ user, loading, error }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const menus = [
-    { text: '기본 정보', icon: <AiOutlineUser size={24} /> },
-    { text: 'BOJ 연동', icon: <AiOutlineCheck size={24} /> },
-    { text: '개인 Git 저장소', icon: <AiOutlineGithub size={24} /> },
+    { text: '기본 정보', icon: <IoPersonOutline size={24} /> },
+    { text: 'BOJ 연동', icon: <IoSyncOutline size={24} /> },
+    { text: '개인 Git 저장소', icon: <IoLogoGithub size={24} /> },
   ];
 
   if (error) {

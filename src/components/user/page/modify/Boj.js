@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { Button } from '../../common/Button';
+import { Button } from '../../../common/Button';
 // Style
-import Input from '../../../styles/common/Input';
+import Input from '../../../../styles/common/Input';
 import {
   Settings,
   SettingsTitle,
@@ -13,9 +13,9 @@ import {
   SettingsItem,
   SettingsDescription,
   SubmitArea,
-} from '../../../styles/page/Settings';
-import { changeBojId } from '../../../lib/api/user';
-import { BOJID_REGEX } from '../../../lib/constants';
+} from '../../../../styles/page/Mypage';
+import { changeBojId } from '../../../../lib/api/user';
+import { BOJID_REGEX } from '../../../../lib/constants';
 
 const Boj = ({ user }) => {
   const bojId = user.userData.bojId;
@@ -82,7 +82,7 @@ const Boj = ({ user }) => {
               const errorCode = err.request.status;
               const errorMessage =
                 errorCode === 400
-                  ? '잘못된 요청입니다.'
+                  ? 'ID 형식이 올바르지 않습니다. 3 ~ 20자의 영문, 숫자, 밑줄(_)만 허용됩니다.'
                   : errorCode === 401
                   ? '비밀번호가 올바르지 않습니다.'
                   : '사용자 정보가 올바르지 않습니다. 관리자에게 문의해 주세요.';

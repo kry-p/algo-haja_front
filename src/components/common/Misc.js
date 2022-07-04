@@ -5,7 +5,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // Style
-import { badgeColor } from '../../styles/theme';
+import { badgeColor, resultBadgeColor } from '../../styles/theme';
 // Icon
 import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
 // Library
@@ -65,4 +65,17 @@ export const RoundedCornerBlock = styled.div`
 
   border-radius: 8px;
   overflow: hidden;
+`;
+
+// 연동 여부 뱃지
+export const ResultBadge = styled.div`
+  ${resultBadgeColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  border-radius: 0.75rem;
 `;

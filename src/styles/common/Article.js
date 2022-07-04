@@ -33,12 +33,12 @@ export const ArticleTitle = styled.div`
   font-size: 1.5rem;
 `;
 
-export const DashboardArticleTitle = styled(ArticleTitle)`
+export const DashboardTitle = styled(ArticleTitle)`
   font-size: 1.3rem;
   padding-bottom: 2rem;
 `;
 
-export const ProblemArticleParagraphTitle = styled.div`
+export const ArticleParagraphTitle = styled.div`
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
@@ -49,12 +49,12 @@ export const ProblemArticleParagraphTitle = styled.div`
 /**
  * Description
  */
-export const DashboardArticleDescription = styled.div`
+export const DashboardDescription = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export const ProblemArticleParagraphDescription = styled.div`
+export const ArticleParagraphDescription = styled.div`
   display: grid;
   gap: 1rem;
 

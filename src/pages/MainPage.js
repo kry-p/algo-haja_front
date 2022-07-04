@@ -25,7 +25,7 @@ import {
 } from '../styles/page/Main';
 import animation from '../styles/animation/animation';
 // Icon
-import { BsArrowRight } from '@react-icons/all-files/bs/BsArrowRight';
+import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
 // Constant
 import { TITLE } from '../lib/constants';
 
@@ -86,7 +86,7 @@ const MainPage = () => {
                     style={{ padding: '1.5rem 0.75rem', fontSize: '1rem' }}
                     onClick={() => navigate('/problem/list/user')}
                   >
-                    <BsArrowRight />
+                    <IoArrowForward />
                     <div style={{ paddingLeft: '1rem' }}>내가 푼 문제 보기</div>
                   </HoverToUnderlineButton>
                 </div>
@@ -109,7 +109,7 @@ const MainPage = () => {
                     style={{ padding: '1.5rem 0.75rem', fontSize: '1rem' }}
                     onClick={() => toast.info('서비스 준비 중입니다.')}
                   >
-                    <BsArrowRight />
+                    <IoArrowForward />
                     <div style={{ paddingLeft: '1rem' }}>그룹 만들기</div>
                   </HoverToUnderlineButton>
                 </div>

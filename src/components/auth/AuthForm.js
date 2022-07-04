@@ -19,7 +19,7 @@ import {
   ErrorMessage,
 } from '../../styles/common/Auth';
 // Icon
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
+import { IoArrowBackCircle } from '@react-icons/all-files/io5/IoArrowBackCircle';
 // Constant
 import { TITLE } from '../../lib/constants';
 
@@ -47,7 +47,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           style={{ padding: '0.5rem 1rem 0.5rem 0rem' }}
           onClick={() => navigate('/')}
         >
-          <BsArrowLeft size={20} />
+          <IoArrowBackCircle size={24} />
           <div>홈으로</div>
         </HoverToUnderlineButton>
       </div>

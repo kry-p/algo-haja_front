@@ -18,13 +18,13 @@ import {
   ProblemArticleBlock,
   MoreButtonBlock,
   CardBlock,
-  DashboardArticleTitle,
-  ProblemArticleParagraphTitle,
-  DashboardArticleDescription,
-  ProblemArticleParagraphDescription,
+  DashboardTitle,
+  ArticleParagraphTitle,
+  DashboardDescription,
+  ArticleParagraphDescription,
 } from '../../styles/common/Article';
 // Icon
-import { BsArrowLeft } from '@react-icons/all-files/bs/BsArrowLeft';
+import { IoArrowBack } from '@react-icons/all-files/io5/IoArrowBack';
 // Module
 import { ProblemError404, ProblemTitle, ProblemDescription } from './Problem';
 import { CodeInput } from './Input';
@@ -46,7 +46,7 @@ export const ProblemArticle = ({
           <ProblemArticleBlock>
             <div>
               <HoverToUnderlineButton onClick={() => navigate(-1)}>
-                <BsArrowLeft size={20} />
+                <IoArrowBack size={20} />
                 <div>이전으로 돌아가기</div>
               </HoverToUnderlineButton>
             </div>
@@ -63,7 +63,7 @@ export const ProblemArticle = ({
         <ProblemArticleBlock>
           <div>
             <HoverToUnderlineButton onClick={() => navigate(-1)}>
-              <BsArrowLeft size={20} />
+              <IoArrowBack size={20} />
               <div>이전으로 돌아가기</div>
             </HoverToUnderlineButton>
           </div>
@@ -78,14 +78,14 @@ export const ProblemArticle = ({
       <ProblemArticleBlock>
         <div>
           <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <BsArrowLeft size={20} />
+            <IoArrowBack size={20} />
             <div>이전으로 돌아가기</div>
           </HoverToUnderlineButton>
         </div>
         <ProblemTitle problem={problem} />
-        <ProblemArticleParagraphTitle>문제</ProblemArticleParagraphTitle>
+        <ArticleParagraphTitle>문제</ArticleParagraphTitle>
         <ProblemDescription problemId={problem.problem.problemId} />
-        <ProblemArticleParagraphTitle>내 풀이</ProblemArticleParagraphTitle>
+        <ArticleParagraphTitle>내 풀이</ArticleParagraphTitle>
         <div>
           {!!problem.solve ? (
             problem.solve.user && problem.solve.user.length != 0 ? (
@@ -98,12 +98,12 @@ export const ProblemArticle = ({
                 {problem.solve.user.map((item, index) => {
                   return (
                     <Fragment key={index}>
-                      <ProblemArticleParagraphDescription key={index}>
+                      <ArticleParagraphDescription key={index}>
                         <div>{'풀이 ' + (index + 1)}</div>
                         <div className="solution-code">
                           <Highlight>{item.source}</Highlight>
                         </div>
-                      </ProblemArticleParagraphDescription>
+                      </ArticleParagraphDescription>
                     </Fragment>
                   );
                 })}
@@ -121,14 +121,14 @@ export const ProblemArticle = ({
             </div>
           )}
         </div>
-        <ProblemArticleParagraphTitle>
+        <ArticleParagraphTitle>
           그룹 내 다른 사용자의 풀이
-        </ProblemArticleParagraphTitle>
-        <ProblemArticleParagraphDescription>
+        </ArticleParagraphTitle>
+        <ArticleParagraphDescription>
           <div className="disclaimer">
             공사 중입니다. 그룹 기능이 추가되면 제공될 예정입니다.
           </div>
-        </ProblemArticleParagraphDescription>
+        </ArticleParagraphDescription>
         {/* <div>
           {!!problem.solve ? (
             problem.solve.group && problem.solve.group.length != 0 ? (
@@ -139,9 +139,9 @@ export const ProblemArticle = ({
                       {item.groupName} 그룹
                     </div>
                     {item.solve.length == 0 ? (
-                      <ProblemArticleParagraphDescription>
+                      <ArticleParagraphDescription>
                         그룹 내 다른 사용자의 풀이가 없습니다.
-                      </ProblemArticleParagraphDescription>
+                      </ArticleParagraphDescription>
                     ) : (
                       item.solve
                         .filter(
@@ -149,12 +149,12 @@ export const ProblemArticle = ({
                         )
                         .map((solve, index) => {
                           return (
-                            <ProblemArticleParagraphDescription key={index}>
+                            <ArticleParagraphDescription key={index}>
                               <div>{solve.actualUsername}</div>
                               <div className="solution-code">
                                 <Highlight>{solve.source}</Highlight>
                               </div>
-                            </ProblemArticleParagraphDescription>
+                            </ArticleParagraphDescription>
                           );
                         })
                     )}
@@ -184,15 +184,15 @@ export const DashboardArticle = ({ title, contents, more }) => {
   return (
     <ArticleWrapper>
       <ArticleBlock>
-        <DashboardArticleTitle>{title}</DashboardArticleTitle>
-        <DashboardArticleDescription>
+        <DashboardTitle>{title}</DashboardTitle>
+        <DashboardDescription>
           <CardBlock>
             {!!contents &&
               contents.map((item, index) => (
                 <Fragment key={index}>{item}</Fragment>
               ))}
           </CardBlock>
-        </DashboardArticleDescription>
+        </DashboardDescription>
         <MoreButtonBlock>
           <UnderlinedButton onClick={() => navigate(more)}>
             더 보기
@@ -213,7 +213,7 @@ export const ProblemSubmitArticle = ({ problem, loading, error }) => {
           <ProblemArticleBlock>
             <div>
               <HoverToUnderlineButton onClick={() => navigate(-1)}>
-                <BsArrowLeft size={20} />
+                <IoArrowBack size={20} />
                 <div>이전으로 돌아가기</div>
               </HoverToUnderlineButton>
             </div>
@@ -230,7 +230,7 @@ export const ProblemSubmitArticle = ({ problem, loading, error }) => {
         <ProblemArticleBlock>
           <div>
             <HoverToUnderlineButton onClick={() => navigate(-1)}>
-              <BsArrowLeft size={20} />
+              <IoArrowBack size={20} />
               <div>이전으로 돌아가기</div>
             </HoverToUnderlineButton>
           </div>
@@ -245,15 +245,13 @@ export const ProblemSubmitArticle = ({ problem, loading, error }) => {
       <ProblemArticleBlock>
         <div>
           <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <BsArrowLeft size={20} />
+            <IoArrowBack size={20} />
             <div>이전으로 돌아가기</div>
           </HoverToUnderlineButton>
         </div>
         <ProblemTitle problem={problem} />
-        <ProblemArticleParagraphTitle>
-          문제풀이 등록
-        </ProblemArticleParagraphTitle>
-        <ProblemArticleParagraphDescription>
+        <ArticleParagraphTitle>문제풀이 등록</ArticleParagraphTitle>
+        <ArticleParagraphDescription>
           <div className="disclaimer">
             주의 : 알고하자는 BOJ 채점서버와 연계되지 않으므로 코드의 오류를
             검증할 수 없습니다.
@@ -261,7 +259,7 @@ export const ProblemSubmitArticle = ({ problem, loading, error }) => {
             BOJ에서 AC를 받은 뒤 등록을 권장합니다.
           </div>
           <CodeInput code={code} onChange={setCode} />
-        </ProblemArticleParagraphDescription>
+        </ArticleParagraphDescription>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button
             accent

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { Button } from '../../common/Button';
+import { Button } from '../../../common/Button';
 // Style
-import Input from '../../../styles/common/Input';
+import Input from '../../../../styles/common/Input';
 import {
   Settings,
   SettingsTitle,
@@ -13,12 +13,12 @@ import {
   SettingsItem,
   SettingsDescription,
   SubmitArea,
-} from '../../../styles/page/Settings';
+} from '../../../../styles/page/Mypage';
 // URI validator
 import { isUri } from 'valid-url';
 // Path validator
 import isValid from 'is-valid-path';
-import { changeGitInfo } from '../../../lib/api/user';
+import { changeGitInfo } from '../../../../lib/api/user';
 
 const PersonalGit = ({ user }) => {
   const linked = user.gitRepoInformation.linked;
