@@ -16,12 +16,12 @@ import { ArticleParagraphDescription } from '../../styles/common/Article';
 import { updateProblemInfo } from '../../lib/api/problem';
 import { getSolvedacTierText } from '../../lib/solvedacTier';
 
-const ProblemTitleBlock = styled.div`
+export const ProblemTitleBlock = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const ProblemTitleBlockText = styled.div`
+export const ProblemTitleBlockText = styled.div`
   font-size: 2rem;
 `;
 

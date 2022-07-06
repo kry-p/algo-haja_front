@@ -220,6 +220,7 @@ export const codeHighlightColor = theme('theme', {
     .hljs {
       display: block;
       overflow-x: auto;
+      padding: 0.5em;
       color: #383a42;
       white-space: pre;
       background: ${palette.gray[2]};

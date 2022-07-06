@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 // React router
 import { useNavigate } from 'react-router-dom';
+// Component
+import Spinner from '../common/Spinner';
 // Style
 import {
   ContentWrapper,
@@ -32,7 +34,14 @@ const Mypage = ({ user, loading, error }) => {
   }
 
   if (loading || !user) {
-    return <div>로딩 중</div>;
+    return (
+      <>
+        <div style={{ fontSize: 'xx-large', padding: '1rem 2rem' }}>
+          내 정보
+        </div>
+        <Spinner />
+      </>
+    );
   }
 
   const pages = [<PrimitiveInfo user={user} />, <Group user={user} />];

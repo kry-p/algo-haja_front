@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { ProblemSubmitArticle } from '../components/common/Article';
+import ProblemSubmit from '../components/article/ProblemSubmit';
 // Reducer
 import { readProblem, unloadProblem } from '../modules/problem';
 
@@ -36,9 +36,7 @@ const ProblemSolveSubmitContainer = () => {
     };
   }, [dispatch, problemId]);
 
-  return (
-    <ProblemSubmitArticle problem={problem} loading={loading} error={error} />
-  );
+  return <ProblemSubmit problem={problem} loading={loading} error={error} />;
 };
 
 export default ProblemSolveSubmitContainer;

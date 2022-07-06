@@ -1,5 +1,7 @@
 // React core
 import React, { useState } from 'react';
+// Component
+import Spinner from '../common/Spinner';
 // Style
 import {
   ContentWrapper,
@@ -31,7 +33,14 @@ const Modify = ({ user, loading, error }) => {
   }
 
   if (loading || !user) {
-    return <div>로딩 중</div>;
+    return (
+      <>
+        <div style={{ fontSize: 'xx-large', padding: '1rem 2rem' }}>
+          계정 설정
+        </div>
+        <Spinner />
+      </>
+    );
   }
 
   const pages = [

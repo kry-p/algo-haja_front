@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 // React-select
 // import Select from 'react-select';
 // Component
+import Spinner from '../common/Spinner';
 import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
 import { TableItemLink } from './Link';
 import { CardBadge } from './Card';
@@ -63,7 +64,18 @@ export const ProblemTable = ({
   }
 
   if (loading || !data) {
-    return <div>로딩 중</div>;
+    return (
+      <TableArticleWrapper>
+        <div>
+          <HoverToUnderlineButton onClick={() => navigate(-1)}>
+            <IoArrowBack size={20} />
+            <div>이전으로 돌아가기</div>
+          </HoverToUnderlineButton>
+        </div>
+        <ArticleTitle>{title}</ArticleTitle>
+        <Spinner />
+      </TableArticleWrapper>
+    );
   }
 
   const options =

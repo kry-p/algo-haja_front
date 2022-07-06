@@ -2,12 +2,14 @@
 import React, { useEffect } from 'react';
 // React router
 import { useNavigate, useParams } from 'react-router-dom';
+// Loadable component
+import loadable from '@loadable/component';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 // React-toastify
 import { toast } from 'react-toastify';
 // Component
-import { ProblemArticle } from '../components/common/Article';
+import Problem from '../components/article/Problem';
 // Reducer
 import { readProblem, unloadProblem } from '../modules/problem';
 
@@ -33,7 +35,7 @@ const ProblemArticleContainer = () => {
     };
   }, [dispatch, problemId]);
   return (
-    <ProblemArticle
+    <Problem
       problemId={problemId}
       user={user}
       problem={problem}
