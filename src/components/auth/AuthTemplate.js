@@ -13,7 +13,6 @@ import useWindow from '../../lib/hooks/useWindow';
 const AuthTemplate = ({ children }) => {
   // Hooks
   const window = useWindow();
-
   return (
     // 100vh 문제 해결용 inline styling
     <AuthTemplateBlock style={{ height: `calc(${window.height}px)` }}>

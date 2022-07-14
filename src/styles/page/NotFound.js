@@ -1,7 +1,9 @@
 /**
- * Styles for 404 page
+ * 404 페이지 스타일
  */
+// Styled-components
 import styled from 'styled-components';
+// Theme colors
 import { mainTextColor } from '../theme';
 
 export const PageNotFound = styled.div`

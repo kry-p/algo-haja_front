@@ -17,11 +17,6 @@ export const HeaderBlock = styled.div`
   z-index: 2;
 `;
 
-export const Spacer = styled.div`
-  height: 6rem;
-  background-color: ${backgroundColor};
-`;
-
 export const AppbarBlock = styled.div`
   display: flex;
   flex-direction: row;
@@ -72,6 +67,11 @@ export const AppbarBlock = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
+`;
+
+export const Spacer = styled.div`
+  height: 6rem;
+  background-color: ${backgroundColor};
 `;
 
 export const Drawer = styled.div`

@@ -9,27 +9,41 @@ export const AuthTemplateBlock = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: url(/resources/image/bg.jpg) no-repeat;
+  background: url(/resources/image/bg.jpg);
   background-size: cover;
   background-position: 50% 62.5%;
 
   width: 100%;
 `;
 
-export const AuthFormBlock = styled.div`
+export const AuthTopButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const AuthContentBlock = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   gap: 1rem;
 `;
 
-export const SuggestBlock = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
+export const AuthContentForm = styled.form`
+  display: grid;
 `;
 
-export const ErrorMessage = styled.div`
+export const AuthContentSuggest = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0rem;
+  font-size: 0.9rem;
+  span {
+    padding-right: 0.5rem;
+  }
+`;
+
+export const AuthContentError = styled.div`
   margin: 0.5rem 0rem;
   color: ${errorMessageColor};
   overflow: hidden;

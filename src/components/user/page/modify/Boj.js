@@ -85,13 +85,14 @@ const Boj = ({ user }) => {
                   ? 'ID 형식이 올바르지 않습니다. 3 ~ 20자의 영문, 숫자, 밑줄(_)만 허용됩니다.'
                   : errorCode === 401
                   ? '비밀번호가 올바르지 않습니다.'
+                  : errorCode === 403
+                  ? '테스트용 계정은 설정을 변경할 수 없습니다.'
                   : '사용자 정보가 올바르지 않습니다. 관리자에게 문의해 주세요.';
               toast.error(errorMessage);
             }
           }}
-        >
-          수정
-        </Button>
+          text="수정"
+        />
       </SubmitArea>
     </Settings>
   );

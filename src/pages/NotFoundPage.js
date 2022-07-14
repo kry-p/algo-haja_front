@@ -42,10 +42,12 @@ const NotFoundPage = () => {
               요청하신 페이지를 찾을 수 없습니다.
             </PageDescriptionNotFound>
             <MenuNotFound>
-              <Button accent onClick={() => navigate(-1)}>
-                이전 페이지로 돌아가기
-              </Button>
-              <Button onClick={() => navigate('/')}>홈으로</Button>
+              <Button
+                accent
+                onClick={() => navigate(-1)}
+                text="이전 페이지로 돌아가기"
+              />
+              <Button onClick={() => navigate('/')} text="홈으로" />
             </MenuNotFound>
           </PageStyleNotFound>
         </ContentArea>

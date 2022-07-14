@@ -36,7 +36,14 @@ const ProblemSolveSubmitContainer = () => {
     };
   }, [dispatch, problemId]);
 
-  return <ProblemSubmit problem={problem} loading={loading} error={error} />;
+  return (
+    <ProblemSubmit
+      problemId={problemId}
+      problem={problem}
+      loading={loading}
+      error={error}
+    />
+  );
 };
 
 export default ProblemSolveSubmitContainer;

@@ -63,17 +63,19 @@ const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
                 </MenuItemDesktop>
               ))}
               {user ? (
-                <Button accent className="item" onClick={() => onLogout()}>
-                  로그아웃
-                </Button>
+                <Button
+                  accent
+                  className="item"
+                  onClick={() => onLogout()}
+                  text="로그아웃"
+                />
               ) : (
                 <Button
                   accent
                   className="item"
                   onClick={() => navigate('/login')}
-                >
-                  로그인
-                </Button>
+                  text="로그인"
+                />
               )}
               <IconButton onClick={onToggleDarkmode}>
                 {darkmode ? <IoMoonOutline size={16} /> : <IoMoon size={16} />}
@@ -113,17 +115,14 @@ const Appbar = ({ title, fullPage, user, onLogout, onToggleDarkmode }) => {
                 >
                   <div>{user ? user.username : '로그인하세요'}</div>
                   {user ? (
-                    <Button accent className="item">
-                      로그아웃
-                    </Button>
+                    <Button accent className="item" text="로그아웃" />
                   ) : (
                     <Button
                       accent
                       className="item"
                       onClick={() => navigate('/login')}
-                    >
-                      로그인
-                    </Button>
+                      text="로그인"
+                    />
                   )}
                 </div>
                 {MENU.map((item) => (

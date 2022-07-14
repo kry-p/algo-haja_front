@@ -9,7 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 // Component
 import Spinner from '../common/Spinner';
-import { Button, HoverToUnderlineButton } from '../common/Button';
+import {
+  Button,
+  BackwardButton,
+  HoverToUnderlineButton,
+} from '../common/Button';
 import {
   ArticleWrapper,
   ProblemArticleBlock,
@@ -24,19 +28,18 @@ import { ProblemError404, ProblemTitle } from '../common/Problem';
 import { CodeInput } from '../common/Input';
 import { addSolve } from '../../lib/api/problem';
 
-const ProblemSubmit = ({ problem, loading, error }) => {
+const ProblemSubmit = ({ problemId, problem, loading, error }) => {
   const navigate = useNavigate();
   const [code, setCode] = useState(``);
+
+  // 에러 발생 시
   if (error) {
     if (error.response && error.response.status == 404) {
       return (
         <ArticleWrapper>
           <ProblemArticleBlock>
             <div>
-              <HoverToUnderlineButton onClick={() => navigate(-1)}>
-                <IoArrowBack size={20} />
-                <div>이전으로 돌아가기</div>
-              </HoverToUnderlineButton>
+              <BackwardButton />
             </div>
             <ProblemError404 problemId={problemId} />
           </ProblemArticleBlock>
@@ -45,15 +48,13 @@ const ProblemSubmit = ({ problem, loading, error }) => {
     }
   }
 
+  // 로딩 중
   if (loading || !problem) {
     return (
       <ArticleWrapper>
         <ProblemArticleBlock>
           <div>
-            <HoverToUnderlineButton onClick={() => navigate(-1)}>
-              <IoArrowBack size={20} />
-              <div>이전으로 돌아가기</div>
-            </HoverToUnderlineButton>
+            <BackwardButton />
           </div>
           <Spinner />
         </ProblemArticleBlock>
@@ -61,14 +62,12 @@ const ProblemSubmit = ({ problem, loading, error }) => {
     );
   }
 
+  // 로딩 완료
   return (
     <ArticleWrapper>
       <ProblemArticleBlock>
         <div>
-          <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <IoArrowBack size={20} />
-            <div>이전으로 돌아가기</div>
-          </HoverToUnderlineButton>
+          <BackwardButton />
         </div>
         <ProblemTitle problem={problem} />
         <ArticleParagraphTitle>문제풀이 등록</ArticleParagraphTitle>
@@ -107,9 +106,8 @@ const ProblemSubmit = ({ problem, loading, error }) => {
                   );
               }
             }}
-          >
-            등록하기
-          </Button>
+            text="등록하기"
+          />
         </div>
       </ProblemArticleBlock>
     </ArticleWrapper>

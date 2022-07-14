@@ -5,11 +5,11 @@
 import React from 'react';
 // Container
 import AppbarContainer from '../../containers/AppbarContainer';
+import ProblemSolveSubmitContainer from '../../containers/ProblemSolveSubmitContainer';
 // Component
 import Footer from '../../components/common/Footer';
 // Styles
 import { ContentArea, SafeArea } from '../../styles/common/Area';
-import ProblemSolveSubmitContainer from '../../containers/ProblemSolveSubmitContainer';
 // Constant
 import { TITLE } from '../../lib/constants';
 

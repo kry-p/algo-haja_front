@@ -50,9 +50,8 @@ const PrimitiveInfo = ({ user }) => {
             accent={!isEmailVerified}
             disabled={isEmailVerified}
             onClick={() => toast.info('이메일 인증은 준비 중입니다.')}
-          >
-            {isEmailVerified ? '인증' : '인증'}
-          </Button>
+            text={isEmailVerified ? '인증' : '인증'}
+          />
         </SettingsDescription>
       </SettingsItem>
       <SettingsSubtitle>
@@ -141,18 +140,20 @@ const PrimitiveInfo = ({ user }) => {
                 newPasswordConfirm: '',
               });
             } catch (err) {
-              if (err.request.status === 401)
-                toast.error('기존 비밀번호가 올바르지 않습니다.');
-              else if (error.request.status === 400)
-                toast.error(
-                  '비밀번호는 영문, 숫자, 특수문자를 모두 포함, 8자 이상이어야 합니다.'
-                );
-              else toast.error('비밀번호 변경에 실패했습니다.');
+              const errorCode = err.request.status;
+              const errorMessage =
+                errorCode === 400
+                  ? '비밀번호는 영문, 숫자, 특수문자를 모두 포함, 8자 이상이어야 합니다.'
+                  : errorCode === 401
+                  ? '기존 비밀번호가 올바르지 않습니다.'
+                  : errorCode === 403
+                  ? '테스트용 계정은 설정을 변경할 수 없습니다.'
+                  : '사용자 정보가 올바르지 않습니다. 관리자에게 문의해 주세요.';
+              toast.error(errorMessage);
             }
           }}
-        >
-          수정
-        </Button>
+          text="수정"
+        />
       </SubmitArea>
     </Settings>
   );

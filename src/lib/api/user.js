@@ -25,6 +25,16 @@ export const changeBojId = async ({ password, bojId }) => {
 };
 
 // Git 연동정보 변경
-export const changeGitInfo = async ({ repoUrl, ruleConstant, bojDir }) => {
-  await client.patch(`/api/user/git`, { repoUrl, ruleConstant, bojDir });
+export const changeGitInfo = async ({
+  password,
+  repoUrl,
+  ruleConstant,
+  bojDir,
+}) => {
+  await client.patch(`/api/user/git`, {
+    password,
+    repoUrl,
+    ruleConstant,
+    bojDir,
+  });
 };

@@ -12,8 +12,8 @@ import Spinner from '../common/Spinner';
 import { SolvedBadge, RoundedCornerBlock, SolvedacRatingBadge } from './Misc';
 import { TableItemLink } from './Link';
 import { CardBadge } from './Card';
-import { HoverToUnderlineButton, PaginationButton } from './Button';
-import { Pagination } from './Pagination';
+import { BackwardButton, PaginationButton } from './Button';
+import { PaginationWrapper } from './Pagination';
 // Style
 import {
   ProblemTableItem,
@@ -26,6 +26,7 @@ import { SOLVED, TRIED } from '../../lib/constants';
 // Icon
 import { IoArrowBack } from '@react-icons/all-files/io5/IoArrowBack';
 import { IoArrowForward } from '@react-icons/all-files/io5/IoArrowForward';
+
 // 문제 테이블
 export const ProblemTable = ({
   title,
@@ -55,6 +56,7 @@ export const ProblemTable = ({
   const onChangePage = (page) => {
     navigate(`${location}?page=${page + 1}`);
     setPage(page);
+    window.scrollTo(0, 0);
   };
 
   if (error) {
@@ -67,10 +69,7 @@ export const ProblemTable = ({
     return (
       <TableArticleWrapper>
         <div>
-          <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <IoArrowBack size={20} />
-            <div>이전으로 돌아가기</div>
-          </HoverToUnderlineButton>
+          <BackwardButton />
         </div>
         <ArticleTitle>{title}</ArticleTitle>
         <Spinner />
@@ -91,10 +90,7 @@ export const ProblemTable = ({
     <>
       <TableArticleWrapper>
         <div>
-          <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <IoArrowBack size={20} />
-            <div>이전으로 돌아가기</div>
-          </HoverToUnderlineButton>
+          <BackwardButton />
         </div>
         <ArticleTitle>{title}</ArticleTitle>
         {/* 그룹 기능 구현 시 활성화 */}
@@ -223,7 +219,7 @@ export const ProblemTable = ({
               })
           )}
         </RoundedCornerBlock>
-        <Pagination>
+        <PaginationWrapper>
           <PaginationButton
             onClick={() => {
               if (page > 0) onChangePage(page - 1);
@@ -231,7 +227,13 @@ export const ProblemTable = ({
           >
             <IoArrowBack />
           </PaginationButton>
-          {[...new Array(Math.floor(data.length / LIMIT) + 1)]
+          {[
+            ...new Array(
+              data.length % LIMIT === 0
+                ? Math.floor(data.length / LIMIT)
+                : Math.floor(data.length / LIMIT) + 1
+            ),
+          ]
             .slice(pagePivot, pagePivot + pageDivisor)
             .map((item, index) => (
               <PaginationButton
@@ -250,7 +252,7 @@ export const ProblemTable = ({
           >
             <IoArrowForward />
           </PaginationButton>
-        </Pagination>
+        </PaginationWrapper>
       </TableArticleWrapper>
     </>
   );

@@ -29,7 +29,7 @@ export const TableArticleWrapper = styled(ArticleWrapper)`
  * Title
  */
 export const ArticleTitle = styled.div`
-  padding: 0.75rem;
+  padding: 0.75rem 0rem;
   font-size: 1.5rem;
 `;
 
@@ -58,7 +58,7 @@ export const ArticleParagraphDescription = styled.div`
   display: grid;
   gap: 1rem;
 
-  line-height: normal;
+  line-height: 1.5rem;
 
   .disclaimer .sub-title {
     font-family: Pretendard-Regular;

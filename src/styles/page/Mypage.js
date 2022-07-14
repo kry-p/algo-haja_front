@@ -92,7 +92,7 @@ export const MenuItemContent = styled.div`
  */
 export const Settings = styled.div`
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   width: calc(100% - 2rem);
   padding: 2rem 0rem;
 `;

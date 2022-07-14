@@ -1,15 +1,17 @@
+// React core
 import React, { Fragment } from 'react';
 // React Router
 import { useNavigate } from 'react-router-dom';
 // Component
-import { UnderlinedButton } from '../Button';
+import { Link } from '../common/Link';
+// Style
 import {
   ArticleWrapper,
   ArticleBlock,
-  MoreButtonBlock,
   CardBlock,
   DashboardTitle,
   DashboardDescription,
+  MoreButtonBlock,
 } from '../../../styles/common/Article';
 
 // 대시보드 (카드 뷰)
@@ -28,9 +30,7 @@ const DashboardArticle = ({ title, contents, more }) => {
           </CardBlock>
         </DashboardDescription>
         <MoreButtonBlock>
-          <UnderlinedButton onClick={() => navigate(more)}>
-            더 보기
-          </UnderlinedButton>
+          <Link to={more}>더 보기</Link>
         </MoreButtonBlock>
       </ArticleBlock>
     </ArticleWrapper>

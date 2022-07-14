@@ -93,19 +93,28 @@ const PersonalGit = ({ user }) => {
               return;
             }
             try {
-              await changeGitInfo({ repoUrl, ruleConstant: 1, bojDir });
+              await changeGitInfo({
+                password,
+                repoUrl,
+                ruleConstant: 1,
+                bojDir,
+              });
               toast.info(
                 'Git 저장소를 등록했습니다. 풀이 목록이 반영되기까지 시간이 걸릴 수 있습니다.'
               );
             } catch (err) {
-              if (err.request.status == 400)
-                toast.error('해당 Git 저장소를 찾을 수 없습니다.');
-              else toast.error('Git 저장소를 등록하는 중 오류가 발생했습니다.');
+              if (err.request.status === 400)
+                toast.error(
+                  'Git 저장소를 등록하는 중 오류가 발생했습니다. 저장소가 올바르지 않습니다.'
+                );
+              if (err.request.status === 401)
+                toast.error('비밀번호가 올바르지 않습니다.');
+              if (err.request.status === 403)
+                toast.error('테스트용 계정은 설정을 변경할 수 없습니다.');
             }
           }}
-        >
-          수정
-        </Button>
+          text="수정"
+        />
       </SubmitArea>
     </Settings>
   );

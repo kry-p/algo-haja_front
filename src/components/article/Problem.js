@@ -38,10 +38,11 @@ export const Problem = ({
         <ArticleWrapper>
           <ProblemArticleBlock>
             <div>
-              <HoverToUnderlineButton onClick={() => navigate(-1)}>
-                <IoArrowBack size={20} />
-                <div>이전으로 돌아가기</div>
-              </HoverToUnderlineButton>
+              <HoverToUnderlineButton
+                text="이전으로 돌아가기"
+                icon={<IoArrowBack size={20} />}
+                onClick={() => navigate(-1)}
+              />
             </div>
             <ProblemError404 problemId={problemId} />
           </ProblemArticleBlock>
@@ -55,10 +56,11 @@ export const Problem = ({
       <ArticleWrapper>
         <ProblemArticleBlock>
           <div>
-            <HoverToUnderlineButton onClick={() => navigate(-1)}>
-              <IoArrowBack size={20} />
-              <div>이전으로 돌아가기</div>
-            </HoverToUnderlineButton>
+            <HoverToUnderlineButton
+              text="이전으로 돌아가기"
+              icon={<IoArrowBack size={20} />}
+              onClick={() => navigate(-1)}
+            />
           </div>
           <Spinner />
         </ProblemArticleBlock>
@@ -70,10 +72,11 @@ export const Problem = ({
     <ArticleWrapper>
       <ProblemArticleBlock>
         <div>
-          <HoverToUnderlineButton onClick={() => navigate(-1)}>
-            <IoArrowBack size={20} />
-            <div>이전으로 돌아가기</div>
-          </HoverToUnderlineButton>
+          <HoverToUnderlineButton
+            text="이전으로 돌아가기"
+            icon={<IoArrowBack size={20} />}
+            onClick={() => navigate(-1)}
+          />
         </div>
         <ProblemTitle problem={problem} />
         <ArticleParagraphTitle>문제</ArticleParagraphTitle>

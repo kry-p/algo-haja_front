@@ -1,21 +1,11 @@
 /**
- * Styles for landing page
+ * 랜딩 페이지 스타일
  */
 import styled from 'styled-components';
 import { headlineBackgroundFilter, mainTextColor } from '../theme';
 
-export const MainHeadlineBackground = styled.div`
-  ${headlineBackgroundFilter}
-  position: absolute;
-
-  width: 100vw;
-  height: 75vh;
-  background: url(/resources/image/bg.jpg) no-repeat;
-  background-size: cover;
-  background-position: 50% 62.5%;
-`;
-
-export const MainHeadline = styled.div`
+// Headline
+export const HeadlineWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr 12rem 1fr;
   justify-items: center;
@@ -32,7 +22,18 @@ export const MainHeadline = styled.div`
   }
 `;
 
-export const MainHeadlineTitle = styled.div`
+export const HeadlineBackground = styled.div`
+  ${headlineBackgroundFilter}
+  position: absolute;
+
+  width: 100vw;
+  height: 75vh;
+  background: url(/resources/image/bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: 50% 62.5%;
+`;
+
+export const HeadlineTitle = styled.div`
   display: grid;
   gap: 1rem;
 
@@ -53,7 +54,7 @@ export const MainHeadlineTitle = styled.div`
   }
 `;
 
-export const MainHeadlineDescription = styled.div`
+export const HeadlineDescription = styled.div`
   width: calc(0.8 * 100vw);
 
   color: ${mainTextColor};
@@ -76,4 +77,16 @@ export const MainHeadlineDescription = styled.div`
     font-size: 1.3rem;
     width: 720px;
   }
+`;
+
+// Call-To-Action
+export const CTAWrapper = styled.div`
+  padding: 0rem 1rem;
+`;
+
+export const CTA = styled.div`
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  padding: 2rem;
 `;
